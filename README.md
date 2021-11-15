@@ -36,4 +36,4 @@ Live link: https://countable-dub.herokuapp.com/ Please refer to Wiki pages for f
 ![Screen Shot 2021-11-15 at 4 10 55 PM](https://user-images.githubusercontent.com/78274179/141854874-9e469bdf-fd19-49fb-8df7-1aab56d918e6.png)
 
 * Individual Post
-* ![Screen Shot 2021-11-15 at 4 12 03 PM](https://user-images.githubusercontent.com/78274179/141854961-9539630e-235c-4b7c-ac8d-e4c3a33ad35a.png)
+![Screen Shot 2021-11-15 at 4 12 03 PM](https://user-images.githubusercontent.com/78274179/141854961-9539630e-235c-4b7c-ac8d-e4c3a33ad35a.png)
