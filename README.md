@@ -27,4 +27,4 @@ Live link: https://countable-dub.herokuapp.com/ Please refer to Wiki pages for f
 <img width="1424" alt="Screen Shot 2021-11-15 at 3 53 16 PM" src="https://user-images.githubusercontent.com/78274179/141853201-b1ac3f41-ba2d-415a-9c0d-2ec8413d55a8.png">
 
 * Sign Up Page
-<img width="1424" alt="Screen Shot 2021-11-15 at 3 53 16 PM" src="https://user-images.githubusercontent.com/78274179/141853299-e53fd926-ac18-4a13-9619-85470937e154.png">
+<img width="1424" alt="Screen Shot 2021-11-15 at 3 53 06 PM" src="https://user-images.githubusercontent.com/78274179/141853460-d9cd0ecf-784b-4f74-a581-25c963965ace.png">
