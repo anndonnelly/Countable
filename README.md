@@ -20,3 +20,11 @@ Live link: https://countable-dub.herokuapp.com/ Please refer to Wiki pages for f
 * Sequelize
 * React
 * Redux
+
+# Wireframes
+
+* Login Page
+[[https://res.cloudinary.com/dis83syog/image/upload/v1637009692/Countable/Screen_Shot_2021-11-15_at_3.53.16_PM_tnrcur.png]
+
+* Sign Up Page
+[[https://res.cloudinary.com/dis83syog/image/upload/v1637009705/Countable/Screen_Shot_2021-11-15_at_3.53.06_PM_xrwakp.png]
