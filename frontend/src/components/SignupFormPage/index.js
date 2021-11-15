@@ -13,7 +13,7 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/feed" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -84,7 +84,10 @@ function SignupFormPage() {
               Sign Up
             </button>
             <button className="signUpButton" type="submit">
-              Demo User
+              Demo User 1
+            </button>
+            <button className="loginButton" type="submit">
+              Demo User 2
             </button>
           </form>
         </div>
@@ -93,7 +96,7 @@ function SignupFormPage() {
             {" "}
             Have an account?&nbsp;
             <Link className="link" to="/login">
-             Log in
+              Log in
             </Link>
           </p>
         </div>

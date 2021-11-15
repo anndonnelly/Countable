@@ -3,15 +3,17 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import "./LoginForm.css";
+import { useHistory } from "react-router";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/feed" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +24,26 @@ function LoginFormPage() {
         if (data && data.errors) setErrors(data.errors);
       }
     );
+  };
+
+  const demoUser = async () => {
+    return dispatch(sessionActions.login({credential: "Demo-lition", password: 'password'}))
+  }
+
+//   const demoUserTwo = async () => {
+//     return dispatch(
+//       sessionActions.login({ credential: "DemoTwo", password: "password" })
+//     );
+//   };
+
+  const demoUserTwo = async (e) => {
+    e.preventDefault();
+    setCredential("DemoTwo");
+    setPassword("password");
+    const demo = dispatch(
+      sessionActions.login({ credential: "DemoTwo", password: "password" })
+    );
+    return demo;
   };
 
   return (
@@ -43,7 +65,7 @@ function LoginFormPage() {
             </ul>
             <input
               className="loginFormInput"
-              placeholder="Username or email"
+              placeholder="Username or Email"
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
@@ -60,12 +82,12 @@ function LoginFormPage() {
             <button className="loginButton" type="submit">
               Log In
             </button>
-            <button className="loginButton" type="submit">
-              Demo User 
+            <button className="loginButton"onClick={demoUser}>
+              Demo User 1
             </button>
-            {/* <button className="loginButton" type="submit">
+            <button className="loginButton"onClick={demoUserTwo}>
               Demo User 2
-            </button> */}
+            </button>
           </form>
         </div>
         <div className="signUpForm">

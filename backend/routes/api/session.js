@@ -67,17 +67,7 @@ router.get(
 module.exports = router;
 
 
-// fetch("/api/session", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//     "XSRF-TOKEN": `GrT3ULfA-ASUEz-00r_Ox7eme6oiyISl8Ak4`,
-//   },
-//   body: JSON.stringify({ credential: "Demo-lition", password: "password" }),
-// })
-//   .then((res) => res.json())
-//   .then((data) => console.log(data));
-// Got value from Application in dev tools
+
 
 
 
