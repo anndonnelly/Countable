@@ -1,7 +1,7 @@
 # Countable
 This Application XXX
 
-Live link: XXXX Please refer to Wiki pages for further documentation.
+Live link: https://countable-dub.herokuapp.com/ Please refer to Wiki pages for further documentation.
 
 # Development
 * To start the development environment:
