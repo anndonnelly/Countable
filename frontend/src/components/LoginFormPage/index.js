@@ -43,7 +43,7 @@ function LoginFormPage() {
             </ul>
             <input
               className="loginFormInput"
-              placeholder="Phone number, username or email"
+              placeholder="Username or email"
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
@@ -60,6 +60,12 @@ function LoginFormPage() {
             <button className="loginButton" type="submit">
               Log In
             </button>
+            <button className="loginButton" type="submit">
+              Demo User 
+            </button>
+            {/* <button className="loginButton" type="submit">
+              Demo User 2
+            </button> */}
           </form>
         </div>
         <div className="signUpForm">
