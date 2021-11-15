@@ -8,17 +8,16 @@ const setTokenCookie = (res, user) => {
 
   const token = jwt.sign(
     { data: user.toSafeObject() },
-    // Payload of the JWT will be the return of the instance method .toSafeObject which was added in User model.
     secret,
-    { expiresIn: parseInt(expiresIn) } // 604,800 seconds = 1 week
-    // Set to expire in however many seconds set on the JWT_EXPIRES_IN key in .env file.
+    { expiresIn: parseInt(expiresIn) } 
+   
   );
 
   const isProduction = process.env.NODE_ENV === "production";
 
-  // Set the token cookie
+
   res.cookie("token", token, {
-    maxAge: expiresIn * 1000, // maxAge in milliseconds
+    maxAge: expiresIn * 1000, 
     httpOnly: true,
     secure: isProduction,
     sameSite: isProduction && "Lax",
@@ -28,7 +27,6 @@ const setTokenCookie = (res, user) => {
 };
 
 const restoreUser = (req, res, next) => {
-  // token parsed from cookies
   const { token } = req.cookies;
 
   return jwt.verify(token, secret, null, async (err, jwtPayload) => {

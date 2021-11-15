@@ -16,9 +16,9 @@ router.post("/test", (req, res) => {
 });
 
 
-// router.get("/restore-user", restoreUser, (req, res) => {
-//   return res.json(req.user);
-// });
+router.get("/restore-user", restoreUser, (req, res) => {
+  return res.json(req.user);
+});
 // Gets back cookie
 
 // router.get(
@@ -33,7 +33,7 @@ router.post("/test", (req, res) => {
 //     return res.json({ user });
 //   })
 // );
-// Test route
+// // Test route
 
 // router.get("/require-auth", requireAuth, (req, res) => {
 //   return res.json(req.user);

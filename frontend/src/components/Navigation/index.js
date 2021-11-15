@@ -19,11 +19,7 @@ function Navigation({ isLoaded }) {
     );
   }
 
-  return (
-   
-       <div>{isLoaded && sessionLinks}</div> 
-     
-  );
+  return <div>{isLoaded && sessionLinks}</div>;
 }
 
 export default Navigation;

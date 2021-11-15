@@ -6,12 +6,14 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import { restoreCSRF } from "./store/csrf";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+   if (process.env.NODE_ENV !== "production") restoreCSRF();
+   setIsLoaded(true);
   }, [dispatch]);
 
   return (
