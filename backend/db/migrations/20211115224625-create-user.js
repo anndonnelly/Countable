@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable("Users", {
@@ -22,19 +22,26 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false,
       },
+      avatar: {
+        type: Sequelize.STRING,
+      },
+      bio: {
+        type: Sequelize.TEXT,
+      },
+      isVerified: {
+        type: Sequelize.BOOLEAN,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn("now"),
       },
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("Users");
-  },
+    return queryInterface.dropTable('Users');
+  }
 };
