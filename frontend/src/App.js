@@ -11,9 +11,10 @@ import { restoreCSRF } from "./store/csrf";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-   if (process.env.NODE_ENV !== "production") restoreCSRF();
-   setIsLoaded(true);
+    if (process.env.NODE_ENV !== "production") restoreCSRF();
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
