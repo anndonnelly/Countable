@@ -6,10 +6,10 @@ module.exports = {
       return queryInterface.bulkInsert(
         "Likes",
         [
-        //   {
-        //     name: "John Doe",
-        //     isBetaMember: false,
-        //   },
+        {
+            postId: 1,
+            userId: 1
+        }
         ],
         {}
       );

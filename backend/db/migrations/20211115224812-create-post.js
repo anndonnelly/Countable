@@ -20,11 +20,9 @@ module.exports = {
         references: { model: "Users" },
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
     });

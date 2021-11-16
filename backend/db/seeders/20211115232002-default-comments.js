@@ -6,10 +6,11 @@ module.exports = {
       return queryInterface.bulkInsert(
         "Comments",
         [
-        //   {
-        //     name: "John Doe",
-        //     isBetaMember: false,
-        //   },
+        {
+            comment: "Where is this?",
+            postId: 1,
+            userId: 1
+        },
         ],
         {}
       );

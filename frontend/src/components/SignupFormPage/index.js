@@ -12,8 +12,10 @@ function SignupFormPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+   const [credential, setCredential] = useState("");
 
-  if (sessionUser) return <Redirect to="/feed" />;
+
+  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,6 +32,22 @@ function SignupFormPage() {
       "Confirm Password field must be the same as the Password field",
     ]);
   };
+
+  const demoUser = async () => {
+    return dispatch(
+      sessionActions.login({ credential: "Demo-lition", password: "password" })
+    );
+  };
+
+   const demoUserTwo = async (e) => {
+     e.preventDefault();
+     setCredential("DemoTwo");
+     setPassword("password");
+     const demo = dispatch(
+       sessionActions.login({ credential: "DemoTwo", password: "password" })
+     );
+     return demo;
+   };
 
   return (
     <div className="formSignUpPage">
@@ -83,10 +101,10 @@ function SignupFormPage() {
             <button className="signUpButton" type="submit">
               Sign Up
             </button>
-            <button className="signUpButton" type="submit">
+            <button className="signUpButton" type="submit" onClick={demoUser}>
               Demo User 1
             </button>
-            <button className="loginButton" type="submit">
+            <button className="loginButton" type="submit" onClick={demoUserTwo}>
               Demo User 2
             </button>
           </form>
