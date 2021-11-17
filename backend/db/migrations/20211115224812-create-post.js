@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       imageUrl: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.TEXT,
         allowNull: false,
       },
       caption: {

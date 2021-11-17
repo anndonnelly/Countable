@@ -15,7 +15,7 @@ function SignupFormPage() {
    const [credential, setCredential] = useState("");
 
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to="/posts" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -113,7 +113,7 @@ function SignupFormPage() {
           <p>
             {" "}
             Have an account?&nbsp;
-            <Link className="link" to="/login">
+            <Link className="link" to="/">
               Log in
             </Link>
           </p>

@@ -7,6 +7,9 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { restoreCSRF } from "./store/csrf";
+import Feed from "./components/Feed";
+import PostCard from "./components/CountablePosts/PostCard";
+import SinglePost from "./components/CountablePosts/SinglePost";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,15 +25,21 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login">
+          <Route exact path="/">
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/posts/:id">
+            <SinglePost />
+          </Route>
+          <Route path="/posts">
+            <Feed />
+          </Route>
         </Switch>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

@@ -152,6 +152,16 @@ module.exports = {
           username: "maevedonnelly",
           hashedPassword: bcrypt.hashSync("password"),
         },
+        {
+          email: "tenaciousg@gmail.com",
+          username: "work.gmiddleton",
+          hashedPassword: bcrypt.hashSync("password"),
+        },
+        {
+          email: "brandonmohan@gmail.com",
+          username: "brandonmohan ",
+          hashedPassword: bcrypt.hashSync("password"),
+        },
       ],
       {}
     );
@@ -191,6 +201,7 @@ module.exports = {
             "megancaseydiviney",
             "patrickstory",
             "maevedonnelly",
+            "work.gmiddleton",
           ],
         },
       },
