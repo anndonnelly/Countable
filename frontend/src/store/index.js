@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import postsReducer from "./posts";
 import individualPostReducer from "./individualpost";
+import commentsReducer from "./comments";
 
 
 
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   posts: postsReducer,
   individualPost: individualPostReducer,
+  comments: commentsReducer,
 });
 
 let enhancer;

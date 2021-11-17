@@ -10,14 +10,11 @@ function Feed() {
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => Object.values(state.posts));
-  console.log("POST.LENGTH",posts.length)
- 
 
   useEffect(() => {
     dispatch(getAllPostsThunk());
   }, [dispatch]);
 
-    // useEffect(() => {}, [deletePostThunk]);
 
   return (
     <>

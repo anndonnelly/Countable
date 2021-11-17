@@ -1,106 +1,109 @@
-// import { csrfFetch } from "./csrf";
-// const GET_COMMENTS = "comments/GET_COMMENTS";
-// const DELETE_COMMENT = "comments/DELETE_COMMENT";
-// const ADD_COMMENT = "comments/ADD_COMMENT";
-// const EDIT_ONE_REVIEW = "reviews/EDIT_ONE_REVIEW";
+import { csrfFetch } from "./csrf";
 
-// const getReviews = (reviews) => {
-//   return {
-//     type: GET_REVIEWS,
-//     reviews,
-//   };
-// };
+const GET_COMMENTS = "comments/GET_COMMENTS";
+const ADD_COMMENT = "comments/ADD_COMMENT";
+const EDIT_COMMENT = "comments/EDIT_COMMENT";
+const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
-// const removeReview = (review) => {
-//   return {
-//     type: DELETE_ONE_REVIEW,
-//     review,
-//   };
-// };
+const getComments = (comment) => {
+  return {
+    type: GET_COMMENTS,
+    comment,
+  };
+};
 
-// const addReview = (review) => {
-//   return {
-//     type: ADD_ONE_REVIEW,
-//     review,
-//   };
-// };
+const addComment = (comment) => {
+  return {
+    type: ADD_COMMENT,
+    comment,
+  };
+};
 
-// const editOne = (review) => {
-//   return {
-//     type: EDIT_ONE_REVIEW,
-//     review,
-//   };
-// };
+const editComment = (comment) => {
+  return {
+    type: EDIT_COMMENT,
+    comment,
+  };
+};
 
-// export const allReviews = (id) => async (dispatch) => {
-//   const res = await csrfFetch(`/api/reviews/restaurants/${id}`);
-//   const data = await res.json();
-//   dispatch(getReviews(data));
-// };
+const deleteComment = (comment) => {
+  return {
+    type: DELETE_COMMENT,
+    comment,
+  };
+};
 
-// export const deleteReview = (id) => async (dispatch) => {
-//   const res = await csrfFetch(`/api/reviews/${id}`, {
-//     method: "DELETE",
-//   });
-//   dispatch(removeReview(id));
-// };
+export const getAllCommentsThunk = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/posts/comments/${id}`);
+  const data = await res.json();
+  dispatch(getComments(data));
+};
 
-// export const addOneReview = (payload) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/reviews`, {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(payload),
-//   });
+export const createCommentThunk = (payload) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 
-//   if (response.ok) {
-//     const review = await response.json();
-//     dispatch(addReview(review));
-//     return review;
-//   }
-// };
+  if (response.ok) {
+    const comment = await response.json();
+    dispatch(addComment(comment));
+    return comment;
+  }
+};
 
-// export const editOneReview = (payload) => async (dispatch) => {
-//   const { id } = payload;
-//   const res = await csrfFetch(`/api/reviews/${id}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(payload),
-//   });
+export const editCommentThunk = (payload) => async (dispatch) => {
+  const { id } = payload;
+  const res = await csrfFetch(`/api/comments/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 
-//   if (res.ok) {
-//     let editReview = await res.json();
-//     dispatch(editOne(editReview));
-//   }
-// };
+  if (res.ok) {
+    let editCommennt = await res.json();
+    dispatch(editComment(editCommennt));
+  }
+};
 
-// const initialState = {};
-// export default function reviewsReducer(state = initialState, action) {
-//   const newState = { ...state };
-//   switch (action.type) {
-//     case GET_REVIEWS:
-//       const allReviews = {};
-//       Object.values(action.reviews).forEach((review) => {
-//         allReviews[review.id] = review;
-//       });
-//       return { ...state, ...allReviews };
-//     case DELETE_ONE_REVIEW: {
-//       const newState = { ...state };
-//       delete newState[action.review];
-//       return newState;
-//     }
-//     case ADD_ONE_REVIEW:
-//       return {
-//         ...state,
-//         [action.review.id]: action.review,
-//       };
-//     case EDIT_ONE_REVIEW:
-//       newState[action.review.id] = action.review;
-//       return newState;
-//     default:
-//       return state;
-//   }
-// }
+export const deleteCommentThunk = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/comments/${id}`, {
+    method: "DELETE",
+  });
+  if (res.ok) {
+    dispatch(deleteComment(id));
+  }
+};
+
+const initialState = {};
+export default function commentsReducer(state = initialState, action) {
+  const newState = { ...state };
+  switch (action.type) {
+    case GET_COMMENTS:
+      const allComments = {};
+      Object.values(action.comments).forEach((comment) => {
+        allComments[comment.id] = comment;
+      });
+      return { ...state, ...allComments };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        [action.comment.id]: action.comment,
+      };
+    case EDIT_COMMENT:
+      newState[action.comment.id] = action.comment;
+      return newState;
+    case DELETE_COMMENT: {
+      const newState = { ...state };
+      delete newState[action.comment];
+      return newState;
+    }
+    default:
+      return state;
+  }
+}

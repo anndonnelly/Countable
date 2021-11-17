@@ -10,6 +10,8 @@ import { restoreCSRF } from "./store/csrf";
 import Feed from "./components/Feed";
 import PostCard from "./components/CountablePosts/PostCard";
 import SinglePost from "./components/CountablePosts/SinglePost";
+import ProfilePage from "./components/ProfilePage";
+import ProfileButton from "./components/Navigation/ProfileButton";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +38,9 @@ function App() {
           </Route>
           <Route exact path="/posts">
             <Feed />
+          </Route>
+          <Route path="/users/:id">
+            <ProfilePage/>
           </Route>
         </Switch>
       )}
