@@ -40,6 +40,18 @@ module.exports = {
             postId: 3,
             userId: 3,
           },
+          {
+            comment:
+              "They have to have a better plan than to close off one of the best cycle lanes in the city during rush hour",
+            postId: 13,
+            userId: 4,
+          },
+          {
+            comment:
+              "Plans for a cycle path on the one-way main roads either side of the River Liffey have been seven years in the making. In places two lanes of motor traffic have been reduced to one, adding an extra bus lane, but cycling here remains unpleasant",
+            postId: 13,
+            userId: 4,
+          },
         ],
         {}
       );

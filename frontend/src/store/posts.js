@@ -70,7 +70,6 @@ export const createPostThunk = (payload) => async (dispatch) => {
 
   if (response.ok) {
     const newPost = await response.json();
-    console.log("NEW POST", newPost)
     dispatch(createPostAction(newPost));
     return newPost;
   }

@@ -34,7 +34,7 @@ function App() {
           <Route path="/posts/:id">
             <SinglePost />
           </Route>
-          <Route path="/posts">
+          <Route exact path="/posts">
             <Feed />
           </Route>
         </Switch>
