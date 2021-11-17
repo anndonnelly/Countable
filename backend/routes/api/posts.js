@@ -7,7 +7,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     const posts = await Post.findAll();
-    console.log("POSTS", posts)
+    console.log("POSTS", posts.length)
     return res.json(posts);
   })
 );
@@ -45,8 +45,8 @@ router.delete(
     const id = req.params.id;
     const post = await Post.findByPk(id);
     if (!post) throw new Error("Cannot find post");
-    post.destroy(req.body);
-    return res.json({ id });
+    await post.destroy(req.body);
+    return res.json(post);
   })
 );
 

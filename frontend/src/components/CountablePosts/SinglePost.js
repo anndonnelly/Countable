@@ -9,7 +9,7 @@ import { deletePostThunk } from "../../store/posts";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import EditPostForm from "./EditPostForm";
-
+import { getAllPostsThunk } from "../../store/posts";
 
 const SinglePost = () => {
     const { id } = useParams();
@@ -26,8 +26,11 @@ const SinglePost = () => {
   }, [dispatch, id]);
 
 
-  const deletePost = () => {
-    dispatch(deletePostThunk(post.id));
+  const deletePost = async() => {
+    
+    // await dispatch(getAllPostsThunk());
+    await dispatch(deletePostThunk(post.id));
+
     history.push("/posts")
   };
 

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 // import "./CreateEvent.css";
 import { createPostThunk } from "../../store/posts";
+import { loadOnePost } from "../../store/individualpost";
+
 
 function CreatePostForm({ setShowPostModal }) {
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ function CreatePostForm({ setShowPostModal }) {
   const [imageUrl, setImageUrl] = useState("");
   const [caption, setCaption] = useState("");
   const posts = useSelector((state) => state.posts)
-  const postId = Object.values(posts).length +1
+//   const postId = Object.values(posts).length +1
   const [valErrors, setValErrors] = useState([]);
 
   const handleSubmit = async (e) => {
@@ -30,14 +32,13 @@ function CreatePostForm({ setShowPostModal }) {
     // setValErrors(errors);
 
     
-    let createdPost = dispatch(createPostThunk(payload)).then(res => {
-        return res
-    });
+    let createdPost = await dispatch(createPostThunk(payload))
     
-  
+//   console.log("CREATED POST", createdPost);
     if (createdPost) {
-      history.push(`/posts/${postId}`);
-      setShowPostModal(false);
+        dispatch(loadOnePost(createdPost.id));
+        setShowPostModal(false);
+        history.push(`/posts/${createdPost.id}`);
     }
   };
 
