@@ -7,7 +7,7 @@ module.exports = {
         "Comments",
         [
           {
-            comment: "Where is Malahide is this?",
+            comment: "Where in Malahide is this?",
             postId: 1,
             userId: 1,
           },

@@ -106,8 +106,15 @@ module.exports = {
           imageUrl:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637252275/Countable/FullSizeRender_p98rlb.jpg",
           caption:
-            "Seen on Flatbush this afternoon. Was unable to find parking due to the ",
-          userId: 3,
+            "Seen on Flatbush this afternoon. Was unable to find parking due to the trash left in parking spaces",
+          userId: 20,
+        },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637253773/Countable/unnamed_u0trch.jpg",
+          caption:
+            "I noticed another user mentioned something along the same lines and I agree. More street lights are needed down at the Bull Wall. It's unsafe at night without them and will reduce the risks of accidents and injuries ",
+          userId: 25,
         },
       ],
       {}

@@ -21,6 +21,7 @@ export const loadOnePost = (post) => async (dispatch) => {
   const res = await csrfFetch(`/api/posts/${post}`);
   const onePost = await res.json();
   dispatch(getOnePost(onePost));
+  return onePost
 };
 
 export const editOnePost = (payload, id) => async (dispatch) => {

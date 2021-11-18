@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal } from "../../context/Modal";
 import PostCard from "../CountablePosts/PostCard";
 import "./CommentCard.css";
@@ -7,19 +7,31 @@ import CreateCommentForm from "./CreateCommentForm";
 import { loadOnePost } from "../../store/individualpost";
 import { useDispatch } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
+import { useSelector } from "react-redux";
+import { getAllCommentsThunk } from "../../store/comments";
+
 
 function CommentCard({ post }) {
-    const dispatch = useDispatch()
-  const [postDetailModal, setPostDetailModal] = useState(false);
-  const numberOfComments = Object.values(post.Comments).length;
-  const hasComments = numberOfComments > 0;
-
-
+    const dispatch = useDispatch();
+    const [postDetailModal, setPostDetailModal] = useState(false);
+   const numberOfComments = post.Comments.length;
+    
+    const allComments = useSelector((state) => state.individualPost.Comments);
+    console.log("ALL COMMENTS",allComments);
+    const [comments, setComments] = useState({})
+  useEffect(() => {
+    // dispatch(getAllCommentsThunk(post.id))
+    (()=>{
+    const com = dispatch(loadOnePost(post.id))
+    console.log("COM", com);
+    setComments(com.Comments)
+    })()
+  }, []);
 
   const handleSubmit = () => {
-        dispatch(loadOnePost(post.id));
-        setPostDetailModal(true)
-  }
+    dispatch(loadOnePost(post.id));
+    setPostDetailModal(true);
+  };
 
   const anyComments = () => {
     if (numberOfComments) {
@@ -28,16 +40,7 @@ function CommentCard({ post }) {
       return `View post details`;
     }
   };
-  const lastComment = () => {
-    if (!hasComments) {
-      return null;
-    }
-    const lastCommentKey = Object.keys(post.Comments)[
-      Object.keys(post.Comments).length - 1
-    ];
-    const comment = post.Comments[lastCommentKey];
-    return <div>{comment.comment}</div>;
-  };
+  
 
   return (
     <>
@@ -45,7 +48,7 @@ function CommentCard({ post }) {
       <div className="anyComments" onClick={handleSubmit}>
         {anyComments()}
       </div>
-      {lastComment()}
+      
       {postDetailModal && (
         <div>
           <Modal onClose={() => setPostDetailModal(false)}>
@@ -57,7 +60,7 @@ function CommentCard({ post }) {
               <CreateCommentFormModal />
               <ul>
                 {post &&
-                  Object.values(post?.Comments).map((comment) => (
+                  allComments.map((comment) => (
                     <div>
                       <li key={comment.id}>{comment.comment}</li>
                       <br></br>

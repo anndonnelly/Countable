@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./PostCard.css";
@@ -9,8 +9,22 @@ import CommentCard from "../Comments/CommentCard";
 
 
 function PostCard({ post }) {
+    const numberOfComments = post.Comments.length;
+    const hasComments = numberOfComments > 0;
+    const lastComment = () => {
+      if (!hasComments) {
+        return null;
+      }
+      // const lastCommentKey = Object.keys(comments)[
+      //   Object.keys(comments).length - 1
+      // ];
 
-   
+      if (post.Comments) {
+        const comment = post.Comments[post.Comments.length - 1];
+        return <div>{comment.comment}</div>;
+      }
+    };
+
 
   return (
     <div className="posts">
@@ -26,6 +40,7 @@ function PostCard({ post }) {
       {post.caption}
       <br></br>
       <CreateCommentForm post={post} />
+      {lastComment()}
       <CommentCard post={post} />
     </div>
   );

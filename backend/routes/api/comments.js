@@ -4,9 +4,13 @@ const router = express.Router();
 const { Comment, User } = require("../../db/models");
 
 router.get(
-  "/",
+  "/getAll/:id",
   asyncHandler(async (req, res) => {
-    const comments = await Comment.findAll();
+    const id = req.params.id;
+    const comments = await Comment.findAll({
+        where: {postId: id}
+    });
+    // console.log("COMMENTS", comments)
     return res.json(comments);
   })
 );

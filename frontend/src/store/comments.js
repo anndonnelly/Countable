@@ -5,10 +5,10 @@ const ADD_COMMENT = "comments/ADD_COMMENT";
 const EDIT_COMMENT = "comments/EDIT_COMMENT";
 const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
-const getComments = (comment) => {
+const getComments = (comments) => {
   return {
     type: GET_COMMENTS,
-    comment,
+    comments,
   };
 };
 
@@ -34,8 +34,9 @@ const deleteComment = (comment) => {
 };
 
 export const getAllCommentsThunk = (id) => async (dispatch) => {
-  const res = await csrfFetch(`/api/posts/comments/${id}`);
+  const res = await csrfFetch(`/api/comments/getAll/${id}`);
   const data = await res.json();
+  console.log("DATA", data)
   dispatch(getComments(data));
 };
 
@@ -87,7 +88,7 @@ export default function commentsReducer(state = initialState, action) {
   switch (action.type) {
     case GET_COMMENTS:
       const allComments = {};
-      Object.values(action.comments).forEach((comment) => {
+      action.comments.forEach((comment) => {
         allComments[comment.id] = comment;
       });
       return { ...state, ...allComments };

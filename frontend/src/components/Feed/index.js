@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import { getAllPostsThunk } from "../../store/posts";
 import { useDispatch, useSelector } from "react-redux";
 import PostCard from "../CountablePosts/PostCard";
-import CreatePostModal from "../CountablePosts/CreatePostModal";
-import "./Feed.css"
+import "./Feed.css";
+import { getAllCommentsThunk } from "../../store/comments";
 
 
 function Feed() {
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => Object.values(state.posts));
-//   const [currentPosts, setCurrentPosts] = useState(posts);
  
   useEffect(() => {
     dispatch(getAllPostsThunk());

@@ -18,7 +18,7 @@ function Navigation({ isLoaded }) {
               <img
                 className="logo"
                 src={
-                  "https://res.cloudinary.com/dis83syog/image/upload/v1636988652/Countable/Screen_Shot_2021-11-15_at_9.44.55_AM_eoweib.png"
+                  "https://res.cloudinary.com/dis83syog/image/upload/v1637253480/Countable/CountableLogo2_2_hqwdfp.png"
                 }
                 alt=""
               ></img>
