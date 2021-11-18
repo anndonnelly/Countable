@@ -44,7 +44,7 @@ export const getAllPostsThunk = () => async (dispatch) => {
   
   if (response.ok) {
       let posts = await response.json();
-      console.log("POSTS", posts)
+   
       dispatch(getAllPostsAction(posts));
     }
 };
@@ -102,9 +102,7 @@ export default function postsReducer(state = initialState, action) {
             [action.post.id]: action.post,
         };
         case DELETE_POST:{
-            console.log("")
             newState = Object.assign({}, state)
-            console.log("-------->", newState)
             delete newState[action.deletedPost];
             return newState;
         }

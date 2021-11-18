@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createPostThunk } from "../../store/posts";
 import { createCommentThunk } from "../../store/comments";
+
 
 function CreateCommentForm({post}) {
   const dispatch = useDispatch();
@@ -25,7 +25,8 @@ function CreateCommentForm({post}) {
     let createdComment = dispatch(createCommentThunk(payload)).then((res) => {
       return res;
     });
-
+    // dispatch(getAllPostsThunk());
+    setComment("")
   
   };
 
