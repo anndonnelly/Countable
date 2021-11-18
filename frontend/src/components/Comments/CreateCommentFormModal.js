@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
 import { loadOnePost } from "../../store/individualpost";
@@ -12,6 +12,11 @@ function CreateCommentFormModal() {
   const [valErrors, setValErrors] = useState([]);
   const posts = useSelector((state) => state.individualPost);
   //   const postId = posts[posts.id]?.Comments
+// const [counter, setCounter] = useState(0);
+
+    // useEffect(() => {
+    // setComment("");
+    // }, [counter]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,12 +26,13 @@ function CreateCommentFormModal() {
       postId: posts.id,
     };
 
-    let createdComment = dispatch(createCommentThunk(payload)).then((res) => {
+    dispatch(createCommentThunk(payload)).then((res) => {
       return res;
     });
 
     dispatch(loadOnePost(posts.id));
     setComment("");
+    //  setCounter((prev) => prev + 1);
   };
 
   return (

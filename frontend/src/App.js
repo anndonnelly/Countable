@@ -12,6 +12,7 @@ import PostCard from "./components/CountablePosts/PostCard";
 import SinglePost from "./components/CountablePosts/SinglePost";
 import ProfilePage from "./components/ProfilePage";
 import ProfileButton from "./components/Navigation/ProfileButton";
+import { ProtectedRoute } from "./components/RouteUtil";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,11 +37,10 @@ function App() {
           <Route path="/posts/:id">
             <SinglePost />
           </Route>
-          <Route exact path="/posts">
-            <Feed />
-          </Route>
+          <ProtectedRoute exact path="/posts" component={Feed}>
+          </ProtectedRoute>
           <Route path="/users/:id">
-            <ProfilePage/>
+            <ProfilePage />
           </Route>
         </Switch>
       )}
