@@ -1,0 +1,36 @@
+.navWrapper{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    border-bottom: 1px solid lightgrey;
+    z-index: 1;
+    background-color:   rgb(250 250 250);
+}
+
+.nav{
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.logoWrapper{
+    width:260px;
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    width: 160px;
+}
+
+.actionButtons{
+    display: flex;
+    align-items: center;
+}

@@ -3,6 +3,7 @@ import { getAllPostsThunk } from "../../store/posts";
 import { useDispatch, useSelector } from "react-redux";
 import PostCard from "../CountablePosts/PostCard";
 import CreatePostModal from "../CountablePosts/CreatePostModal";
+import "./Feed.css"
 
 
 function Feed() {
@@ -15,16 +16,12 @@ function Feed() {
     dispatch(getAllPostsThunk());
   }, [dispatch]);
 
-//   useEffect(() => {
-//     setCurrentPosts(currentPosts);
-//   }, [currentPosts]);
+
 
   return (
     <>
-      <div>
-        <CreatePostModal />
-      </div>
-      <div>
+      
+      <div className="feedContainer">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}
