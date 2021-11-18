@@ -14,7 +14,6 @@ function CreatePostForm({ setShowPostModal }) {
   const [imageUrl, setImageUrl] = useState("");
   const [caption, setCaption] = useState("");
   const posts = useSelector((state) => state.posts)
-//   const postId = Object.values(posts).length +1
   const [valErrors, setValErrors] = useState([]);
 
   const handleSubmit = async (e) => {

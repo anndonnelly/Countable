@@ -6,6 +6,7 @@ const { User } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+const {Op} = require('sequelize')
 
 const validateSignup = [
   check("email")
@@ -38,6 +39,33 @@ router.post(
       user,
     });
   }),
+);
+
+
+
+router.put(
+  "/search",
+  asyncHandler(async function (req, res) {
+    const {search} = req.body
+    let users
+    let searchResult = false
+    if (search !== undefined){
+        users = await User.findAll({
+            where: {
+                username :{
+                    [Op.iLike]: `%${search}%`
+                }
+            }
+        })
+        if (users.length > 0){
+            searchResult = true
+        }
+    } else {
+        searchResult = false;
+        users = await User.findAll()
+    }
+    return res.json(users)
+  })
 );
 
 module.exports = router;

@@ -1,12 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import CreatePostModal from "../CountablePosts/CreatePostModal";
+import { searchUsers } from "../../store/search";
+import { useDispatch } from "react-redux";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const [input, setInput] = useState("")
+const dispatch = useDispatch()
+  useEffect (()=>{
+      if (input.length > 0){
+          dispatch(searchUsers(input));
+      }
+  }, [dispatch, searchUsers])
 
   let navBar;
   if (sessionUser) {
@@ -25,7 +34,11 @@ function Navigation({ isLoaded }) {
             </NavLink>
           </div>
           <div className="searchBar">
-            <input></input>
+            <input
+            value={input}
+            placeholder="Search"
+            onChange={e => setInput(e.target.value)}>
+            </input>
           </div>
           <div className="actionButtons">
             <div>

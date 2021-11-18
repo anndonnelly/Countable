@@ -9,7 +9,7 @@ import CommentCard from "../Comments/CommentCard";
 
 
 function PostCard({ post }) {
-    const numberOfComments = post.Comments.length;
+    const numberOfComments = post?.Comments?.length;
     const hasComments = numberOfComments > 0;
     const lastComment = () => {
       if (!hasComments) {
@@ -20,7 +20,7 @@ function PostCard({ post }) {
       // ];
 
       if (post.Comments) {
-        const comment = post.Comments[post.Comments.length - 1];
+        const comment = post?.Comments[post.Comments.length - 1];
         return <div>{comment.comment}</div>;
       }
     };
@@ -34,7 +34,7 @@ function PostCard({ post }) {
       </Link>
       <br></br>
       <Link to={`/users/${post.userId}`}>
-        <div>{post.User.username}</div>
+        <div>{post?.User?.username}</div>
       </Link>
       <br></br>
       {post.caption}
