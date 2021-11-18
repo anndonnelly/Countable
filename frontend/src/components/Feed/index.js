@@ -10,11 +10,10 @@ function Feed() {
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => Object.values(state.posts));
-
+ 
   useEffect(() => {
     dispatch(getAllPostsThunk());
   }, [dispatch, posts]);
-
 
   return (
     <>

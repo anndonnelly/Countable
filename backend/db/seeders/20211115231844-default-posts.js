@@ -32,7 +32,7 @@ module.exports = {
           imageUrl:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637076005/Countable/musician-under-merchants-arch-dublin-barry-o-carroll_srifpa.jpg",
           caption:
-            "Please join us Saturday December 4th to protest the demolition of a beloved old building containing a mix of independent shops on Merchant’s Arch Lane in Dublin. An Bord Pleanála has approved a plan which would see independent retailers, including a waffle café, a record shop, a vintage clothing store and a technology repair shop replaced by a single boutique hotel and restaurant unit. Our issue with Merchant’s Arch is that the development is overscaled and inappropriate in character for the area. So far around 30,000 people have supported a petition to “save Merchant’s Arch” from the redevelopment. Time and time again” An Bord Pleanála had ignored the concerns of citizens and the City Development Plan in favour of hotels and we are at the stage where we need to act on this and make sure our voices are heard.",
+            "Please join us Saturday December 4th to protest the demolition of a beloved old building containing a mix of independent shops on Merchant’s Arch Lane in Dublin.",
           userId: 1,
         },
         {

@@ -3,34 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
 import { loadOnePost } from "../../store/individualpost";
 
-
-
-function CreateCommentForm({post}) {
+function CreateCommentFormModal() {
   const dispatch = useDispatch();
 
   const ownerId = useSelector((state) => state.session.user.id);
   const [comment, setComment] = useState("");
-//   const comments = useSelector((state) => state.comments);
+  //   const comments = useSelector((state) => state.comments);
   const [valErrors, setValErrors] = useState([]);
-//   const posts = useSelector((state) => state.individualPost);
-//   const postId = posts[posts.id]?.Comments
-  
+  const posts = useSelector((state) => state.individualPost);
+  //   const postId = posts[posts.id]?.Comments
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
       comment,
       userId: ownerId,
-      postId: post.id
+      postId: posts.id,
     };
-
 
     let createdComment = dispatch(createCommentThunk(payload)).then((res) => {
       return res;
     });
 
-    dispatch(loadOnePost(post.id));
-    setComment("")
-  
+    dispatch(loadOnePost(posts.id));
+    setComment("");
   };
 
   return (
@@ -46,9 +42,7 @@ function CreateCommentForm({post}) {
             />
           </div>
           <div className="createEventButton">
-            <button type="submit">
-              Post
-            </button>
+            <button type="submit">Post</button>
           </div>
         </form>
       </div>
@@ -56,4 +50,4 @@ function CreateCommentForm({post}) {
   );
 }
 
-export default CreateCommentForm;
+export default CreateCommentFormModal;

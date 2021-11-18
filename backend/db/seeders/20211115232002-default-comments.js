@@ -52,6 +52,16 @@ module.exports = {
             postId: 13,
             userId: 4,
           },
+          {
+            comment: "An Bord Pleanála has approved a plan which would see independent retailers, including a waffle café, a record shop, a vintage clothing store and a technology repair shop replaced by a single boutique hotel and restaurant unit. Our issue with Merchant’s Arch is that the development is overscaled and inappropriate in character for the area. So far around 30,000 people have supported a petition to “save Merchant’s Arch” from the redevelopment.",
+            postId: 4,
+            userId: 5,
+          },
+          {
+            comment: "Time and time again” An Bord Pleanála had ignored the concerns of citizens and the City Development Plan in favour of hotels and we are at the stage where we need to act on this and make sure our voices are heard.",
+            postId: 4,
+            userId: 6,
+          },
         ],
         {}
       );
