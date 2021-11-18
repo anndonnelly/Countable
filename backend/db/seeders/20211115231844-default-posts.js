@@ -102,6 +102,13 @@ module.exports = {
             "What happened to the place once spoken of as “the great hope for emerging cycling cities”?",
           userId: 3,
         },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637252275/Countable/FullSizeRender_p98rlb.jpg",
+          caption:
+            "Seen on Flatbush this afternoon. Was unable to find parking due to the ",
+          userId: 3,
+        },
       ],
       {}
     );
