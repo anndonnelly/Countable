@@ -29,6 +29,21 @@ router.get(
   })
 );
 
+// Profile Page
+router.get(
+  "/users/:id",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const post = await Post.findAll({
+        where: {
+            userId: id
+        },
+        include: User
+    });
+    return res.json(post);
+  })
+);
+
 router.post(
   "/",
   asyncHandler(async(req, res) => {

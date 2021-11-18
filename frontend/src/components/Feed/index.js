@@ -13,7 +13,7 @@ function Feed() {
  
   useEffect(() => {
     dispatch(getAllPostsThunk());
-  }, [dispatch, posts]);
+  }, [dispatch]);
 
   return (
     <>

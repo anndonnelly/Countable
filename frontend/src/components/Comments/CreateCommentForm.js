@@ -9,6 +9,7 @@ function CreateCommentForm({post}) {
   const dispatch = useDispatch();
 
   const ownerId = useSelector((state) => state.session.user.id);
+  
   const [comment, setComment] = useState("");
 //   const comments = useSelector((state) => state.comments);
   const [valErrors, setValErrors] = useState([]);

@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 //CONSTANTS
 const GET_POSTS = "posts/LOAD";
 const GET_ONE_POST = "posts/GET_ONE_POST";
+// const GET_USERS_POSTS = "posts/GET_USERS_POSTS";
 const CREATE_POST = "posts/CREATE_POST";
 // const UPDATE_POST = "posts/UPDATE_POST";
 const DELETE_POST = "posts/DELETE_POST";
@@ -22,6 +23,13 @@ const getOnePostAction = (post) => {
     post,
   };
 };
+
+// const getUsersPostsAction = (post) => {
+//     return {
+//     type: GET_USERS_POSTS,
+//     post,
+//   };
+// }
 
 const createPostAction = (post) => {
   return {
@@ -49,11 +57,18 @@ export const getAllPostsThunk = () => async (dispatch) => {
     }
 };
 
-// export const getOnePostThunk = (postId) => async (dispatch) => {
-//   const res = await csrfFetch(`/api/posts/${postId}`);
-//   const onePost = await res.json();
-//   dispatch(getOnePostAction(onePost));
+// Profile Page
+// export const getAllUserPostsThunk = (id) => async (dispatch) => {
+//   const response = await csrfFetch(`/api/posts/users/${id}`);
+
+//   if (response.ok) {
+//     let posts = await response.json();
+
+//     dispatch(getUsersPostsAction(posts));
+//   }
 // };
+
+
 
 export const createPostThunk = (payload) => async (dispatch) => {
   const response = await csrfFetch("/api/posts", {
