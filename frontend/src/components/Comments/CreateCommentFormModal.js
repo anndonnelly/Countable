@@ -57,17 +57,23 @@ function CreateCommentFormModal() {
       <div className="rightSideModal">
         <div className="postModalHeader">
           <div className="postUser">
-            <div className="postUserPhoto"> </div>
+            <img className="postUserPhoto" src={post.User.avatar} alt=""></img>
             <Link className="userLink" to={`/users/${post.userId}`}>
               {post.User.username}
             </Link>
           </div>
-          <div className="closeModal">x</div>
+          <div className="closeModal" onClick={() => dispatch(hideModal())}>
+            x
+          </div>
         </div>
-        {/* <button onClick={deletePost}>Delete</button>
-        <button value={edit} className="" onClick={editPost}> */}
-        {/* Edit
-        </button> */}
+        {post?.userId === ownerId ? (
+          <div>
+            <button onClick={deletePost}>Delete</button>
+            <button value={edit} className="" onClick={editPost}>
+              Edit
+            </button>
+          </div>
+        ) : null}
         <ul className="commentScroll">
           <div className="postCaption">{post.caption}</div>
           {post &&
