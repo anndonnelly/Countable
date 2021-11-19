@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import "./Navigation.css";
 import CreatePostModal from "../CountablePosts/CreatePostModal";
 import { searchUsers } from "../../store/search";
 import { useDispatch } from "react-redux";
+import "./Navigation.css";
+import { getAllUserPostsThunk } from "../../store/userPosts";
+import { useHistory } from "react-router";
 
 
 function Navigation({ isLoaded }) {
@@ -14,7 +16,8 @@ function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const searchResults = useSelector((state) => state.search)
   const results = Object.values(searchResults);
-console.log("res", results.username)
+  const history = useHistory()
+
   useEffect(() => {
     if (input.length > 0) {
       dispatch(searchUsers(input));
@@ -30,8 +33,10 @@ console.log("res", results.username)
     }
   };
 
-  const reset = () => {
+  const reset = (id) => {
     document.querySelector(".search-results").classList.add("hidden");
+    dispatch(getAllUserPostsThunk(id));
+    history.push(`/users/${id}`)
     setInput("");
   };
 
@@ -64,18 +69,16 @@ console.log("res", results.username)
               <div className="search-results hidden">
                   {results?.length > 0 && input.length > 0 ? (
                       Object.values(results).map((res)=> (
-                          <NavLink
+                          <div
                           className="search-card"
-                          onClick={reset}
+                          onClick={()=>reset(res.id)}
                           to={`/users/${res.id}`}>
                             <div className="search-name">{res.username}</div>
-                          </NavLink>
+                          </div>
                       ))
                   ) : (
                       <div className="search-none">No results</div>
-                  )
-                  }
-
+                  )}
               </div>
             </div>
           </div>
