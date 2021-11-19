@@ -36,7 +36,7 @@ function CreatePostForm({ setShowPostModal }) {
     if (createdPost) {
         dispatch(loadOnePost(createdPost.id));
         setShowPostModal(false);
-        history.push(`/posts/${createdPost.id}`);
+        history.push(`/posts`);
     }
   };
 
