@@ -7,9 +7,12 @@
     height: 64px;
     border-bottom: 1px solid lightgrey;
     z-index: 1;
-    background-color:   rgb(250 250 250);
+    background-color: rgb(250 250 250);
 }
 
+.hidden{
+    display: none;
+}
 .nav{
     padding: 0 32px;
     height: 64px;
