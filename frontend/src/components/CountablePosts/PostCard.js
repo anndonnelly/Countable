@@ -5,9 +5,6 @@ import "./PostCard.css";
 import CreateCommentForm from "../Comments/CreateCommentForm";
 import CommentCard from "../Comments/CommentCard";
 
-
-
-
 function PostCard({ post }) {
     const numberOfComments = post?.Comments?.length;
     const hasComments = numberOfComments > 0;
@@ -15,10 +12,6 @@ function PostCard({ post }) {
       if (!hasComments) {
         return null;
       }
-   
-      // const lastCommentKey = Object.keys(comments)[
-      //   Object.keys(comments).length - 1
-      // ];
 
       if (post.Comments) {
         const comment = post?.Comments[post.Comments.length - 1];
@@ -30,9 +23,9 @@ function PostCard({ post }) {
   return (
     <div className="posts">
       <br></br>
-      <Link key={post.id} to={`/posts/${post.id}`}>
+      {/* <Link key={post.id} to={`/posts/${post.id}`}> */}
         <img className="postImage" src={post.imageUrl} alt=""></img>
-      </Link>
+      {/* </Link> */}
       <br></br>
       <Link to={`/users/${post.userId}`}>
         <div>{post?.User?.username}</div>

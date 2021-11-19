@@ -13,6 +13,7 @@ import SinglePost from "./components/CountablePosts/SinglePost";
 import ProfilePage from "./components/ProfilePage";
 import ProfileButton from "./components/Navigation/ProfileButton";
 import { ProtectedRoute } from "./components/RouteUtil";
+import Modal from "./components/Modal";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,24 +26,25 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <LoginFormPage />
-          </Route>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-          <Route path="/posts/:id">
-            <SinglePost />
-          </Route>
-          <ProtectedRoute exact path="/posts" component={Feed}>
-          </ProtectedRoute>
-          <Route path="/users/:id">
-            <ProfilePage />
-          </Route>
-        </Switch>
+        <Modal/>
+        <Navigation isLoaded={isLoaded} />
+        {isLoaded && (
+            <Switch>
+            <Route exact path="/">
+                <LoginFormPage />
+            </Route>
+            <Route path="/signup">
+                <SignupFormPage />
+            </Route>
+            <Route path="/posts/:id">
+                <SinglePost />
+            </Route>
+            <ProtectedRoute exact path="/posts" component={Feed}>
+            </ProtectedRoute>
+            <Route path="/users/:id">
+                <ProfilePage />
+            </Route>
+            </Switch>
       )}
       {/* <Footer /> */}
     </>

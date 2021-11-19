@@ -2,15 +2,14 @@ import { useState, } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editOnePost } from "../../store/individualpost";
 import { loadOnePost } from "../../store/individualpost";
-
-
-
+import { hideModal } from "../../store/modal";
+import { getAllCommentsThunk } from "../../store/comments";
+import { getAllPostsThunk } from "../../store/posts";
 
 const EditPostForm = ({ setIsEditing }) => {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.individualPost);
   const userId = useSelector((state) => state.session.user.id);
-  
   const [editImageUrl, setEditImageUrl] = useState(post.imageUrl);
   const [editCaption, setEditCaption] = useState(post.caption);
 
@@ -34,10 +33,13 @@ const EditPostForm = ({ setIsEditing }) => {
     //     rating: editRating,
     //   };
     dispatch(editOnePost(payload, post.id)).then(() =>
-      dispatch(loadOnePost(post.id))
+      dispatch(getAllPostsThunk())
+      
     );
-    
-    setIsEditing(false);
+
+   
+    dispatch(hideModal());
+    // setIsEditing(false);
   };
   // setErrors(err);
   
@@ -83,7 +85,7 @@ const EditPostForm = ({ setIsEditing }) => {
               />
             </div>
             <div className="createEventButton">
-              <button type="submit">Post</button>
+              <button type="submit">Update Post</button>
             </div>
           </form>
         </div>

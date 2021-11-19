@@ -24,7 +24,16 @@ router.get(
   "/one/:id",
   asyncHandler(async (req, res) => {
     const id = req.params.id;
-    const post = await Post.findByPk(id) 
+    const post = await Post.findByPk(id, {
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Comment,
+        },
+      ],
+    }); 
     const onePost = await res.json(post);
     return onePost;
   })
