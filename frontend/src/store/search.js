@@ -7,6 +7,7 @@ const search_users = (users) => ({
 });
 
 export const searchUsers = (input) => async (dispatch) => {
+    console.log("ffffff", input)
   const obj = {
     input,
   };
@@ -16,6 +17,7 @@ export const searchUsers = (input) => async (dispatch) => {
     body: JSON.stringify(obj),
   });
   const data = await res.json();
+  console.log("DATA",data)
   dispatch(search_users(data));
 };
 
@@ -23,7 +25,11 @@ const initialState = {};
 const search = (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS:
-      return { ...state, ...action.users };
+         const allUsers = {};
+        action.users.forEach((user) => {
+            allUsers[user.id] = user;
+        });
+    return {...allUsers}
     default:
       return state;
   }

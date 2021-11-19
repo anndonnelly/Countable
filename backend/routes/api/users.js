@@ -46,7 +46,9 @@ router.post(
 router.put(
   "/search",
   asyncHandler(async function (req, res) {
-    const {search} = req.body
+    const search = req.body.input
+    console.log("sssssss",search)
+    console.log("REQ", req.body.input)
     let users
     let searchResult = false
     if (search !== undefined){
@@ -64,6 +66,7 @@ router.put(
         searchResult = false;
         users = await User.findAll()
     }
+    console.log("USERS", users)
     return res.json(users)
   })
 );

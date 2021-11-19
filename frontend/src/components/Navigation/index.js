@@ -12,7 +12,8 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
-  const results = useSelector((state) => state.search)
+  const searchResults = useSelector((state) => state.search)
+  const results = Object.values(searchResults);
 console.log("res", results.username)
   useEffect(() => {
     if (input.length > 0) {
