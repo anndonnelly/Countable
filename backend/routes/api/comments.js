@@ -10,7 +10,6 @@ router.get(
     const comments = await Comment.findAll({
         where: {postId: id}
     });
-    // console.log("COMMENTS", comments)
     return res.json(comments);
   })
 );
@@ -47,8 +46,11 @@ router.delete(
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const comment = await Comment.findByPk(id);
+    
     if (!comment) throw new Error("Cannot find comment");
+     console.log("hhhhhh",req.body);
     await comment.destroy(req.body);
+   
     return res.json({ id });
   })
 );

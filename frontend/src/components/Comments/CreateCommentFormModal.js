@@ -10,6 +10,7 @@ import { setCurrentModal } from "../../store/modal";
 import EditPostForm from "../CountablePosts/EditPostForm";
 import "./CreateCommentFormModal.css";
 import { loadOnePost } from "../../store/individualpost";
+import { deleteCommentThunk } from "../../store/comments";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -17,7 +18,6 @@ function CreateCommentFormModal() {
   const ownerId = useSelector((state) => state.session.user.id);
   const [edit, setEdit] = useState(false);
   const [comment, setComment] = useState("");
-  //   const comments = useSelector((state) => state.comments);
   const [valErrors, setValErrors] = useState([]);
   const post = useSelector((state) => state.individualPost);
   //   const postId = posts[posts.id]?.Comments
@@ -28,6 +28,19 @@ function CreateCommentFormModal() {
     await dispatch(deletePostThunk(post.id));
     history.push("/posts");
   };
+
+
+
+
+  const deleteComment = async (e) => {
+      e.preventDefault()
+   const commentId = e.target.id
+//    console.log("COMMENTID", commentId)
+    await dispatch(deleteCommentThunk(commentId));
+    dispatch(loadOnePost(post.id));
+  };
+
+
 
   const editPost = async () => {
     dispatch(setCurrentModal(EditPostForm));
@@ -91,6 +104,13 @@ function CreateCommentFormModal() {
                       <Link>commentUser</Link>
                     </h3>
                     <span className="spanComment">{comment.comment}</span>
+                    <div>EDIT</div>
+                    {/* <div id={comment.id} onClick={deleteComment(e)}> */}
+                    <div id={comment.id} onClick={deleteComment}>
+                      DELETE
+                    </div>
+                    <br />
+                    {/* <img className="editIcon" scr="https://res.cloudinary.com/dis83syog/image/upload/v1637344420/Countable/download_dhs0ho.png" alt=""></img> */}
                   </div>
                 </div>
                 <div></div>
