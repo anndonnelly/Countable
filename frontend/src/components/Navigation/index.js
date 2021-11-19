@@ -88,6 +88,7 @@ function Navigation({ isLoaded }) {
               <CreatePostModal />
             </div>
             <NavLink to="/">Home</NavLink>
+            <NavLink to={`/users/${sessionUser.id}`}>My Profile</NavLink>
             <ProfileButton user={sessionUser} />
           </div>
         </div>

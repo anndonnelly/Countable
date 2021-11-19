@@ -119,3 +119,7 @@
     width: 25px;
     height: 50px
 } */
+
+.deleteComment{
+    cursor: pointer;
+}

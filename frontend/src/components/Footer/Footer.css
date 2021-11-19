@@ -1,11 +1,10 @@
 .footerDiv {
     /* display: block; */
-    /* position: fixed; */
+    position: fixed;
     bottom: 0;
     width: 100%;
     color: grey;
     padding: 32px 0;
-    position: absolute;
     background-color: rgb(250 250 250);
 }
 

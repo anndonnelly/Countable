@@ -1,51 +1,41 @@
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { editOneReview } from "../../store/reviews";
-// import { hideModal } from "../../store/modal";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { hideModal } from "../../store/modal";
+import { editCommentThunk } from "../../store/comments";
 
-// const EditCommentForm = () => {
-//   const dispatch = useDispatch();
-//   const [editComment, setEditComment] = useState("");
-//   const [editImageUrl, setImageUrl] = useState("");
-//   const userId = useSelector((state) => state.session?.user?.id);
-//   const restaurantId = useSelector((state) => state.singleRestaurant.id);
-//   const reviewId = useSelector((state) => state.singleReview);
+const EditCommentForm = () => {
+  const dispatch = useDispatch();
+  const [editComment, setEditComment] = useState("");
+  const userId = useSelector((state) => state.session?.user?.id);
+  const post = useSelector((state)=> state?.session?.post)
+  console.log("EDITCOMMENT", post)
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-//     const payload = {
-//       id: reviewId.id,
-//       userId: userId,
-//       restaurantId: restaurantId,
-//       review: newReview,
-//       rating,
-//     };
-//     dispatch(editOneReview(payload));
-//     dispatch(hideModal());
-//   };
+    const payload = {
+      comment: editComment,
+      postId: post,
+      userId
+    };
+    dispatch(editCommentThunk(payload));
+    // dispatch(hideModal());
+  };
 
-//   return (
-//     <div>
-//       <form onSubmit={handleSubmit}>
-//         <input
-//           type="text"
-//           required
-//           value={newReview}
-//           onChange={(e) => setReview(e.target.value)}
-//           placeholder="What did you think?"
-//         />
-//         <input
-//           type="text"
-//           required
-//           value={rating}
-//           onChange={(e) => setRating(e.target.value)}
-//           placeholder="Rate the restaurant out of 5"
-//         />
-//         <button>Create Review</button>
-//       </form>
-//     </div>
-//   );
-// };
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          required
+          value={editComment}
+          onChange={(e) => setEditComment(e.target.value)}
+          placeholder="Edit Caption"
+        />
+        <button>Update Comment</button>
+      </form>
+    </div>
+  );
+};
 
-// export default EditCommentForm;
+export default EditCommentForm;

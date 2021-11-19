@@ -11,6 +11,7 @@ import EditPostForm from "../CountablePosts/EditPostForm";
 import "./CreateCommentFormModal.css";
 import { loadOnePost } from "../../store/individualpost";
 import { deleteCommentThunk } from "../../store/comments";
+import EditCommentForm from "./EditCommentForm";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -29,22 +30,17 @@ function CreateCommentFormModal() {
     history.push("/posts");
   };
 
-
-
-
   const deleteComment = async (e) => {
       e.preventDefault()
    const commentId = e.target.id
-//    console.log("COMMENTID", commentId)
     await dispatch(deleteCommentThunk(commentId));
     dispatch(loadOnePost(post.id));
   };
 
-
-
   const editPost = async () => {
     dispatch(setCurrentModal(EditPostForm));
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
@@ -62,6 +58,29 @@ function CreateCommentFormModal() {
     await dispatch(getAllPostsThunk());
     setComment("");
   };
+
+
+    const editComment = async () => {
+      dispatch(setCurrentModal(EditCommentForm));
+    };
+
+    // const handleSubmit = async (e) => {
+    //   e.preventDefault();
+    //   const payload = {
+    //     comment,
+    //     userId: ownerId,
+    //     postId: post.id,
+    //   };
+
+    //   await dispatch(createCommentThunk(payload));
+    //   // .then((res) => {
+    //   //   return res;
+    //   // });
+
+    //   dispatch(loadOnePost(post.id));
+    //   await dispatch(getAllPostsThunk());
+    //   setComment("");
+    // };
 
   return (
     <div className="postModal">
@@ -104,9 +123,13 @@ function CreateCommentFormModal() {
                       <Link>commentUser</Link>
                     </h3>
                     <span className="spanComment">{comment.comment}</span>
-                    <div>EDIT</div>
+                    <div onClick={editComment}>EDIT</div>
                     {/* <div id={comment.id} onClick={deleteComment(e)}> */}
-                    <div id={comment.id} onClick={deleteComment}>
+                    <div
+                      className="deleteComment"
+                      id={comment.id}
+                      onClick={deleteComment}
+                    >
                       DELETE
                     </div>
                     <br />

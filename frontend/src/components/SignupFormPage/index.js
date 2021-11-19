@@ -102,11 +102,11 @@ function SignupFormPage() {
               Sign Up
             </button>
             <button className="signUpButton" type="submit" onClick={demoUser}>
-              Demo User 1
+              Demo User
             </button>
-            <button className="loginButton" type="submit" onClick={demoUserTwo}>
+            {/* <button className="loginButton" type="submit" onClick={demoUserTwo}>
               Demo User 2
-            </button>
+            </button> */}
           </form>
         </div>
         <div className="logInForm">

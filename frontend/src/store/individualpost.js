@@ -21,7 +21,6 @@ export const loadOnePost = (post) => async (dispatch) => {
   const res = await fetch(`/api/posts/one/${post}`);
   if (res.ok) {
     const onePost = await res.json();
-    console.log("ONEPOST",post)
     dispatch(getOnePost(onePost));
     return onePost;
   }
