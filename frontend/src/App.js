@@ -36,9 +36,9 @@ function App() {
             <Route path="/signup">
                 <SignupFormPage />
             </Route>
-            <Route path="/posts/:id">
+            {/* <Route path="/posts/:id">
                 <SinglePost />
-            </Route>
+            </Route> */}
             <ProtectedRoute exact path="/posts" component={Feed}>
             </ProtectedRoute>
             <Route path="/users/:id">
@@ -46,7 +46,7 @@ function App() {
             </Route>
             </Switch>
       )}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

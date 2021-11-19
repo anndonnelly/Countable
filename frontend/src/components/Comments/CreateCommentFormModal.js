@@ -9,6 +9,9 @@ import { hideModal } from "../../store/modal";
 import { setCurrentModal } from "../../store/modal";
 import EditPostForm from "../CountablePosts/EditPostForm";
 import "./CreateCommentFormModal.css";
+import { loadOnePost } from "../../store/individualpost";
+import { deleteCommentThunk } from "../../store/comments";
+import EditCommentForm from "./EditCommentForm";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -16,7 +19,6 @@ function CreateCommentFormModal() {
   const ownerId = useSelector((state) => state.session.user.id);
   const [edit, setEdit] = useState(false);
   const [comment, setComment] = useState("");
-  //   const comments = useSelector((state) => state.comments);
   const [valErrors, setValErrors] = useState([]);
   const post = useSelector((state) => state.individualPost);
   //   const postId = posts[posts.id]?.Comments
@@ -28,9 +30,17 @@ function CreateCommentFormModal() {
     history.push("/posts");
   };
 
+  const deleteComment = async (e) => {
+      e.preventDefault()
+   const commentId = e.target.id
+    await dispatch(deleteCommentThunk(commentId));
+    dispatch(loadOnePost(post.id));
+  };
+
   const editPost = async () => {
     dispatch(setCurrentModal(EditPostForm));
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
@@ -44,10 +54,33 @@ function CreateCommentFormModal() {
     //   return res;
     // });
 
-    // dispatch(loadOnePost(posts.id));
+    dispatch(loadOnePost(post.id));
     await dispatch(getAllPostsThunk());
     setComment("");
   };
+
+
+    const editComment = async () => {
+      dispatch(setCurrentModal(EditCommentForm));
+    };
+
+    // const handleSubmit = async (e) => {
+    //   e.preventDefault();
+    //   const payload = {
+    //     comment,
+    //     userId: ownerId,
+    //     postId: post.id,
+    //   };
+
+    //   await dispatch(createCommentThunk(payload));
+    //   // .then((res) => {
+    //   //   return res;
+    //   // });
+
+    //   dispatch(loadOnePost(post.id));
+    //   await dispatch(getAllPostsThunk());
+    //   setComment("");
+    // };
 
   return (
     <div className="postModal">
@@ -57,17 +90,27 @@ function CreateCommentFormModal() {
       <div className="rightSideModal">
         <div className="postModalHeader">
           <div className="postUser">
-            <div className="postUserPhoto"> </div>
-            <Link className="userLink" to={`/users/${post.userId}`}>
+            <img className="postUserPhoto" src={post.User.avatar} alt=""></img>
+            <Link
+              className="userLink"
+              to={`/users/${post.userId}`}
+              onClick={() => dispatch(hideModal())}
+            >
               {post.User.username}
             </Link>
           </div>
-          <div className="closeModal">x</div>
+          <div className="closeModal" onClick={() => dispatch(hideModal())}>
+            x
+          </div>
         </div>
-        {/* <button onClick={deletePost}>Delete</button>
-        <button value={edit} className="" onClick={editPost}> */}
-        {/* Edit
-        </button> */}
+        {post?.userId === ownerId ? (
+          <div>
+            <button onClick={deletePost}>Delete</button>
+            <button value={edit} className="" onClick={editPost}>
+              Edit
+            </button>
+          </div>
+        ) : null}
         <ul className="commentScroll">
           <div className="postCaption">{post.caption}</div>
           {post &&
@@ -80,6 +123,17 @@ function CreateCommentFormModal() {
                       <Link>commentUser</Link>
                     </h3>
                     <span className="spanComment">{comment.comment}</span>
+                    <div onClick={editComment}>EDIT</div>
+                    {/* <div id={comment.id} onClick={deleteComment(e)}> */}
+                    <div
+                      className="deleteComment"
+                      id={comment.id}
+                      onClick={deleteComment}
+                    >
+                      DELETE
+                    </div>
+                    <br />
+                    {/* <img className="editIcon" scr="https://res.cloudinary.com/dis83syog/image/upload/v1637344420/Countable/download_dhs0ho.png" alt=""></img> */}
                   </div>
                 </div>
                 <div></div>

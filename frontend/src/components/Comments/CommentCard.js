@@ -30,7 +30,6 @@ function CommentCard({ post }) {
 
   const handleSubmit = async () => {
     dispatch(loadOnePost(post.id));
-    // setPostDetailModal(true);
     
     dispatch(setCurrentModal(CreateCommentFormModal));
     dispatch(showModal())

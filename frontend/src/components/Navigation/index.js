@@ -57,28 +57,29 @@ function Navigation({ isLoaded }) {
             </NavLink>
           </div>
           <div className="searchBar">
-            <div className="search-container"
-            onBlur={(e) => hideSearch(e)}>
+            <div className="search-container" onBlur={(e) => hideSearch(e)}>
               <input
                 className="search-bar"
                 value={input}
                 placeholder="Search"
-                onFocus={()=>showSearch()}
+                onFocus={() => showSearch()}
                 onChange={(e) => setInput(e.target.value)}
               />
               <div className="search-results hidden">
-                  {results?.length > 0 && input.length > 0 ? (
-                      Object.values(results).map((res)=> (
-                          <div
-                          className="search-card"
-                          onClick={()=>reset(res.id)}
-                          to={`/users/${res.id}`}>
-                            <div className="search-name">{res.username}</div>
-                          </div>
-                      ))
-                  ) : (
-                      <div className="search-none">No results</div>
-                  )}
+                {results?.length > 0 && input.length > 0 ? (
+                  Object.values(results).map((res) => (
+                    <div key={res.id} className="search-card">
+                      <div
+                        className="search-name"
+                        onClick={() => reset(res.id)}
+                      >
+                        {res.username}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="search-none">No results</div>
+                )}
               </div>
             </div>
           </div>
@@ -87,6 +88,7 @@ function Navigation({ isLoaded }) {
               <CreatePostModal />
             </div>
             <NavLink to="/">Home</NavLink>
+            <NavLink to={`/users/${sessionUser.id}`}>My Profile</NavLink>
             <ProfileButton user={sessionUser} />
           </div>
         </div>
