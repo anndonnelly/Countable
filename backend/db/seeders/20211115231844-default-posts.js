@@ -116,6 +116,27 @@ module.exports = {
             "I noticed another user mentioned something along the same lines and I agree. More street lights are needed down at the Bull Wall. It's unsafe at night without them and will reduce the risks of accidents and injuries ",
           userId: 25,
         },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637330743/Countable/unnamed_bsxzec.jpg",
+          caption:
+            "Property developers are teaming up with politicians to remove a cultural gem in my neighbourhood - The Cobblestone pub. Please don't give the property developers planning permission to remove the Cobblestone pub. The Cobblestone it is one of the last bastions of live Irish traditional music in my city, we don't need another hotel in it's place",
+          userId: 18,
+        },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637330959/Countable/unnamed_b2ffmw.jpg",
+          caption:
+            "Seen while walking in Williamsburg today. Lots of garbage everywhere and no trash 🗑  bags. Surely more can be done to protect our environment?",
+          userId: 14,
+        },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637331717/Countable/pothole_uzu2qm.jpg",
+          caption:
+            "Seen in Park Slope this morning. The street surface has sunken steeply in a line parallel with the wheels of vehicles. This is particularly treacherous for bicycles, since it is hard to see at night, and it's on a downward incline.",
+          userId: 19,
+        },
       ],
       {}
     );

@@ -1,4 +1,4 @@
-.postModal {
+/* .comments {
     height: fit-content;
     width: 860px;
     border: 2px solid #a1a1a1;
@@ -14,7 +14,7 @@
     }
 
 
-.postImage {
+.commentImage {
   height: 200px;
   width: 300px;
   border-radius: 5px;
@@ -22,4 +22,4 @@
 
 .anyComments{
     cursor: pointer;
-}
+} */

@@ -49,8 +49,8 @@ function EditPostModal({ post }) {
       {postDetailModal && (
         <div>
           <Modal onClose={() => setPostDetailModal(false)}>
-            <div className="postModal">
-              <img className="postImage" src={post.imageUrl} alt=""></img>
+            <div className="comments">
+              <img className="commentImage" src={post.imageUrl} alt=""></img>
               <Link to={`/users/${post.userId}`}>{post.User.username}</Link>
               {post.caption}
               {post.Comments.comment}
