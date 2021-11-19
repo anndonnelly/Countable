@@ -67,7 +67,7 @@ router.put(
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const post = await Post.findByPk(id);
-    post.update(req.body)
+    await post.update(req.body)
     return res.json(post);
   })
 );
