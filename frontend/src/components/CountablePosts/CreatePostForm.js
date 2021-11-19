@@ -33,7 +33,7 @@ function CreatePostForm({ setShowPostModal }) {
     
     let createdPost = await dispatch(createPostThunk(payload))
     
-//   console.log("CREATED POST", createdPost);
+
     if (createdPost) {
         dispatch(loadOnePost(createdPost.id));
         setShowPostModal(false);

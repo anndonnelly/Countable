@@ -18,10 +18,13 @@ const editPost = (post) => {
 };
 
 export const loadOnePost = (post) => async (dispatch) => {
-  const res = await csrfFetch(`/api/posts/${post}`);
-  const onePost = await res.json();
-  dispatch(getOnePost(onePost));
-  return onePost
+  const res = await fetch(`/api/posts/one/${post}`);
+  if (res.ok) {
+    const onePost = await res.json();
+    console.log("ONEPOST",post)
+    dispatch(getOnePost(onePost));
+    return onePost;
+  }
 };
 
 export const editOnePost = (payload, id) => async (dispatch) => {
@@ -44,10 +47,11 @@ const individualPostReducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
     case GET_ONE_POST: {
-      return {
-        ...state,
-        ...action.post,
-      };
+        return action.post;
+    //   return {
+    //     ...state,
+    //     ...action.post,
+    //   };
     }
     case EDIT_POST:
       newState[action.post.id] = action.post;

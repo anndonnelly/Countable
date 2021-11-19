@@ -15,6 +15,7 @@ function PostCard({ post }) {
       if (!hasComments) {
         return null;
       }
+   
       // const lastCommentKey = Object.keys(comments)[
       //   Object.keys(comments).length - 1
       // ];

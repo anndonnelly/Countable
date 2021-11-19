@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
@@ -7,15 +7,32 @@ import CreatePostModal from "../CountablePosts/CreatePostModal";
 import { searchUsers } from "../../store/search";
 import { useDispatch } from "react-redux";
 
+
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
-  const [input, setInput] = useState("")
-const dispatch = useDispatch()
-  useEffect (()=>{
-      if (input.length > 0){
-          dispatch(searchUsers(input));
-      }
-  }, [dispatch, searchUsers])
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
+  const results = useSelector((state) => state.search)
+console.log("res", results.username)
+  useEffect(() => {
+    if (input.length > 0) {
+      dispatch(searchUsers(input));
+    }
+  }, [dispatch, input ]);
+
+  const showSearch = () => {
+    document.querySelector(".search-results").classList.remove("hidden");
+  };
+  const hideSearch = (e) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) {
+      document.querySelector(".search-results").classList.add("hidden");
+    }
+  };
+
+  const reset = () => {
+    document.querySelector(".search-results").classList.add("hidden");
+    setInput("");
+  };
 
   let navBar;
   if (sessionUser) {
@@ -34,11 +51,32 @@ const dispatch = useDispatch()
             </NavLink>
           </div>
           <div className="searchBar">
-            <input
-            value={input}
-            placeholder="Search"
-            onChange={e => setInput(e.target.value)}>
-            </input>
+            <div className="search-container"
+            onBlur={(e) => hideSearch(e)}>
+              <input
+                className="search-bar"
+                value={input}
+                placeholder="Search"
+                onFocus={()=>showSearch()}
+                onChange={(e) => setInput(e.target.value)}
+              />
+              <div className="search-results hidden">
+                  {results?.length > 0 && input.length > 0 ? (
+                      Object.values(results).map((res)=> (
+                          <NavLink
+                          className="search-card"
+                          onClick={reset}
+                          to={`/users/${res.id}`}>
+                            <div className="search-name">{res.username}</div>
+                          </NavLink>
+                      ))
+                  ) : (
+                      <div className="search-none">No results</div>
+                  )
+                  }
+
+              </div>
+            </div>
           </div>
           <div className="actionButtons">
             <div>

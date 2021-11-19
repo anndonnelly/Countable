@@ -34,13 +34,13 @@ const SinglePost = () => {
     history.push("/posts")
   };
 
-
+console.log("jjjjjjjj",post)
      return (
        <>
          <div className="post">
            <img className="postImage" src={post?.imageUrl} alt=""></img>
            <br></br>
-           {post.caption}
+           {post?.caption}
            <br></br>
          </div>
          <div>

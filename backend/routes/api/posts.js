@@ -21,19 +21,23 @@ router.get(
 );
 
 router.get(
-  "/:id",
+  "/one/:id",
   asyncHandler(async (req, res) => {
     const id = req.params.id;
-    const post = await Post.findByPk(id, {
-      include: 
-        {
-          model: Comment,
-          where: {postId: id}
-        },
-    });
-    return res.json(post);
+    const post = await Post.findByPk(id) 
+    const onePost = await res.json(post);
+    return onePost;
   })
 );
+
+
+// {
+//       include: 
+//         {
+//           model: Comment,
+//           where: {postId: id}
+//         },
+//     });
 
 // Profile Page
 router.get(

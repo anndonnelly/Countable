@@ -60,7 +60,7 @@ function CommentCard({ post }) {
               <CreateCommentFormModal />
               <ul>
                 {post &&
-                  allComments.map((comment) => (
+                  allComments?.map((comment) => (
                     <div>
                       <li key={comment.id}>{comment.comment}</li>
                       <br></br>
