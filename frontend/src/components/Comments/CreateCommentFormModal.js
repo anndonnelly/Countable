@@ -9,6 +9,7 @@ import { hideModal } from "../../store/modal";
 import { setCurrentModal } from "../../store/modal";
 import EditPostForm from "../CountablePosts/EditPostForm";
 import "./CreateCommentFormModal.css";
+import { loadOnePost } from "../../store/individualpost";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ function CreateCommentFormModal() {
     //   return res;
     // });
 
-    // dispatch(loadOnePost(posts.id));
+    dispatch(loadOnePost(post.id));
     await dispatch(getAllPostsThunk());
     setComment("");
   };

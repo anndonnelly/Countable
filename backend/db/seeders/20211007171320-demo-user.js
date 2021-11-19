@@ -179,10 +179,17 @@ module.exports = {
         },
         {
           email: "brandonmohan@gmail.com",
-          username: "brandonmohan ",
+          username: "brandonmohan",
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637340601/Countable/Screen_Shot_2021-11-19_at_11.49.36_AM_kdukbf.png",
+        },
+        {
+          email: "bsimpson@gmail.com",
+          username: "bradleysimpson",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637343682/Countable/59807764_xtlqeg.jpg",
         },
       ],
       {}

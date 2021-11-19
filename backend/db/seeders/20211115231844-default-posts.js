@@ -137,6 +137,13 @@ module.exports = {
             "Seen in Park Slope this morning. The street surface has sunken steeply in a line parallel with the wheels of vehicles. This is particularly treacherous for bicycles, since it is hard to see at night, and it's on a downward incline.",
           userId: 19,
         },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637343536/Countable/Screen_Shot_2021-11-19_at_12.34.24_PM_l5ngpd.png",
+          caption:
+            "Watch out on the roads!  A 10 year old has gotten control of a small steam roller and could be headed your way!",
+          userId: 30,
+        },
       ],
       {}
     );
