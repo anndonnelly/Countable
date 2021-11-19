@@ -4,12 +4,15 @@ import { createCommentThunk } from "../../store/comments";
 import { loadOnePost } from "../../store/individualpost";
 import { getAllPostsThunk } from "../../store/posts";
 import { Link } from "react-router-dom";
+import { deletePostThunk } from "../../store/posts";
+import { useHistory } from "react-router";
+import { hideModal } from "../../store/modal";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
-
+  const history = useHistory()
   const ownerId = useSelector((state) => state.session.user.id);
-  
+  const [edit, setEdit] = useState(false);
   const [comment, setComment] = useState("");
   //   const comments = useSelector((state) => state.comments);
   const [valErrors, setValErrors] = useState([]);
@@ -21,6 +24,13 @@ function CreateCommentFormModal() {
     // setComment("");
     // }, [counter]);
 console.log("POST", post)
+
+  const deletePost = async () => {
+    // await dispatch(getAllPostsThunk());
+    dispatch(hideModal());
+    await dispatch(deletePostThunk(post.id));
+    history.push("/posts");
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
@@ -43,10 +53,10 @@ console.log("POST", post)
   return (
     <div className="">
       <div>
-          <img className="postImage" src={post.imageUrl} alt=""></img>
-              <Link to={`/users/${post.userId}`}>{post.User.username}</Link>
-              {post.caption}
-              {post.Comments.comment}
+        <img className="postImage" src={post.imageUrl} alt=""></img>
+        <Link to={`/users/${post.userId}`}>{post.User.username}</Link>
+        {post.caption}
+        {post.Comments.comment}
         <form onSubmit={handleSubmit}>
           <div className="fieldDiv">
             <input
@@ -60,6 +70,10 @@ console.log("POST", post)
             <button type="submit">Post</button>
           </div>
         </form>
+        <button onClick={deletePost}>Delete</button>
+        <button value={edit} className="" onClick={() => setEdit(true)}>
+          Edit
+        </button>
         <ul>
           {post &&
             post.Comments?.map((comment) => (

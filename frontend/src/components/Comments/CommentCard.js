@@ -8,8 +8,6 @@ import { loadOnePost } from "../../store/individualpost";
 import { useDispatch } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
 import { useSelector } from "react-redux";
-import { getAllCommentsThunk } from "../../store/comments";
-import { getAllPostsThunk } from "../../store/posts";
 import { setCurrentModal, showModal } from "../../store/modal";
 
 
