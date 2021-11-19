@@ -3,13 +3,11 @@ import { Modal } from "../../context/Modal";
 import PostCard from "../CountablePosts/PostCard";
 import "./CommentCard.css";
 import { Link } from "react-router-dom";
-import CreateCommentForm from "./CreateCommentForm";
 import { loadOnePost } from "../../store/individualpost";
 import { useDispatch } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
 import { useSelector } from "react-redux";
-import { getAllCommentsThunk } from "../../store/comments";
-import { getAllPostsThunk } from "../../store/posts";
+
 
 function EditPostModal({ post }) {
   const dispatch = useDispatch();
@@ -17,7 +15,7 @@ function EditPostModal({ post }) {
   const numberOfComments = post?.Comments?.length;
 
   const allComments = useSelector((state) => state.individualPost.Comments);
-  console.log("ALL COMMENTS", allComments);
+//   console.log("ALL COMMENTS", allComments);
   const [comments, setComments] = useState({});
 
   // IFFE
@@ -67,9 +65,6 @@ function EditPostModal({ post }) {
                   ))}
               </ul>
             </div>
-            {/* <button value={edit} className="" onClick={() => setEdit(true)}>
-              Edit
-            </button> */}
           </Modal>
         </div>
       )}

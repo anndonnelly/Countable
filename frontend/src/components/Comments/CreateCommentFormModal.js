@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
-import { loadOnePost } from "../../store/individualpost";
 import { getAllPostsThunk } from "../../store/posts";
 import { Link } from "react-router-dom";
 import { deletePostThunk } from "../../store/posts";
 import { useHistory } from "react-router";
 import { hideModal } from "../../store/modal";
+import { setCurrentModal } from "../../store/modal";
+import EditPostForm from "../CountablePosts/EditPostForm";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -31,6 +32,10 @@ console.log("POST", post)
     await dispatch(deletePostThunk(post.id));
     history.push("/posts");
   };
+
+  const editPost = async()=> {
+      dispatch(setCurrentModal(EditPostForm));
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
@@ -71,7 +76,7 @@ console.log("POST", post)
           </div>
         </form>
         <button onClick={deletePost}>Delete</button>
-        <button value={edit} className="" onClick={() => setEdit(true)}>
+        <button value={edit} className="" onClick={editPost}>
           Edit
         </button>
         <ul>

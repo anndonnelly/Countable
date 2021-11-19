@@ -17,8 +17,7 @@ function CommentCard({ post }) {
     // const [postDetailModal, setPostDetailModal] = useState(false);
     const numberOfComments = post?.Comments?.length;
     
-    const allComments = useSelector((state) => state.individualPost.Comments);
-    console.log("ALL COMMENTS",allComments);
+    // const allComments = useSelector((state) => state.individualPost.Comments);
     const [comments, setComments] = useState({})
 
     // IFFE
