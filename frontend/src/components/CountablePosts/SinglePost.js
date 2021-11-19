@@ -23,7 +23,10 @@ const SinglePost = () => {
 
   useEffect(() => {
     dispatch(loadOnePost(id));
-  }, [dispatch, id]);
+    if (isEditing) {
+      dispatch(loadOnePost(id));
+    }
+  }, [dispatch, id, isEditing]);
 
 
   const deletePost = async() => {
@@ -34,7 +37,7 @@ const SinglePost = () => {
     history.push("/posts")
   };
 
-console.log("jjjjjjjj",post)
+
      return (
        <>
          <div className="post">

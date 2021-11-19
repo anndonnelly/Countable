@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
 import { loadOnePost } from "../../store/individualpost";
+import { getAllPostsThunk } from "../../store/posts";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -26,13 +27,15 @@ function CreateCommentFormModal() {
       postId: posts.id,
     };
 
-    dispatch(createCommentThunk(payload)).then((res) => {
-      return res;
-    });
+    await dispatch(createCommentThunk(payload))
+    // .then((res) => {
+    //   return res;
+    // });
 
-    dispatch(loadOnePost(posts.id));
+    // dispatch(loadOnePost(posts.id));
+     await dispatch(getAllPostsThunk());
     setComment("");
-    //  setCounter((prev) => prev + 1);
+    
   };
 
   return (

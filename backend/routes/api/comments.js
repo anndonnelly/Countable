@@ -37,7 +37,7 @@ router.put(
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const comment = await Comment.findByPk(id);
-    comment.update(req.body);
+    await comment.update(req.body);
     return res.json(comment);
   })
 );
@@ -48,7 +48,7 @@ router.delete(
     const id = req.params.id;
     const comment = await Comment.findByPk(id);
     if (!comment) throw new Error("Cannot find comment");
-    comment.destroy(req.body);
+    await comment.destroy(req.body);
     return res.json({ id });
   })
 );

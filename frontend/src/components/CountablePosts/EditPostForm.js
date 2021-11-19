@@ -33,8 +33,10 @@ const EditPostForm = ({ setIsEditing }) => {
     //     review: editReview,
     //     rating: editRating,
     //   };
-    dispatch(editOnePost(payload, post.id));
-    dispatch(loadOnePost(post.id))
+    dispatch(editOnePost(payload, post.id)).then(() =>
+      dispatch(loadOnePost(post.id))
+    );
+    
     setIsEditing(false);
   };
   // setErrors(err);

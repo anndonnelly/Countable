@@ -9,27 +9,29 @@ import { useDispatch } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
 import { useSelector } from "react-redux";
 import { getAllCommentsThunk } from "../../store/comments";
+import { getAllPostsThunk } from "../../store/posts";
 
 
 function CommentCard({ post }) {
     const dispatch = useDispatch();
     const [postDetailModal, setPostDetailModal] = useState(false);
-   const numberOfComments = post?.Comments?.length;
+    const numberOfComments = post?.Comments?.length;
     
     const allComments = useSelector((state) => state.individualPost.Comments);
     console.log("ALL COMMENTS",allComments);
     const [comments, setComments] = useState({})
-  useEffect(() => {
-    // dispatch(getAllCommentsThunk(post.id))
-    (()=>{
-    const com = dispatch(loadOnePost(post.id))
-    console.log("COM", com);
-    setComments(com.Comments)
-    })()
-  }, []);
 
-  const handleSubmit = () => {
+    // IFFE
+    useEffect(() => {
+        (()=>{
+        const com = dispatch(loadOnePost(post.id))
+        setComments(com.Comments)
+        })()
+    }, []);
+
+  const handleSubmit = async () => {
     dispatch(loadOnePost(post.id));
+   
     setPostDetailModal(true);
   };
 
@@ -60,7 +62,7 @@ function CommentCard({ post }) {
               <CreateCommentFormModal />
               <ul>
                 {post &&
-                  allComments?.map((comment) => (
+                  post.Comments?.map((comment) => (
                     <div>
                       <li key={comment.id}>{comment.comment}</li>
                       <br></br>
