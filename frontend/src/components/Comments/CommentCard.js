@@ -10,11 +10,13 @@ import CreateCommentFormModal from "./CreateCommentFormModal";
 import { useSelector } from "react-redux";
 import { getAllCommentsThunk } from "../../store/comments";
 import { getAllPostsThunk } from "../../store/posts";
+import { setCurrentModal, showModal } from "../../store/modal";
+
 
 
 function CommentCard({ post }) {
     const dispatch = useDispatch();
-    const [postDetailModal, setPostDetailModal] = useState(false);
+    // const [postDetailModal, setPostDetailModal] = useState(false);
     const numberOfComments = post?.Comments?.length;
     
     const allComments = useSelector((state) => state.individualPost.Comments);
@@ -31,8 +33,10 @@ function CommentCard({ post }) {
 
   const handleSubmit = async () => {
     dispatch(loadOnePost(post.id));
-   
-    setPostDetailModal(true);
+    // setPostDetailModal(true);
+    
+    dispatch(setCurrentModal(CreateCommentFormModal));
+    dispatch(showModal())
   };
 
   const anyComments = () => {
@@ -50,29 +54,6 @@ function CommentCard({ post }) {
       <div className="anyComments" onClick={handleSubmit}>
         {anyComments()}
       </div>
-      
-      {postDetailModal && (
-        <div>
-          <Modal onClose={() => setPostDetailModal(false)}>
-            <div className="postModal">
-              <img className="postImage" src={post.imageUrl} alt=""></img>
-              <Link to={`/users/${post.userId}`}>{post.User.username}</Link>
-              {post.caption}
-              {post.Comments.comment}
-              <CreateCommentFormModal />
-              <ul>
-                {post &&
-                  post.Comments?.map((comment) => (
-                    <div>
-                      <li key={comment.id}>{comment.comment}</li>
-                      <br></br>
-                    </div>
-                  ))}
-              </ul>
-            </div>
-          </Modal>
-        </div>
-      )}
     </>
   );
 }

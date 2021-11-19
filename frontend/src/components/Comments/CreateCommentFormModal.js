@@ -3,28 +3,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
 import { loadOnePost } from "../../store/individualpost";
 import { getAllPostsThunk } from "../../store/posts";
+import { Link } from "react-router-dom";
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
 
   const ownerId = useSelector((state) => state.session.user.id);
+  
   const [comment, setComment] = useState("");
   //   const comments = useSelector((state) => state.comments);
   const [valErrors, setValErrors] = useState([]);
-  const posts = useSelector((state) => state.individualPost);
+  const post = useSelector((state) => state.individualPost);
   //   const postId = posts[posts.id]?.Comments
 // const [counter, setCounter] = useState(0);
 
     // useEffect(() => {
     // setComment("");
     // }, [counter]);
-
+console.log("POST", post)
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
       comment,
       userId: ownerId,
-      postId: posts.id,
+      postId: post.id,
     };
 
     await dispatch(createCommentThunk(payload))
@@ -41,6 +43,10 @@ function CreateCommentFormModal() {
   return (
     <div className="">
       <div>
+          <img className="postImage" src={post.imageUrl} alt=""></img>
+              <Link to={`/users/${post.userId}`}>{post.User.username}</Link>
+              {post.caption}
+              {post.Comments.comment}
         <form onSubmit={handleSubmit}>
           <div className="fieldDiv">
             <input
@@ -54,6 +60,15 @@ function CreateCommentFormModal() {
             <button type="submit">Post</button>
           </div>
         </form>
+        <ul>
+          {post &&
+            post.Comments?.map((comment) => (
+              <div>
+                <li key={comment.id}>{comment.comment}</li>
+                <br></br>
+              </div>
+            ))}
+        </ul>
       </div>
     </div>
   );

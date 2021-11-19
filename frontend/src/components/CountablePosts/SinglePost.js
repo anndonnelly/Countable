@@ -4,18 +4,14 @@ import { useParams } from "react-router";
 import { loadOnePost } from "../../store/individualpost";
 import "./SinglePost.css";
 import { deletePostThunk } from "../../store/posts";
-// import DeleteModal from "./DeleteModal";
-// import { editOnePost } from "../../store/individualpost";
 import { useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import EditPostForm from "./EditPostForm";
-import { getAllPostsThunk } from "../../store/posts";
 
 const SinglePost = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    // const [edit, setEdit] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const post = useSelector((state) => state.individualPost);
     const posts = useSelector((state) => state.posts);
@@ -30,7 +26,6 @@ const SinglePost = () => {
 
 
   const deletePost = async() => {
-    
     // await dispatch(getAllPostsThunk());
     await dispatch(deletePostThunk(post.id));
 

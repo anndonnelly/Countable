@@ -30,9 +30,9 @@ function PostCard({ post }) {
   return (
     <div className="posts">
       <br></br>
-      <Link key={post.id} to={`/posts/${post.id}`}>
+      {/* <Link key={post.id} to={`/posts/${post.id}`}> */}
         <img className="postImage" src={post.imageUrl} alt=""></img>
-      </Link>
+      {/* </Link> */}
       <br></br>
       <Link to={`/users/${post.userId}`}>
         <div>{post?.User?.username}</div>
