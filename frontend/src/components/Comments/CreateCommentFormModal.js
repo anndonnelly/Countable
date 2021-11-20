@@ -21,6 +21,7 @@ function CreateCommentFormModal() {
   const [comment, setComment] = useState("");
   const [valErrors, setValErrors] = useState([]);
   const post = useSelector((state) => state.individualPost);
+  const [isEditing, setIsEditing] = useState(false);
   //   const postId = posts[posts.id]?.Comments
 
   const deletePost = async () => {
@@ -31,8 +32,8 @@ function CreateCommentFormModal() {
   };
 
   const deleteComment = async (e) => {
-      e.preventDefault()
-   const commentId = e.target.id
+    e.preventDefault();
+    const commentId = e.target.id;
     await dispatch(deleteCommentThunk(commentId));
     dispatch(loadOnePost(post.id));
   };
@@ -40,7 +41,7 @@ function CreateCommentFormModal() {
   const editPost = async () => {
     dispatch(setCurrentModal(EditPostForm));
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
@@ -59,28 +60,13 @@ function CreateCommentFormModal() {
     setComment("");
   };
 
-
-    const editComment = async () => {
-      dispatch(setCurrentModal(EditCommentForm));
-    };
-
-    // const handleSubmit = async (e) => {
-    //   e.preventDefault();
-    //   const payload = {
-    //     comment,
-    //     userId: ownerId,
-    //     postId: post.id,
-    //   };
-
-    //   await dispatch(createCommentThunk(payload));
-    //   // .then((res) => {
-    //   //   return res;
-    //   // });
-
-    //   dispatch(loadOnePost(post.id));
-    //   await dispatch(getAllPostsThunk());
-    //   setComment("");
-    // };
+  // const editComment = async (e) => {
+  //     e.preventDefault();
+  //     const commentId = e.target.id;
+  //     <EditCommentForm commentId={commentId} />;
+  //     setIsEditing(true)
+  //     // dispatch(setCurrentModal(EditCommentForm));
+  // };
 
   return (
     <div className="postModal">
@@ -123,16 +109,22 @@ function CreateCommentFormModal() {
                       <Link>commentUser</Link>
                     </h3>
                     <span className="spanComment">{comment.comment}</span>
-                    <div onClick={editComment}>EDIT</div>
-                    {/* <div id={comment.id} onClick={deleteComment(e)}> */}
-                    <div
-                      className="deleteComment"
-                      id={comment.id}
-                      onClick={deleteComment}
-                    >
-                      DELETE
+                    {/* <div id={comment.id} onClick={editComment}>
+                      EDIT
+                    </div> */}
+                    <div>
+                      <EditCommentForm
+                        comment={comment}
+                      />
+                      <div
+                        className="deleteComment"
+                        id={comment.id}
+                        onClick={deleteComment}
+                      >
+                        DELETE
+                      </div>
                     </div>
-                    <br />
+
                     {/* <img className="editIcon" scr="https://res.cloudinary.com/dis83syog/image/upload/v1637344420/Countable/download_dhs0ho.png" alt=""></img> */}
                   </div>
                 </div>

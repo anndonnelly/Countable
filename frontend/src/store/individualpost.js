@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_ONE_POST = "individualpost/GET_ONE_POST";
 const EDIT_POST = "individualpost/EDIT_POST";
+const EDIT_COMMENT = "comments/EDIT_COMMENT";
 
 const getOnePost = (post) => {
   return {
@@ -14,6 +15,13 @@ const editPost = (post) => {
   return {
     type: EDIT_POST,
     post,
+  };
+};
+
+const editComment = (comment) => {
+  return {
+    type: EDIT_COMMENT,
+    comment,
   };
 };
 
@@ -41,19 +49,42 @@ export const editOnePost = (payload, id) => async (dispatch) => {
   }
 };
 
+
+export const editCommentThunk = (payload) => async (dispatch) => {
+  const { id } = payload;
+  //   console.log("\n\n\n")
+  //   console.log("PAYLOAD", payload)
+  //   console.log("\n\n\n");
+  const res = await csrfFetch(`/api/comments/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+  console.log("RES", res);
+  if (res.ok) {
+    let editCommennt = await res.json();
+    dispatch(editComment(editCommennt));
+  }
+};
 const initialState = {};
 const individualPostReducer = (state = initialState, action) => {
   const newState = { ...state };
   switch (action.type) {
     case GET_ONE_POST: {
-        return action.post;
-    //   return {
-    //     ...state,
-    //     ...action.post,
-    //   };
+      return action.post;
     }
     case EDIT_POST:
       newState[action.post.id] = action.post;
+      return newState;
+    case EDIT_COMMENT:
+    
+          for (let comment in newState.Comments) {
+            if (newState.Comments[comment].id === action.comment.id) {
+              newState.Comments[comment] = action.comment;
+            }
+      }
       return newState;
     default:
       return state;
