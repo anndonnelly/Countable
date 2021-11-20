@@ -1,6 +1,5 @@
 # Countable
-This Application XXX
-
+This Application is a platform for users to hold politicains accountbale for varying issues in their neighborhood.
 Live link: https://countable-dub.herokuapp.com/ Please refer to Wiki pages for further documentation.
 
 # Development
