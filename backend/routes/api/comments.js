@@ -36,6 +36,8 @@ router.put(
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const comment = await Comment.findByPk(id);
+    console.log("COMMENT", comment)
+    console.log("REQBODY",req.body)
     await comment.update(req.body);
     return res.json(comment);
   })

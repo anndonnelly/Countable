@@ -7,7 +7,6 @@ import CreateCommentForm from "./CreateCommentForm";
 import { loadOnePost } from "../../store/individualpost";
 import { useDispatch } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
-import { useSelector } from "react-redux";
 import { setCurrentModal, showModal } from "../../store/modal";
 
 

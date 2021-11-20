@@ -2,7 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_COMMENTS = "comments/GET_COMMENTS";
 const ADD_COMMENT = "comments/ADD_COMMENT";
-const EDIT_COMMENT = "comments/EDIT_COMMENT";
+// const EDIT_COMMENT = "comments/EDIT_COMMENT";
 const DELETE_COMMENT = "comments/DELETE_COMMENT";
 
 const getComments = (comments) => {
@@ -19,12 +19,12 @@ const addComment = (comment) => {
   };
 };
 
-const editComment = (comment) => {
-  return {
-    type: EDIT_COMMENT,
-    comment,
-  };
-};
+// const editComment = (comment) => {
+//   return {
+//     type: EDIT_COMMENT,
+//     comment,
+//   };
+// };
 
 const deleteComment = (comment) => {
   return {
@@ -57,21 +57,24 @@ export const createCommentThunk = (payload) => async (dispatch) => {
   }
 };
 
-export const editCommentThunk = (payload) => async (dispatch) => {
-  const { id } = payload;
-  const res = await csrfFetch(`/api/comments/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
-
-  if (res.ok) {
-    let editCommennt = await res.json();
-    dispatch(editComment(editCommennt));
-  }
-};
+// export const editCommentThunk = (payload) => async (dispatch) => {
+//   const { id } = payload;
+// //   console.log("\n\n\n")
+// //   console.log("PAYLOAD", payload)
+// //   console.log("\n\n\n");
+//   const res = await csrfFetch(`/api/comments/${id}`, {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(payload),
+//   });
+//     console.log("RES", res)
+//   if (res.ok) {
+//     let editCommennt = await res.json();
+//     dispatch(editComment(editCommennt));
+//   }
+// };
 
 export const deleteCommentThunk = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/comments/${id}`, {
@@ -97,9 +100,9 @@ export default function commentsReducer(state = initialState, action) {
         ...state,
         [action.comment.id]: action.comment,
       };
-    case EDIT_COMMENT:
-      newState[action.comment.id] = action.comment;
-      return newState;
+    // case EDIT_COMMENT:
+    //   newState[action.comment.id] = action.comment;
+    //   return newState;
     case DELETE_COMMENT: {
       const newState = { ...state };
       delete newState[action.comment];

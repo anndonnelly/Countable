@@ -42,7 +42,6 @@ function EditPostModal({ post }) {
 
   return (
     <>
-      {" "}
       <div className="anyComments" onClick={handleSubmit}>
         {anyComments()}
       </div>
