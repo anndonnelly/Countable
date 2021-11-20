@@ -34,6 +34,7 @@ module.exports = {
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637338120/Countable/IMG-5981_knrrek.jpg",
+            bio: "ssssssssssssssss"
         },
         {
           email: "nmadonnelly@gmail.com",
