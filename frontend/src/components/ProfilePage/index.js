@@ -21,23 +21,37 @@ function ProfilePage() {
     dispatch(getAllUserPostsThunk(id));
   }, [dispatch]);
 
+  /*
+  {
+  "id": 4,
+  "username": "pdonnelly",
+  "avatar": "https://res.cloudinary.com/dis83syog/image/upload/v1637338120/Countable/IMG-5981_knrrek.jpg",
+  "bio": null
+}*/
+
+  //   console.log(postLists[0].User);
+  //   console.log(postLists[0].User);
   return (
-    <>
-      <div>
-        PROFILE PAGE
-        <div>{postLists[0]?.User?.username}</div>
-        <div>
-          {postLists.map((post) => (
-            <img
-              className="postImage"
-              key={post.id}
-              src={post.imageUrl}
-              alt=""
-            ></img>
-          ))}
+    // <>
+    <div className="profile_page">
+      <div className="user_info_wrapper">
+        <div className="avatar_wrapper">
+          <img src={postLists[0]?.User?.avatar} />
         </div>
+        <div className="user_data_wrapper"></div>
       </div>
-    </>
+      <div className="user_posts_wrapper">
+        {postLists.map((post) => (
+          <img
+            className="postImage"
+            key={post.id}
+            src={post.imageUrl}
+            alt=""
+          ></img>
+        ))}
+      </div>
+    </div>
+    // </>
   );
 }
 

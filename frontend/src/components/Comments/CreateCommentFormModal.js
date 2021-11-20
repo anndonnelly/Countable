@@ -113,9 +113,7 @@ function CreateCommentFormModal() {
                       EDIT
                     </div> */}
                     <div>
-                      <EditCommentForm
-                        comment={comment}
-                      />
+                      <EditCommentForm comment={comment} />
                       <div
                         className="deleteComment"
                         id={comment.id}
@@ -132,19 +130,21 @@ function CreateCommentFormModal() {
               </li>
             ))}
         </ul>
-        <form className="anyComments" onSubmit={handleSubmit}>
-          <div className="fieldDiv">
-            <input
-              placeholder="Add a comment..."
-              type="text"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-          </div>
-          <div className="createEventButton">
-            <button type="submit">Post</button>
-          </div>
-        </form>
+        <div className="comment-form-wrapper">
+          <form className="anyComments" onSubmit={handleSubmit}>
+            <div className="fieldDiv">
+              <input
+                placeholder="Add a comment..."
+                type="text"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              />
+            </div>
+            <div className="createEventButton">
+              <button type="submit">Post</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
