@@ -19,3 +19,9 @@ Live link: https://countable-dub.herokuapp.com/ Please refer to Wiki pages for f
 * Sequelize
 * React
 * Redux
+
+
+
+# Application Architecture 
+The frontend is a create-react-app deployed to its own Heroku server and the backend deployed to a separate Heroku server. The two servers communicate with each other through RESTful APIs.
+<img width="539" alt="Screen Shot 2021-11-20 at 12 06 27 PM" src="https://user-images.githubusercontent.com/78274179/142735038-65dd18d4-f3f7-4c82-a0dc-bfd349e5e734.png">
