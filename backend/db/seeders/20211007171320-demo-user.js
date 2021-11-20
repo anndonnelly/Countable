@@ -34,7 +34,7 @@ module.exports = {
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637338120/Countable/IMG-5981_knrrek.jpg",
-            bio: "ssssssssssssssss"
+          bio: "ssssssssssssssss",
         },
         {
           email: "nmadonnelly@gmail.com",
@@ -92,7 +92,7 @@ module.exports = {
           username: "juliewagner",
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
-            "https://res.cloudinary.com/dis83syog/image/upload/v1637339259/Countable/IMG-5987_e8p8jr.jpg",
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637374015/Countable/unnamed_kaxigm.jpg",
         },
         {
           email: "curtiscassell@gmail.com",

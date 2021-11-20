@@ -9,20 +9,19 @@ import "./Navigation.css";
 import { getAllUserPostsThunk } from "../../store/userPosts";
 import { useHistory } from "react-router";
 
-
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
-  const searchResults = useSelector((state) => state.search)
+  const searchResults = useSelector((state) => state.search);
   const results = Object.values(searchResults);
-  const history = useHistory()
+  const history = useHistory();
 
   useEffect(() => {
     if (input.length > 0) {
       dispatch(searchUsers(input));
     }
-  }, [dispatch, input ]);
+  }, [dispatch, input]);
 
   const showSearch = () => {
     document.querySelector(".search-results").classList.remove("hidden");
@@ -36,7 +35,7 @@ function Navigation({ isLoaded }) {
   const reset = (id) => {
     document.querySelector(".search-results").classList.add("hidden");
     dispatch(getAllUserPostsThunk(id));
-    history.push(`/users/${id}`)
+    history.push(`/users/${id}`);
     setInput("");
   };
 
@@ -71,7 +70,10 @@ function Navigation({ isLoaded }) {
                     <div key={res.id} className="search-card">
                       <div
                         className="search-name"
-                        onClick={() => reset(res.id)}
+                        onClick={() => {
+                          console.log("TEST");
+                          reset(res.id);
+                        }}
                       >
                         {res.username}
                       </div>

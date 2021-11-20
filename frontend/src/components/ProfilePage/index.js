@@ -38,16 +38,22 @@ function ProfilePage() {
         <div className="avatar_wrapper">
           <img src={postLists[0]?.User?.avatar} />
         </div>
-        <div className="user_data_wrapper"></div>
+        <div className="user_data_wrapper">
+          <div className="username">
+            <span>{postLists[0]?.User.username}</span>
+          </div>
+          <div className="bio">
+            <span>{postLists[0]?.User.bio}</span>
+          </div>
+        </div>
       </div>
+
       <div className="user_posts_wrapper">
         {postLists.map((post) => (
-          <img
-            className="postImage"
-            key={post.id}
-            src={post.imageUrl}
-            alt=""
-          ></img>
+          <div key={post.id} className="post_image_wrapper">
+            <div className="post_image_wrapper_inner"></div>
+            <img className="postImage" src={post.imageUrl} alt="" />
+          </div>
         ))}
       </div>
     </div>
