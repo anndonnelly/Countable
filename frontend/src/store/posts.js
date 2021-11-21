@@ -70,11 +70,42 @@ export const getAllPostsThunk = () => async (dispatch) => {
 //   }
 // };
 
-export const createPostThunk = (payload) => async (dispatch) => {
-  const response = await csrfFetch("/api/posts", {
+// export const createPostThunk = (payload) => async (dispatch) => {
+//   const response = await csrfFetch("/api/posts", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(payload),
+//   });
+
+//   if (response.ok) {
+//     const newPost = await response.json();
+//     dispatch(createPostAction(newPost));
+//     return newPost;
+//   }
+// };
+
+export const createPostThunk = (post) => async (dispatch) => {
+  const { caption, imageUrl, userId } = post;
+  const formData = new FormData();
+  formData.append("caption", caption);
+  formData.append("userId", userId);
+
+  // for multiple files
+//   if (images && images.length !== 0) {
+//     for (var i = 0; i < images.length; i++) {
+//       formData.append("images", images[i]);
+//     }
+//   }
+
+  // for single file
+  if (imageUrl) formData.append("imageUrl", imageUrl);
+
+  const response = await csrfFetch(`/api/posts/`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
 
   if (response.ok) {
@@ -83,6 +114,7 @@ export const createPostThunk = (payload) => async (dispatch) => {
     return newPost;
   }
 };
+
 
 export const editCommentThunk = (payload) => async (dispatch) => {
   const { id } = payload;
@@ -134,6 +166,8 @@ export default function postsReducer(state = initialState, action) {
         ...state,
         [action.post.id]: action.post,
       };
+    // case CREATE_POST:
+    //   return { ...state, post: action.post };
     case DELETE_POST: {
       newState = Object.assign({}, state);
       delete newState[action.deletedPost];
