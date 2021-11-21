@@ -5,10 +5,12 @@ import { Redirect, Link } from "react-router-dom";
 import "./SignupForm.css";
 import * as sessionActions from "../../store/session";
 
+
 const SignupFormPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const sessionUser = useSelector((state)=> state.session.user)
   //   const [confirmPassword, setConfirmPassword] = useState("");
   //   const [credential, setCredential] = useState("");
   const [avatar, setAvatar] = useState(null);
@@ -18,7 +20,8 @@ const SignupFormPage = () => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  if (user) return <Redirect to="/posts" />;
+  if (user) return <Redirect to={`/users/${sessionUser.id}`} />;
+    
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,33 +82,33 @@ const SignupFormPage = () => {
           </div>
           {errors.length > 0 &&
             errors.map((error) => <div key={error}>{error}</div>)}
-          <form
-            className="signUpFormOnLogin"
-            onSubmit={handleSubmit}
-          >
+          <form className="signUpFormOnLogin" onSubmit={handleSubmit}>
             <input
               className="signUpFormInput"
               type="text"
+              required
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
               className="signUpFormInput"
+              required
               type="email"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <label>
-              <input
-                className="signUpFormInput"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              {/* <input
+
+            <input
+              className="signUpFormInput"
+              required
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {/* <input
               className="signUpFormInput"
               type="password"
               placeholder="Confirm Password"
@@ -113,14 +116,15 @@ const SignupFormPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             /> */}
-            </label>
-            <label>
+
+            <label className="profilePictureSignUp">
               Profile Picture:
               <input
                 className="signUpFormInput"
+                placeholder=""
                 name="avatar"
                 type="file"
-                required
+                // required
                 onChange={updateFile}
               />
             </label>

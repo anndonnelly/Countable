@@ -3,24 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadOnePost } from "../../store/individualpost";
 import "./EditCommentForm.css";
 import { editCommentThunk } from "../../store/individualpost";
-
+// import { PencilAltIcon } from "@heroicons/react/solid";
 
 const EditCommentForm = ({ comment }) => {
   const dispatch = useDispatch();
   const [editComment, setEditComment] = useState(comment.comment);
   const [show, setShow] = useState(true);
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(false);
   const post = useSelector((state) => state.individualPost);
-  
 
   const updateSetShow = (e) => {
     show ? setShow(false) : setShow(true);
-    setIsClicked(true)
+    setIsClicked(true);
   };
 
   const updateDetails = (e) => {
     setEditComment(e.target.value);
-    
   };
 
   const handleSubmit = async (e) => {
@@ -28,11 +26,11 @@ const EditCommentForm = ({ comment }) => {
 
     const payload = {
       comment: editComment,
-      id: comment.id
+      id: comment.id,
     };
 
     await dispatch(editCommentThunk(payload));
-    dispatch(loadOnePost(post.id))
+    dispatch(loadOnePost(post.id));
     updateSetShow();
   };
 
@@ -42,7 +40,7 @@ const EditCommentForm = ({ comment }) => {
         className={`editButton ${show ? null : "hidden"}`}
         onClick={updateSetShow}
       >
-        EDIT
+        <i class="far fa-edit"></i>
       </button>
 
       {isClicked && (

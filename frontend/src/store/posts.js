@@ -110,7 +110,7 @@ export const createPostThunk = (post) => async (dispatch) => {
 
   if (response.ok) {
     const newPost = await response.json();
-    dispatch(createPostAction(newPost));
+    dispatch(createPostAction(newPost.post));
     return newPost;
   }
 };
@@ -160,6 +160,7 @@ export default function postsReducer(state = initialState, action) {
         [action.post.id]: action.post,
       };
     case CREATE_POST:
+        console.log("5555", action.post)
       return {
         ...state,
         [action.post.id]: action.post,

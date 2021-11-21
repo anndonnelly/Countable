@@ -25,19 +25,19 @@ module.exports = {
           {
             comment:
               "There is “no consistency” in planning decisions with regard to proposed builds in close proximity to protected structures.",
-            postId: 3,
+            postId: 4,
             userId: 1,
           },
           {
             comment:
-              "Straight-forward housing is refused, but investment, build-to-rent and businesses and hotels are not… I cannot count the amount of hotels being built in Dublin",
-            postId: 3,
+              "I cannot count the amount of hotels being built in Dublin. Straight-forward housing is refused, but investment, build-to-rent and businesses and hotels are not…",
+            postId: 4,
             userId: 2,
           },
           {
             comment:
               "If this were to go ahead it has potential to fundamentally change the whole sense and character of the passageway.",
-            postId: 3,
+            postId: 4,
             userId: 3,
           },
           {
@@ -53,14 +53,34 @@ module.exports = {
             userId: 4,
           },
           {
-            comment: "An Bord Pleanála has approved a plan which would see independent retailers, including a waffle café, a record shop, a vintage clothing store and a technology repair shop replaced by a single boutique hotel and restaurant unit. Our issue with Merchant’s Arch is that the development is overscaled and inappropriate in character for the area. So far around 30,000 people have supported a petition to “save Merchant’s Arch” from the redevelopment.",
+            comment:
+              "An Bord Pleanála has approved a plan which would see independent retailers, including a waffle café, a record shop, a vintage clothing store and a technology repair shop replaced by a single boutique hotel and restaurant unit. Our issue with Merchant’s Arch is that the development is overscaled and inappropriate in character for the area. So far around 30,000 people have supported a petition to “save Merchant’s Arch” from the redevelopment.",
             postId: 4,
             userId: 5,
           },
           {
-            comment: "Time and time again” An Bord Pleanála had ignored the concerns of citizens and the City Development Plan in favour of hotels and we are at the stage where we need to act on this and make sure our voices are heard.",
+            comment:
+              "Time and time again” An Bord Pleanála had ignored the concerns of citizens and the City Development Plan in favour of hotels and we are at the stage where we need to act on this and make sure our voices are heard.",
             postId: 4,
             userId: 6,
+          },
+          {
+            comment:
+              "I recommened contacting the ESB if you are concerned that it poses a potential risk to a power line",
+            postId: 1,
+            userId: 17,
+          },
+          {
+            comment:
+              "I recommened contacting the ESB if you are concerned that it poses a potential risk to a power line",
+            postId: 3,
+            userId: 17,
+          },
+          {
+            comment:
+              "I recommened contacting the ESB if you are concerned that it poses a potential risk to a power line",
+            postId: 3,
+            userId: 17,
           },
         ],
         {}

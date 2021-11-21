@@ -19,7 +19,7 @@ function CreatePostModal() {
         className="create-post-button"
         onClick={() => setShowPostModal(true)}
       >
-        Create Post
+        <i class="far fa-plus-square"></i>
       </button>
     );
   }

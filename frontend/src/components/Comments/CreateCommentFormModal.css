@@ -2,7 +2,7 @@
   /* position: absolute;
   top: 0; */
   flex: 1 1 100%;
-  background-color: lime;
+  background-color: white;
   display: grid;
   grid-template-columns: 1fr 1fr;
   /* fraction = equal width columns = 50% 50% */
@@ -25,11 +25,11 @@
   max-height: 100%;
   display: block;
   height: inherit;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .rightSideModal {
-  background-color: red;
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
 }
@@ -60,7 +60,7 @@
 .userLink {
   /* font-size: 20px; */
   font-weight: 500;
-  color: blue;
+  /* color: blue; */
 }
 
 .closeModal {
@@ -73,11 +73,11 @@
   cursor: pointer;
 }
 
-.closeModalIcon {
+/* .closeModalIcon {
 }
 
 .anyComments {
-}
+} */
 
 .postModalCommentWrapper {
   width: 100%;
@@ -94,7 +94,7 @@
   height: 32px !important;
   margin-right: 18px;
   border-radius: 50%;
-  background-color: black;
+  /* background-color: black; */
 }
 
 .commentScroll {
@@ -125,13 +125,13 @@
 }
 
 .comment-form-wrapper {
-  background-color: aqua;
+  /* background-color: aqua; */
 }
 
 .comment-form-wrapper form {
   display: flex;
 
-  background-color: aqua;
+  /* background-color: aqua; */
 }
 
 .comment-form-wrapper form .fieldDiv {
@@ -140,6 +140,6 @@
 
 /* .comment-form-wrapper form .fieldDiv { */
 
-.comment-form-wrapper form .createEventButton {
+.comment-form-wrapper form .createCommentButton {
   flex: 0 0 50px;
 }
