@@ -71,7 +71,6 @@ function Navigation({ isLoaded }) {
                       <div
                         className="search-name"
                         onClick={() => {
-                          console.log("TEST");
                           reset(res.id);
                         }}
                       >

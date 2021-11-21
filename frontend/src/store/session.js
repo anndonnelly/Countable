@@ -62,7 +62,6 @@ export const createUser = (user) => async (dispatch) => {
   formData.append("email", email);
   formData.append("password", password);
 
-console.log("PAYLOAD",user)
   // for single file
   if (avatar) formData.append("avatar", avatar);
 

@@ -10,29 +10,34 @@ import { showModal } from "../../store/modal";
 import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
 
 function PostCard({ post }) {
-    const dispatch = useDispatch()
-    const numberOfComments = post?.Comments?.length;
-    const hasComments = numberOfComments > 0;
-    const lastComment = () => {
-      if (!hasComments) {
-        return null;
-      }
+  const dispatch = useDispatch();
+  const numberOfComments = post?.Comments?.length;
+  const hasComments = numberOfComments > 0;
+  const lastComment = () => {
+    if (!hasComments) {
+      return null;
+    }
 
-      if (post.Comments) {
-        const comment = post?.Comments[post.Comments.length - 1];
-        return <div>{comment.comment}</div>;
-      }
-    };
+    if (post.Comments) {
+      const comment = post?.Comments[post.Comments.length - 1];
+      return <div>{comment.comment}</div>;
+    }
+  };
 
-      const handleSubmit = async () => {
-        await dispatch(loadOnePost(post.id));
-        await dispatch(setCurrentModal(CreateCommentFormModal));
-        await dispatch(showModal());
-      };
+  const handleSubmit = async () => {
+    await dispatch(loadOnePost(post.id));
+    await dispatch(setCurrentModal(CreateCommentFormModal));
+    await dispatch(showModal());
+  };
 
   return (
     <div className="posts">
-      <br></br>
+      <span className="flex align-items usernameContainer">
+        <img className="postUserPhoto" src={post?.User?.avatar} alt=""></img>
+        <Link to={`/users/${post.userId}`}>
+          <span className="bold">{post?.User?.username}</span>
+        </Link>
+      </span>
       {/* <Link key={post.id} to={`/posts/${post.id}`}> */}
       <img
         onClick={handleSubmit}
@@ -41,16 +46,16 @@ function PostCard({ post }) {
         alt=""
       ></img>
       {/* </Link> */}
-      <br></br>
-      <Link to={`/users/${post.userId}`}>
-        <div>{post?.User?.username}</div>
-      </Link>
-      <br></br>
-      {post.caption}
-      <br></br>
-      <CreateCommentForm post={post} />
-      {lastComment()}
+      <div className="side-spacing vertical-spacing">
+        <Link to={`/users/${post.userId}`}>
+          <span className="bold">{post?.User?.username}</span>
+        </Link>
+        <span> {post.caption}</span>
+      </div>
       <CommentCard post={post} />
+      <div className="side-spacing">{lastComment()}</div>
+
+      <CreateCommentForm post={post} />
     </div>
   );
 }

@@ -23,3 +23,15 @@
 .anyComments{
     cursor: pointer;
 } 
+
+.vertical-spacing {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.side-spacing {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+

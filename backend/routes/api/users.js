@@ -50,7 +50,6 @@ router.post(
   asyncHandler(async (req, res) => {
     const { email, password, username } = req.body;
     const avatar = await singlePublicFileUpload(req.file);
-    console.log("AVATAR", avatar)
     const user = await User.signup({
       username,
       email,
@@ -88,7 +87,6 @@ router.put(
         searchResult = false;
         users = await User.findAll()
     }
-    console.log("USERS", users)
     return res.json(users)
   })
 );

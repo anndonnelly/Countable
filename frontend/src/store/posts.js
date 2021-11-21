@@ -126,7 +126,7 @@ export const editCommentThunk = (payload) => async (dispatch) => {
     },
     body: JSON.stringify(payload),
   });
-  console.log("RES", res);
+
   if (res.ok) {
     let editCommennt = await res.json();
     dispatch(editComment(editCommennt));

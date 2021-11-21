@@ -1,0 +1,21 @@
+.vertical-spacing {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#addCommentBox {
+  width: 90%;
+  height: 40px;
+  padding: 10px;
+  border: none;
+}
+
+#postCommentBtn {
+  width: 10%;
+  height: 40px;
+  background: none;
+  padding: 10px;
+  border: none;
+  color: #0095f6;
+  font-weight: bold;
+}

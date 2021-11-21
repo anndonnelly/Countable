@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
 import { getAllCommentsThunk } from "../../store/comments";
 import { getAllPostsThunk } from "../../store/posts";
-
+import "./CreateCommentForm.css"
 
 
 function CreateCommentForm({post}) {
@@ -34,24 +34,24 @@ function CreateCommentForm({post}) {
   };
 
   return (
-    <div className="">
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div className="fieldDiv">
-            <input
-              placeholder="Add a comment..."
-              type="text"
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-            />
-          </div>
-          <div className="createEventButton">
-            <button type="submit">
-              Post
-            </button>
-          </div>
-        </form>
-      </div>
+    <div className="vertical-spacing">
+      <form onSubmit={handleSubmit}>
+        <span className="fieldDiv">
+          <input
+            id="addCommentBox"
+            placeholder="Add a comment..."
+            type="text"
+            value={comment}
+            required
+            onChange={(e) => setComment(e.target.value)}
+          />
+        </span>
+        <span className="createEventButton">
+          <button id="postCommentBtn" type="submit">
+            Post
+          </button>
+        </span>
+      </form>
     </div>
   );
 }

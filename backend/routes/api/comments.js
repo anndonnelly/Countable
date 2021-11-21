@@ -36,8 +36,6 @@ router.put(
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const comment = await Comment.findByPk(id);
-    console.log("COMMENT", comment)
-    console.log("REQBODY",req.body)
     await comment.update(req.body);
     return res.json(comment);
   })
@@ -50,7 +48,6 @@ router.delete(
     const comment = await Comment.findByPk(id);
     
     if (!comment) throw new Error("Cannot find comment");
-     console.log("hhhhhh",req.body);
     await comment.destroy(req.body);
    
     return res.json({ id });

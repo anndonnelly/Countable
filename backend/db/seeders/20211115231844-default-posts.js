@@ -155,7 +155,7 @@ module.exports = {
           imageUrl:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637431385/Countable/ae198084-84ed-4c01-a402-5371b65d5caa_igzobj.jpg",
           caption:
-            "“Dublin is one of the most dangerous cities in Europe for cyclist 🚴‍♀️ I cycle down this road everyday and often have to swerve out of the way to avoid traffic, please put in designated cycle lanes before someone gets hurt”",
+            "Dublin is one of the most dangerous cities in Europe for a cyclist 🚴‍♀️ I cycle down this road everyday and often have to swerve out of the way to avoid traffic, please put in designated cycle lanes before someone gets hurt",
           userId: 7,
         },
         {

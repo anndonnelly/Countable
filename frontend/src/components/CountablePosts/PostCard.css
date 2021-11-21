@@ -1,22 +1,48 @@
 .posts {
     height: fit-content;
-    width: 860px;
-    border: 2px solid #a1a1a1;
-    border-radius: 3px;
-    display: flex;
+    width: 600px;
+    border: 1px solid #a1a1a1;
     align-items: center;
-    padding: 20px;
     position: relative;
     margin: 0 auto;
     margin-top: 20px;
     background-color: white;
-    border-radius: 5px;
     }
 
-
 .postImage {
-  height: 200px;
-  width: 300px;
-  border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
+
+.inline {
+    display: inline;
+}
+
+.flex {
+    display: flex;
+}
+
+.align-items {
+    align-items: center;
+}
+
+.usernameContainer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.side-spacing {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.vertical-spacing {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+

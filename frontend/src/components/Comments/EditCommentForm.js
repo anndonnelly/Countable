@@ -12,7 +12,7 @@ const EditCommentForm = ({ comment }) => {
   const [isClicked, setIsClicked] = useState(false)
   const post = useSelector((state) => state.individualPost);
   
-console.log("SHOW", show)
+
   const updateSetShow = (e) => {
     show ? setShow(false) : setShow(true);
     setIsClicked(true)

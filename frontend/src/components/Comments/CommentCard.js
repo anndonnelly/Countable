@@ -44,8 +44,8 @@ function CommentCard({ post }) {
 
   return (
     <>
-      <div className="anyComments" onClick={handleSubmit}>
-        {anyComments()}
+      <div className="anyComments vertical-spacing side-spacing" onClick={handleSubmit}>
+         {anyComments()}
       </div>
     </>
   );

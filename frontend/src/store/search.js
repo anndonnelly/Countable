@@ -7,7 +7,7 @@ const search_users = (users) => ({
 });
 
 export const searchUsers = (input) => async (dispatch) => {
-    console.log("ffffff", input)
+ 
   const obj = {
     input,
   };
@@ -17,7 +17,7 @@ export const searchUsers = (input) => async (dispatch) => {
     body: JSON.stringify(obj),
   });
   const data = await res.json();
-  console.log("DATA",data)
+
   dispatch(search_users(data));
 };
 
