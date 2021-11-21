@@ -76,13 +76,13 @@ function CreateCommentFormModal() {
       <div className="rightSideModal">
         <div className="postModalHeader">
           <div className="postUser">
-            <img className="postUserPhoto" src={post.User.avatar} alt=""></img>
+            <img className="postUserPhoto" src={post?.User?.avatar} alt=""></img>
             <Link
               className="userLink"
               to={`/users/${post.userId}`}
               onClick={() => dispatch(hideModal())}
             >
-              {post.User.username}
+              {post?.User?.username}
             </Link>
           </div>
           <div className="closeModal" onClick={() => dispatch(hideModal())}>

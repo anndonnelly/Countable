@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllPostsThunk } from "../../store/posts";
-import { getAllUserPostsThunk } from "../../store/userPosts";
 import { useParams } from "react-router";
+import { getAllUserPostsThunk } from "../../store/userPosts";
+import { loadOnePost } from "../../store/individualpost";
+import { setCurrentModal, showModal } from "../../store/modal";
+import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
 import "./ProfilePage.css";
 
 function ProfilePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const ownerId = useSelector((state) => state.session.user.id);
+//   const ownerId = useSelector((state) => state.session.user.id);
   const posts = useSelector((state) => state.userPosts);
   const postLists = Object.values(posts);
 
@@ -21,12 +23,20 @@ function ProfilePage() {
     dispatch(getAllUserPostsThunk(id));
   }, [dispatch]);
 
+
+
+  const handleSubmit = async (id) => {
+    await dispatch(loadOnePost(id));
+    await dispatch(setCurrentModal(CreateCommentFormModal));
+    await dispatch(showModal());
+  };
+
   return (
     // <>
     <div className="profile_page">
       <div className="user_info_wrapper">
         <div className="avatar_wrapper">
-          <img src={postLists[0]?.User?.avatar} alt=""/>
+          <img src={postLists[0]?.User?.avatar} alt="" />
         </div>
         <div className="user_data_wrapper">
           <div className="username">
@@ -42,7 +52,12 @@ function ProfilePage() {
         {postLists.map((post) => (
           <div key={post.id} className="post_image_wrapper">
             <div className="post_image_wrapper_inner"></div>
-            <img className="postImageProfilePage" src={post.imageUrl} alt="" />
+            <img
+              className="postImageProfilePage"
+              src={post.imageUrl}
+              alt=""
+              onClick={()=>handleSubmit(post.id)}
+            />
           </div>
         ))}
       </div>

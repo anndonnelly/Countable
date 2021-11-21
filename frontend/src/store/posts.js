@@ -122,7 +122,7 @@ export const editCommentThunk = (payload) => async (dispatch) => {
   //   console.log("PAYLOAD", payload)
   //   console.log("\n\n\n");
   const res = await csrfFetch(`/api/comments/${id}`, {
-    method: "PUT",
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },

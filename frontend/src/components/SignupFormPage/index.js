@@ -262,6 +262,7 @@ const SignupFormPage = () => {
                 className="signUpFormInput"
                 name="avatar"
                 type="file"
+                required
                 onChange={updateFile}
               />
             </label>
