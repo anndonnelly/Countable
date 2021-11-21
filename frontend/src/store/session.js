@@ -68,9 +68,9 @@ export const createUser = (user) => async (dispatch) => {
 //       formData.append("images", images[i]);
 //     }
 //   }
-
+console.log("PAYLOAD",user)
   // for single file
-  if (avatar) formData.append("image", avatar);
+  if (avatar) formData.append("avatar", avatar);
 
   const res = await csrfFetch(`/api/users/`, {
     method: "POST",
