@@ -7,6 +7,8 @@ const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const {Op} = require('sequelize')
+const {singleMulterUpload} = require("../../awsS3.js")
+const {singlePublicFileUpload} = require("../../awsS3.js");
 
 const validateSignup = [
   check("email")
@@ -26,19 +28,41 @@ const validateSignup = [
 ];
 
 // Sign up
+// router.post(
+//   '/',
+//   validateSignup,
+//   asyncHandler(async (req, res) => {
+//     const { email, password, username } = req.body;
+//     const user = await User.signup({ email, username, password });
+
+//     await setTokenCookie(res, user);
+
+//     return res.json({
+//       user,
+//     });
+//   }),
+// );
+
 router.post(
-  '/',
+  "/",
+  singleMulterUpload("avatar"),
   validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+    const avatar = await singlePublicFileUpload(req.file);
+    console.log("AVATAR", avatar)
+    const user = await User.signup({
+      username,
+      email,
+      password,
+      avatar,
+    });
 
-    await setTokenCookie(res, user);
-
+    setTokenCookie(res, user);
     return res.json({
       user,
     });
-  }),
+  })
 );
 
 
@@ -47,8 +71,6 @@ router.put(
   "/search",
   asyncHandler(async function (req, res) {
     const search = req.body.input
-    console.log("sssssss",search)
-    console.log("REQ", req.body.input)
     let users
     let searchResult = false
     if (search !== undefined){
@@ -70,6 +92,8 @@ router.put(
     return res.json(users)
   })
 );
+
+
 
 module.exports = router;
 

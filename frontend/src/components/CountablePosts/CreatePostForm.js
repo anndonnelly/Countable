@@ -15,21 +15,40 @@ function CreatePostForm({ setShowPostModal }) {
   const posts = useSelector((state) => state.posts)
   const [valErrors, setValErrors] = useState([]);
 
+
+   function isValidURL(string) {
+     let res = string.match(
+       /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+     );
+     return res !== null;
+   }
+
+   const validatePost = () => {
+     const errors = [];
+     if (!imageUrl) {
+       errors.push("Please provide an image for your post.");
+     }
+     if (!caption) {
+       errors.push("Please provide a caption for your post");
+     }
+
+     if (!isValidURL(imageUrl)) {
+       errors.push("Please provide a valid URL");
+     }
+     setValErrors(errors);
+     return errors;
+   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errs = validatePost();
+    if (!errs.length) {
     const payload = {
       imageUrl,
       caption,
       userId: ownerId,
     };
 
-    // const errors = [];
-    // if (!imageUrl)
-    //   errors.push("Please provide an image for your post.");
-    // if (!caption) errors.push("Please provide a description of your event");
-    // setValErrors(errors);
-
-    
     let createdPost = await dispatch(createPostThunk(payload))
     
 
@@ -37,6 +56,7 @@ function CreatePostForm({ setShowPostModal }) {
         dispatch(loadOnePost(createdPost.id));
         setShowPostModal(false);
         history.push(`/posts`);
+    }
     }
   };
 
@@ -48,9 +68,11 @@ function CreatePostForm({ setShowPostModal }) {
       <div>
         <form onSubmit={handleSubmit}>
           <ul className="errors">
-            {valErrors.length > 0
-              ? valErrors.map((valError) => <li key={valError}>{valError}</li>)
-              : null}
+            {/* {valErrors.length > 0 */}
+              {valErrors.map((valError) => (
+              <li key={valError}>{valError}</li>
+              ))}
+              {/* : null} */}
           </ul>
           {/* <div className="fieldDiv">
             <label>Photo</label>
@@ -69,7 +91,7 @@ function CreatePostForm({ setShowPostModal }) {
               type="url"
               name="image"
               multiple
-              required
+            //   required
               onChange={(e) => setImageUrl(e.target.value)}
             ></input>
           </div>

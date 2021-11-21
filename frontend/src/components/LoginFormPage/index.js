@@ -34,15 +34,15 @@ function LoginFormPage() {
     );
   };
 
-  const demoUserTwo = async (e) => {
-    e.preventDefault();
-    setCredential("DemoTwo");
-    setPassword("password");
-    const demo = dispatch(
-      sessionActions.login({ credential: "DemoTwo", password: "password" })
-    );
-    return demo;
-  };
+//   const demoUserTwo = async (e) => {
+//     e.preventDefault();
+//     setCredential("DemoTwo");
+//     setPassword("password");
+//     const demo = dispatch(
+//       sessionActions.login({ credential: "DemoTwo", password: "password" })
+//     );
+//     return demo;
+//   };
 
   return (
     <div className="formLoginPage">

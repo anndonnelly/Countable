@@ -34,7 +34,7 @@ module.exports = {
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637338120/Countable/IMG-5981_knrrek.jpg",
-          bio: "ssssssssssssssss",
+          bio: "Born and raised in Mullingar. Currently in 📍 Barcelona with family",
         },
         {
           email: "nmadonnelly@gmail.com",
@@ -54,11 +54,17 @@ module.exports = {
           email: "amymarieward@hotmail.com",
           username: "amymarie",
           hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637431744/Countable/Screen_Shot_2021-11-20_at_1.08.55_PM_gyrnvj.png",
+          bio: "Partial to a chocolate croissant 🥐",
         },
         {
           email: "emily.obrien53@mail.dcu.ie",
           username: "emilyobrien",
           hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637433506/Countable/Screen_Shot_2021-11-20_at_1.38.17_PM_f2geoq.png",
+          bio: "Dog momma to Peggy and Molly. Not affiliated with Buttrition Ltd",
         },
         {
           email: "roblynch@gmail.com",
@@ -124,6 +130,7 @@ module.exports = {
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637339979/Countable/IMG-8067_cdutsn.jpg",
+          bio: "Preschool teacher, New Yorker, and dog mom. Busy being a one woman revolution.",
         },
         {
           email: "elizabethspencer@gmail.com",
@@ -134,8 +141,10 @@ module.exports = {
         },
         {
           email: "danpurcell@gmail.com",
-          username: "danpurcell",
+          username: "dzanpurcell",
           hashedPassword: bcrypt.hashSync("password"),
+          avatar: "https://res.cloudinary.com/dis83syog/image/upload/v1637445100/Countable/Screen_Shot_2021-11-20_at_4.51.30_PM_uqxrox.png",
+            bio: "Dannotate - To leave confusing convoluted drawings on Zoom calls, esp. when no one asked for them"
         },
         {
           email: "allyfoley@gmail.com",
@@ -146,6 +155,9 @@ module.exports = {
           email: "lucymccourt@gmail.com",
           username: "lucymccourt",
           hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637430833/Countable/Screen_Shot_2021-11-20_at_12.53.40_PM_bnzhel.png",
+          bio: "Avid Runner. Currently based in 📍 Nedlands, Perth",
         },
         {
           email: "michaelglynn@gmail.com",

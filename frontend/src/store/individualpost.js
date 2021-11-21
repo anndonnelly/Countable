@@ -79,7 +79,6 @@ const individualPostReducer = (state = initialState, action) => {
       newState[action.post.id] = action.post;
       return newState;
     case EDIT_COMMENT:
-    
           for (let comment in newState.Comments) {
             if (newState.Comments[comment].id === action.comment.id) {
               newState.Comments[comment] = action.comment;

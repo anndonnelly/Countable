@@ -13,7 +13,7 @@ function ProfilePage() {
   const postLists = Object.values(posts);
 
   // const [selectedUser, setselectedUser] = useState({});
-  console.log(postLists);
+  //   console.log(postLists);
 
   // postLists.filter(post = post.User.id === )
 
@@ -21,22 +21,12 @@ function ProfilePage() {
     dispatch(getAllUserPostsThunk(id));
   }, [dispatch]);
 
-  /*
-  {
-  "id": 4,
-  "username": "pdonnelly",
-  "avatar": "https://res.cloudinary.com/dis83syog/image/upload/v1637338120/Countable/IMG-5981_knrrek.jpg",
-  "bio": null
-}*/
-
-  //   console.log(postLists[0].User);
-  //   console.log(postLists[0].User);
   return (
     // <>
     <div className="profile_page">
       <div className="user_info_wrapper">
         <div className="avatar_wrapper">
-          <img src={postLists[0]?.User?.avatar} />
+          <img src={postLists[0]?.User?.avatar} alt=""/>
         </div>
         <div className="user_data_wrapper">
           <div className="username">
@@ -52,7 +42,7 @@ function ProfilePage() {
         {postLists.map((post) => (
           <div key={post.id} className="post_image_wrapper">
             <div className="post_image_wrapper_inner"></div>
-            <img className="postImage" src={post.imageUrl} alt="" />
+            <img className="postImageProfilePage" src={post.imageUrl} alt="" />
           </div>
         ))}
       </div>
