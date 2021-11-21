@@ -46,7 +46,7 @@ function CreateCommentForm({post}) {
             onChange={(e) => setComment(e.target.value)}
           />
         </span>
-        <span className="createEventButton">
+        <span className="createCommentButton">
           <button id="postCommentBtn" type="submit">
             Post
           </button>

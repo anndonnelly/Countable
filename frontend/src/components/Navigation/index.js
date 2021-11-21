@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import CreatePostModal from "../CountablePosts/CreatePostModal";
@@ -68,14 +68,15 @@ function Navigation({ isLoaded }) {
                 {results?.length > 0 && input.length > 0 ? (
                   Object.values(results).map((res) => (
                     <div key={res.id} className="search-card">
-                      <div
+                      <Link
+                        to={`/users/${res.id}`}
                         className="search-name"
                         onClick={() => {
                           reset(res.id);
                         }}
                       >
                         {res.username}
-                      </div>
+                      </Link>
                     </div>
                   ))
                 ) : (
@@ -85,11 +86,32 @@ function Navigation({ isLoaded }) {
             </div>
           </div>
           <div className="actionButtons">
+            <NavLink to="/">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                height="1em"
+                width="1em"
+                style={{ transform: "rotate(360deg)" }}
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
+            </NavLink>
             <div>
               <CreatePostModal />
             </div>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to={`/users/${sessionUser.id}`}>My Profile</NavLink>
+
+            <NavLink to={`/users/${sessionUser.id}`}>
+              <i class="far fa-user-circle"></i>
+            </NavLink>
             <ProfileButton user={sessionUser} />
           </div>
         </div>

@@ -5,6 +5,7 @@ import { getAllUserPostsThunk } from "../../store/userPosts";
 import { loadOnePost } from "../../store/individualpost";
 import { setCurrentModal, showModal } from "../../store/modal";
 import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
+import { loadOneUser } from "../../store/individualUser";
 import "./ProfilePage.css";
 
 function ProfilePage() {
@@ -12,9 +13,12 @@ function ProfilePage() {
   const { id } = useParams();
 
   const posts = useSelector((state) => state.userPosts);
+  const user = useSelector((state)=>state.individualUser)
+  console.log("USER", user)
   const postLists = Object.values(posts);
 
   useEffect(() => {
+      dispatch(loadOneUser(id));
     dispatch(getAllUserPostsThunk(id));
   }, [dispatch, id]);
 
@@ -27,22 +31,20 @@ function ProfilePage() {
   };
 
   return (
-
     <div className="profile_page">
       <div className="user_info_wrapper">
         <div className="avatar_wrapper">
-          <img src={postLists[0]?.User?.avatar} alt="" />
+          <img src={user[0]?.avatar} alt="" />
         </div>
         <div className="user_data_wrapper">
           <div className="username">
-            <span>{postLists[0]?.User.username}</span>
+            <span>{user[0]?.username}</span>
           </div>
           <div className="bio">
             <span>{postLists[0]?.User.bio}</span>
           </div>
         </div>
       </div>
-
       <div className="user_posts_wrapper">
         {postLists.map((post) => (
           <div key={post.id} className="post_image_wrapper">
@@ -51,13 +53,12 @@ function ProfilePage() {
               className="postImageProfilePage"
               src={post.imageUrl}
               alt=""
-              onClick={()=>handleSubmit(post.id)}
+              onClick={() => handleSubmit(post.id)}
             />
           </div>
         ))}
       </div>
     </div>
-
   );
 }
 

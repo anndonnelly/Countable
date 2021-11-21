@@ -73,10 +73,10 @@ function CreatePostForm({ setShowPostModal }) {
         <form onSubmit={handleSubmit}>
           <ul className="errors">
             {/* {valErrors.length > 0 */}
-              {valErrors.map((valError) => (
+            {valErrors.map((valError) => (
               <li key={valError}>{valError}</li>
-              ))}
-              {/* : null} */}
+            ))}
+            {/* : null} */}
           </ul>
           {/* <div className="fieldDiv">
             <label>Photo</label>
@@ -91,11 +91,11 @@ function CreatePostForm({ setShowPostModal }) {
           <div>
             <label htmlFor="image">Image</label>
             <input
-            //   value={imageUrl}
+              //   value={imageUrl}
               type="file"
               name="imageUrl"
-            //   multiple
-            //   required
+              //   multiple
+              //   required
               onChange={updateFile}
             ></input>
           </div>
@@ -107,7 +107,7 @@ function CreatePostForm({ setShowPostModal }) {
               onChange={(e) => setCaption(e.target.value)}
             />
           </div>
-          <div className="createEventButton">
+          <div className="createCommentButton">
             <button disabled={valErrors.length > 0} type="submit">
               Post
             </button>

@@ -7,6 +7,7 @@ import commentsReducer from "./comments";
 import userPostsReducer from "./userPosts";
 import search from "./search";
 import modal from "./modal";
+import individualUserReducer from "./individualUser";
 
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   comments: commentsReducer,
   userPosts: userPostsReducer,
   search,
-  modal
+  modal,
+  individualUser: individualUserReducer,
 });
 
 let enhancer;

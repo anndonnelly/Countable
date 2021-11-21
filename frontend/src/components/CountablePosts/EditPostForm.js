@@ -82,7 +82,7 @@ const EditPostForm = ({ setIsEditing }) => {
                 onChange={(e) => setEditCaption(e.target.value)}
               />
             </div>
-            <div className="createEventButton">
+            <div className="createCommentButton">
               <button type="submit">Update Post</button>
             </div>
           </form>
