@@ -14,7 +14,7 @@ const EditCommentForm = ({ comment }) => {
   const post = useSelector((state) => state.individualPost);
 //   const myComment = useSelector((state) => state.comments)
   
-
+console.log("SHOW", show)
   const updateSetShow = (e) => {
     show ? setShow(false) : setShow(true);
     setIsClicked(true)
@@ -45,7 +45,7 @@ const EditCommentForm = ({ comment }) => {
       <button
         className={`editButton ${show ? null : "hidden"}`}
         onClick={updateSetShow}
-        disabled={isClicked}
+        // disabled={isClicked}
       >
         EDIT
       </button>
@@ -60,6 +60,7 @@ const EditCommentForm = ({ comment }) => {
             value={editComment}
             onChange={updateDetails}
             placeholder="Edit Caption"
+            className={`editButton ${show ? "hidden" : null}`}
           ></textarea>
           <button
             onClick={handleSubmit}
@@ -68,7 +69,7 @@ const EditCommentForm = ({ comment }) => {
             Update Comment
           </button>
           <button
-            onClick={()=> setIsClicked(false)}
+            onClick={updateSetShow}
             className={`editButton ${show ? "hidden" : null}`}
           >
             Cancel

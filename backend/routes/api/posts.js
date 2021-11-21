@@ -2,6 +2,8 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const router = express.Router();
 const {Post, User, Comment} = require("../../db/models")
+const { singleMulterUpload } = require("../../awsS3.js");
+const { singlePublicFileUpload } = require("../../awsS3.js");
 
 router.get(
   "/",
@@ -63,13 +65,32 @@ router.get(
   })
 );
 
+// router.post(
+//   "/",
+//   asyncHandler(async(req, res) => {
+//     const post = await Post.create(req.body);
+//     return res.json(post);
+//   })
+// );
+
 router.post(
   "/",
-  asyncHandler(async(req, res) => {
-    const post = await Post.create(req.body);
-    return res.json(post);
+  singleMulterUpload("imageUrl"),
+//   validateSignup,
+  asyncHandler(async (req, res) => {
+    const { caption, userId } = req.body;
+    const imageUrl = await singlePublicFileUpload(req.file);
+    const post = await Post.create({
+      caption,
+      imageUrl,
+      userId,
+    });
+    return res.json({
+      post,
+    });
   })
 );
+
 
 router.put(
   "/:id",

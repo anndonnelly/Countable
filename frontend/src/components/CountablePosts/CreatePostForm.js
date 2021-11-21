@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createPostThunk } from "../../store/posts";
 import { loadOnePost } from "../../store/individualpost";
+import { getAllPostsThunk } from "../../store/posts";
 
 
 function CreatePostForm({ setShowPostModal }) {
@@ -16,12 +17,12 @@ function CreatePostForm({ setShowPostModal }) {
   const [valErrors, setValErrors] = useState([]);
 
 
-   function isValidURL(string) {
-     let res = string.match(
-       /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
-     );
-     return res !== null;
-   }
+//    function isValidURL(string) {
+//      let res = string.match(
+//        /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+//      );
+//      return res !== null;
+//    }
 
    const validatePost = () => {
      const errors = [];
@@ -32,9 +33,9 @@ function CreatePostForm({ setShowPostModal }) {
        errors.push("Please provide a caption for your post");
      }
 
-     if (!isValidURL(imageUrl)) {
-       errors.push("Please provide a valid URL");
-     }
+    //  if (!isValidURL(imageUrl)) {
+    //    errors.push("Please provide a valid URL");
+    //  }
      setValErrors(errors);
      return errors;
    };
@@ -51,14 +52,18 @@ function CreatePostForm({ setShowPostModal }) {
 
     let createdPost = await dispatch(createPostThunk(payload))
     
-
     if (createdPost) {
-        dispatch(loadOnePost(createdPost.id));
+        dispatch(getAllPostsThunk());
+        // dispatch(loadOnePost(createdPost.id));
         setShowPostModal(false);
         history.push(`/posts`);
     }
     }
   };
+    const updateFile = (e) => {
+      const file = e.target.files[0];
+      if (file) setImageUrl(file);
+    };
 
   return (
     <div className="createEventModal">
@@ -87,12 +92,12 @@ function CreatePostForm({ setShowPostModal }) {
           <div>
             <label htmlFor="image">Image</label>
             <input
-              value={imageUrl}
-              type="url"
-              name="image"
-              multiple
+            //   value={imageUrl}
+              type="file"
+              name="imageUrl"
+            //   multiple
             //   required
-              onChange={(e) => setImageUrl(e.target.value)}
+              onChange={updateFile}
             ></input>
           </div>
           <div className="fieldDiv">
