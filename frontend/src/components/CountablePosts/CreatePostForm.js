@@ -2,7 +2,6 @@ import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createPostThunk } from "../../store/posts";
-import { loadOnePost } from "../../store/individualpost";
 import { getAllPostsThunk } from "../../store/posts";
 
 
@@ -13,7 +12,7 @@ function CreatePostForm({ setShowPostModal }) {
   const ownerId = useSelector((state) => state.session.user.id);
   const [imageUrl, setImageUrl] = useState("");
   const [caption, setCaption] = useState("");
-  const posts = useSelector((state) => state.posts)
+//   const posts = useSelector((state) => state.posts)
   const [valErrors, setValErrors] = useState([]);
 
 

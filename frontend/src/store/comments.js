@@ -59,9 +59,6 @@ export const createCommentThunk = (payload) => async (dispatch) => {
 
 // export const editCommentThunk = (payload) => async (dispatch) => {
 //   const { id } = payload;
-// //   console.log("\n\n\n")
-// //   console.log("PAYLOAD", payload)
-// //   console.log("\n\n\n");
 //   const res = await csrfFetch(`/api/comments/${id}`, {
 //     method: "PUT",
 //     headers: {
@@ -69,7 +66,6 @@ export const createCommentThunk = (payload) => async (dispatch) => {
 //     },
 //     body: JSON.stringify(payload),
 //   });
-//     console.log("RES", res)
 //   if (res.ok) {
 //     let editCommennt = await res.json();
 //     dispatch(editComment(editCommennt));

@@ -12,11 +12,11 @@ import { useSelector } from "react-redux";
 function EditPostModal({ post }) {
   const dispatch = useDispatch();
   const [postDetailModal, setPostDetailModal] = useState(false);
+  const [comments, setComments] = useState({});
   const numberOfComments = post?.Comments?.length;
 
-  const allComments = useSelector((state) => state.individualPost.Comments);
-//   console.log("ALL COMMENTS", allComments);
-  const [comments, setComments] = useState({});
+//   const allComments = useSelector((state) => state.individualPost.Comments);
+  
 
   // IFFE
   useEffect(() => {

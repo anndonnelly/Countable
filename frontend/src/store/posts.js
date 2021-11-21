@@ -14,12 +14,12 @@ const getAllPostsAction = (posts) => {
   };
 };
 
-const getOnePostAction = (post) => {
-  return {
-    type: GET_ONE_POST,
-    post,
-  };
-};
+// const getOnePostAction = (post) => {
+//   return {
+//     type: GET_ONE_POST,
+//     post,
+//   };
+// };
 
 // const getUsersPostsAction = (post) => {
 //     return {
@@ -118,9 +118,7 @@ export const createPostThunk = (post) => async (dispatch) => {
 
 export const editCommentThunk = (payload) => async (dispatch) => {
   const { id } = payload;
-  //   console.log("\n\n\n")
-  //   console.log("PAYLOAD", payload)
-  //   console.log("\n\n\n");
+ 
   const res = await csrfFetch(`/api/comments/${id}`, {
     method: "PATCH",
     headers: {

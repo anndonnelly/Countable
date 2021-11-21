@@ -1,9 +1,7 @@
 import { useState, } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editOnePost } from "../../store/individualpost";
-import { loadOnePost } from "../../store/individualpost";
 import { hideModal } from "../../store/modal";
-import { getAllCommentsThunk } from "../../store/comments";
 import { getAllPostsThunk } from "../../store/posts";
 
 const EditPostForm = ({ setIsEditing }) => {

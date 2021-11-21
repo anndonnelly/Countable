@@ -117,6 +117,7 @@
   object-fit: fill;
   height: 100%;
   width: auto;
+  cursor: pointer;
   /* opacity: 50%; */
   /* border-radius: 5px; */
 }

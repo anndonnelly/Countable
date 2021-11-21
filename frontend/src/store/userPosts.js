@@ -2,7 +2,6 @@ import { csrfFetch } from "./csrf";
 //CONSTANTS
 const GET_USERS_POSTS = "userPosts/GET_USERS_POSTS";
 
-
 //ACTION CREATORS
 
 const getUsersPostsAction = (posts) => {
@@ -11,8 +10,6 @@ const getUsersPostsAction = (posts) => {
     posts,
   };
 };
-
-
 
 //THUNKS
 // Profile Page
@@ -29,7 +26,7 @@ export const getAllUserPostsThunk = (id) => async (dispatch) => {
 //REDUCER
 const initialState = {};
 export default function userPostsReducer(state = initialState, action) {
-  let newState = { ...state };
+//   let newState = { ...state };
   switch (action.type) {
     case GET_USERS_POSTS:
       const allUserPosts = {};

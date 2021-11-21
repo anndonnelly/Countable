@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
 import { getAllPostsThunk } from "../../store/posts";
@@ -19,9 +19,9 @@ function CreateCommentFormModal() {
   const ownerId = useSelector((state) => state.session.user.id);
   const [edit, setEdit] = useState(false);
   const [comment, setComment] = useState("");
-  const [valErrors, setValErrors] = useState([]);
+//   const [valErrors, setValErrors] = useState([]);
   const post = useSelector((state) => state.individualPost);
-  const [isEditing, setIsEditing] = useState(false);
+//   const [isEditing, setIsEditing] = useState(false);
   //   const postId = posts[posts.id]?.Comments
 
   const deletePost = async () => {

@@ -3,8 +3,6 @@ import { getAllPostsThunk } from "../../store/posts";
 import { useDispatch, useSelector } from "react-redux";
 import PostCard from "../CountablePosts/PostCard";
 import "./Feed.css";
-// import { getAllCommentsThunk } from "../../store/comments";
-
 
 function Feed() {
   const dispatch = useDispatch();

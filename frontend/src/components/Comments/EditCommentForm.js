@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadOnePost } from "../../store/individualpost";
 import "./EditCommentForm.css";
@@ -8,11 +8,9 @@ import { editCommentThunk } from "../../store/individualpost";
 const EditCommentForm = ({ comment }) => {
   const dispatch = useDispatch();
   const [editComment, setEditComment] = useState(comment.comment);
-//   const userId = useSelector((state) => state.session?.user?.id);
   const [show, setShow] = useState(true);
   const [isClicked, setIsClicked] = useState(false)
   const post = useSelector((state) => state.individualPost);
-//   const myComment = useSelector((state) => state.comments)
   
 console.log("SHOW", show)
   const updateSetShow = (e) => {
@@ -34,9 +32,7 @@ console.log("SHOW", show)
     };
 
     await dispatch(editCommentThunk(payload));
-    // comment= payload
     dispatch(loadOnePost(post.id))
-    // dispatch(hideModal());
     updateSetShow();
   };
 
@@ -45,7 +41,6 @@ console.log("SHOW", show)
       <button
         className={`editButton ${show ? null : "hidden"}`}
         onClick={updateSetShow}
-        // disabled={isClicked}
       >
         EDIT
       </button>

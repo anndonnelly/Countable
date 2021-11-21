@@ -10,18 +10,13 @@ import "./ProfilePage.css";
 function ProfilePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
-//   const ownerId = useSelector((state) => state.session.user.id);
+
   const posts = useSelector((state) => state.userPosts);
   const postLists = Object.values(posts);
 
-  // const [selectedUser, setselectedUser] = useState({});
-  //   console.log(postLists);
-
-  // postLists.filter(post = post.User.id === )
-
   useEffect(() => {
     dispatch(getAllUserPostsThunk(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
 
 
 
@@ -32,7 +27,7 @@ function ProfilePage() {
   };
 
   return (
-    // <>
+
     <div className="profile_page">
       <div className="user_info_wrapper">
         <div className="avatar_wrapper">
@@ -62,7 +57,7 @@ function ProfilePage() {
         ))}
       </div>
     </div>
-    // </>
+
   );
 }
 

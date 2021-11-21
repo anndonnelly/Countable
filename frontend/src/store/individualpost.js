@@ -52,9 +52,7 @@ export const editOnePost = (payload, id) => async (dispatch) => {
 
 export const editCommentThunk = (payload) => async (dispatch) => {
   const { id } = payload;
-  //   console.log("\n\n\n")
-  //   console.log("PAYLOAD", payload)
-  //   console.log("\n\n\n");
+
   const res = await csrfFetch(`/api/comments/${id}`, {
     method: "PUT",
     headers: {

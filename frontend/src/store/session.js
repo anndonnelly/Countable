@@ -62,12 +62,6 @@ export const createUser = (user) => async (dispatch) => {
   formData.append("email", email);
   formData.append("password", password);
 
-//   for multiple files
-//   if (images && images.length !== 0) {
-//     for (var i = 0; i < images.length; i++) {
-//       formData.append("images", images[i]);
-//     }
-//   }
 console.log("PAYLOAD",user)
   // for single file
   if (avatar) formData.append("avatar", avatar);
