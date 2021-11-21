@@ -62,7 +62,7 @@ export const createUser = (user) => async (dispatch) => {
   formData.append("email", email);
   formData.append("password", password);
 
-  // for multiple files
+//   for multiple files
 //   if (images && images.length !== 0) {
 //     for (var i = 0; i < images.length; i++) {
 //       formData.append("images", images[i]);
@@ -97,12 +97,12 @@ const initialState = { user: null };
 const sessionReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
-    case SET_USER:
-      newState = Object.assign({}, state);
-      newState.user = action.payload;
-      return newState;
     // case SET_USER:
-    //   return { ...state, user: action.payload };
+    //   newState = Object.assign({}, state);
+    //   newState.user = action.payload;
+    //   return newState;
+    case SET_USER:
+      return { ...state, user: action.payload };
     case REMOVE_USER:
       newState = Object.assign({}, state);
       newState.user = null;
