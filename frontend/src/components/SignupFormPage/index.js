@@ -3,16 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
+// import  createUser  from "../../store/session";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
+  const [avatar, setAvatar] = useState("")
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-   const [credential, setCredential] = useState("");
+  const [credential, setCredential] = useState("");
 
 
   if (sessionUser) return <Redirect to="/posts" />;
@@ -22,7 +24,13 @@ function SignupFormPage() {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
-        sessionActions.signup({ email, username, password })
+        sessionActions
+          .createUser({ email, username, password, avatar }).then(() => {
+            setUsername("");
+            setEmail("");
+            setPassword("");
+            setAvatar(null);
+          })
       ).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -32,22 +40,25 @@ function SignupFormPage() {
       "Confirm Password field must be the same as the Password field",
     ]);
   };
-
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setAvatar(file);
+  };
   const demoUser = async () => {
     return dispatch(
       sessionActions.login({ credential: "Demo-lition", password: "password" })
     );
   };
 
-   const demoUserTwo = async (e) => {
-     e.preventDefault();
-     setCredential("DemoTwo");
-     setPassword("password");
-     const demo = dispatch(
-       sessionActions.login({ credential: "DemoTwo", password: "password" })
-     );
-     return demo;
-   };
+//    const demoUserTwo = async (e) => {
+//      e.preventDefault();
+//      setCredential("DemoTwo");
+//      setPassword("password");
+//      const demo = dispatch(
+//        sessionActions.login({ credential: "DemoTwo", password: "password" })
+//      );
+//      return demo;
+//    };
 
   return (
     <div className="formSignUpPage">
@@ -82,6 +93,10 @@ function SignupFormPage() {
               onChange={(e) => setUsername(e.target.value)}
               required
             />
+            <label>
+              Profile Picture:
+              <input type="file" onChange={updateFile} />
+            </label>
             <input
               className="signUpFormInput"
               type="password"
@@ -108,6 +123,18 @@ function SignupFormPage() {
               Demo User 2
             </button> */}
           </form>
+          {/* <div>
+            {sessionUser && (
+              <div>
+                <h1>{sessionUser.username}</h1>
+                <img
+                  style={{ width: "150px" }}
+                  src={sessionUser.avatar}
+                  alt="profile"
+                />
+              </div>
+            )}
+          </div> */}
         </div>
         <div className="logInForm">
           <p>

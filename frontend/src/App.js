@@ -8,10 +8,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { restoreCSRF } from "./store/csrf";
 import Feed from "./components/Feed";
-import PostCard from "./components/CountablePosts/PostCard";
-import SinglePost from "./components/CountablePosts/SinglePost";
 import ProfilePage from "./components/ProfilePage";
-import ProfileButton from "./components/Navigation/ProfileButton";
 import { ProtectedRoute } from "./components/RouteUtil";
 import Modal from "./components/Modal";
 

@@ -144,6 +144,34 @@ module.exports = {
             "Watch out on the roads!  A 10 year old has gotten control of a small steam roller and could be headed your way!",
           userId: 30,
         },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637430361/Countable/538319cf-3374-46fc-87eb-b93e0e471a0b_skdypc.jpg",
+          caption:
+            "I am an avid runner and have recently moved to Nedlands, Perth, Australia with high hopes for new running routes. I am finding running around Nedlands - a suburban area - difficult to get the hang of despite it being surrounded by green areas and very close to the Swan River. There is often a footpath only on one side of the street and the area is poorly lit at night time. What I loved about running is the fact that you can do it from your front door. It would be great if there were signposts at the corner of every other street with distances written to the river, university and beach for example. That way, I would be able to find my way to lovely running routes without looking at maps on my phone while I run - which is in itself quite dangerous! Just a thought 🏃🏼‍♀️",
+          userId: 23,
+        },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637431385/Countable/ae198084-84ed-4c01-a402-5371b65d5caa_igzobj.jpg",
+          caption:
+            "“Dublin is one of the most dangerous cities in Europe for cyclist 🚴‍♀️ I cycle down this road everyday and often have to swerve out of the way to avoid traffic, please put in designated cycle lanes before someone gets hurt”",
+          userId: 7,
+        },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637433104/Countable/unnamed_va1ymq.jpg",
+          caption:
+            "This is my route to work. Road works scheduled at peak rush hour traffic times are causing massive delays and increases in congestion. Multiple seperate road works on the same road should not be scheduled for the same time to avoid this issue. This would also be alieviated by scheduling road works for off peak times.",
+          userId: 8,
+        },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637444393/Countable/20211120_153004_wdu3pj.jpg",
+          caption:
+            "Old construction project materials left here for months. I hope this is taken care of accordingly as it is unsighlty and bad for the environment",
+          userId: 21,
+        },
       ],
       {}
     );

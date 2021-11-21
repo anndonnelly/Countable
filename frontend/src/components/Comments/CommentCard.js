@@ -28,10 +28,9 @@ function CommentCard({ post }) {
     }, []);
 
   const handleSubmit = async () => {
-    dispatch(loadOnePost(post.id));
-    
-    dispatch(setCurrentModal(CreateCommentFormModal));
-    dispatch(showModal())
+      await dispatch(loadOnePost(post.id));
+      await dispatch(setCurrentModal(CreateCommentFormModal));
+      await dispatch(showModal())
   };
 
   const anyComments = () => {
@@ -45,7 +44,6 @@ function CommentCard({ post }) {
 
   return (
     <>
-      {" "}
       <div className="anyComments" onClick={handleSubmit}>
         {anyComments()}
       </div>
