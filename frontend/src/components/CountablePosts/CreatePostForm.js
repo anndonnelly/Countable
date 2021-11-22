@@ -27,7 +27,7 @@ function CreatePostForm({ setShowPostModal }) {
     if (!imageUrl) {
       errors.push("Please provide an image for your post.");
     }
-    if (!caption) {
+    if (caption.length === 0) {
       errors.push("Please provide a caption for your post");
     }
 
@@ -110,7 +110,7 @@ function CreatePostForm({ setShowPostModal }) {
         </div>
         <button
           className="createPostButton"
-          disabled={valErrors.length > 0}
+        //   disabled={valErrors.length > 0}
           type="submit"
         >
           Post

@@ -152,30 +152,31 @@ function CreateCommentFormModal() {
                     {/* <div id={comment.id} onClick={editComment}>
                       EDIT
                     </div> */}
-                    <div className="buttons-wrapper">
-                      <EditCommentForm comment={comment} />
+                    {comment.userId === ownerId ? (
+                      <div className="buttons-wrapper">
+                        <EditCommentForm comment={comment} />
 
-                      {/* PUT IT IN THE BIN */}
-                      <svg
-                        className="deleteComment"
-                        id={comment.id}
-                        onClick={deleteComment}
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        height="1em"
-                        width="1em"
-                        tyle={{ transform: "rotate(360deg)" }}
-                        fill="currentColor"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </div>
-
+                        {/* PUT IT IN THE BIN */}
+                        <svg
+                          className="deleteComment"
+                          id={comment.id}
+                          onClick={deleteComment}
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-5 w-5"
+                          viewBox="0 0 20 20"
+                          height="1em"
+                          width="1em"
+                          style={{ transform: "rotate(360deg)" }}
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    ) : null}
                     {/* <img className="editIcon" scr="https://res.cloudinary.com/dis83syog/image/upload/v1637344420/Countable/download_dhs0ho.png" alt=""></img> */}
                   </div>
                 </div>
@@ -190,7 +191,7 @@ function CreateCommentFormModal() {
                 id="addCommentBox"
                 placeholder="Add a comment..."
                 type="text"
-                required
+                require
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
               />
