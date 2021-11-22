@@ -86,18 +86,18 @@ function CreatePostForm({ setShowPostModal }) {
               onChange={(e) => setImageUrl(e.target.value)}
             ></input>
           </div> */}
-        <label className="addPostImageLabel" htmlFor="image">
+        <label className="addPostImageLabel">
           Select from computer
+          <input
+            className="addPostImageInput"
+            // value={imageUrl}
+            type="file"
+            name="imageUrl"
+            //   multiple
+            //   required
+            onChange={updateFile}
+          ></input>
         </label>
-        <input
-          className="addPostImageInput"
-          //   value={imageUrl}
-          type="file"
-          name="imageUrl"
-          //   multiple
-          //   required
-          onChange={updateFile}
-        ></input>
         <div className="fieldDiv">
           <textarea
             placeholder="Caption"

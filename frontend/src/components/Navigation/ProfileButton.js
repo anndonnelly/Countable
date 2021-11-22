@@ -36,7 +36,6 @@ function ProfileButton({ user }) {
     <>
       {/* <i className="fas fa-user-circle" /> */}
       <i className="fas fa-sign-out-alt logOutButton" onClick={openMenu}></i>
-
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>
