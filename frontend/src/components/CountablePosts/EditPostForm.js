@@ -43,7 +43,7 @@ const EditPostForm = ({ setIsEditing }) => {
   return (
     <div className="createPostModal">
       <div className="modalHeader">
-        <h2 className="createPostHeader">testUpdate</h2>
+        <h2 className="createPostHeader">Update</h2>
       </div>
       <div>
         <form className="createPostContainer" onSubmit={handleEdit}>
