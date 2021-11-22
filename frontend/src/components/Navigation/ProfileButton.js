@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -28,15 +28,14 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    history.push("/")
+    history.push("/");
   };
 
   return (
     <>
-      <button onClick={openMenu}>
-        {/* <i className="fas fa-user-circle" /> */}
-        <i class="fas fa-sign-out-alt"></i>
-      </button>
+      {/* <i className="fas fa-user-circle" /> */}
+      <i className="fas fa-sign-out-alt logOutButton" onClick={openMenu}></i>
+
       {showMenu && (
         <ul className="profile-dropdown">
           <li>{user.username}</li>

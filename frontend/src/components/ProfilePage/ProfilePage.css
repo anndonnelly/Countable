@@ -1,17 +1,24 @@
-*{
-    /* background-color: rgb(250 250 250); */
+* {
+  /* background-color: rgb(250 250 250); */
 }
 .profile_page {
-  /* background-color: orange; */
-  display: flex;
-  flex-direction: column;
+  background-color: rgb(250 250 250);
+  /* display: flex;
+  flex-direction: column; */
   /* padding-left: 100px; */
   /* padding-right: 100px; */
-  width: 919px;
-  margin: 0 auto;
-   
+  width: 100%;
+  height: calc(100% - 64px);
+  /* margin: 0 auto; */
+  
 }
 
+.profilePageWrapper {
+  margin: 0 auto;
+  display: flex;
+  width: 919px;
+  flex-direction: column;
+}
 .profile_page .user_info_wrapper {
   flex: 0 0 150px;
   /* background-color: green; */

@@ -124,7 +124,7 @@ const SignupFormPage = () => {
                 placeholder=""
                 name="avatar"
                 type="file"
-                // required
+                required
                 onChange={updateFile}
               />
             </label>

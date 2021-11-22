@@ -3,6 +3,7 @@ import { Modal } from "../../context/Modal";
 import CreatePostForm from "./CreatePostForm";
 import { useSelector } from "react-redux";
 // import { setCurrentModal } from "../../store/modal";
+import "./CreatePostModal.css"
 
 function CreatePostModal() {
   const [showPostModal, setShowPostModal] = useState(false);
@@ -15,12 +16,10 @@ function CreatePostModal() {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <button
-        className="create-post-button"
+      <i
+        class="far fa-plus-square create-post-button"
         onClick={() => setShowPostModal(true)}
-      >
-        <i class="far fa-plus-square"></i>
-      </button>
+      ></i>
     );
   }
 

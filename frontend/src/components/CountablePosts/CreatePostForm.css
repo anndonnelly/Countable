@@ -1,0 +1,72 @@
+.createPostModal {
+  /* padding: 16px; */
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
+}
+
+.modalHeader {
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+  padding: 12px;
+}
+
+.createPostButton {
+  background-color: white;
+  color: #0095f6;
+  padding: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  border: 2px solid #0095f6;
+  border-radius: 4px;
+  
+}
+
+.createPostButton:hover{
+    background-color: #eeeeee;
+}
+
+
+.createPostHeader {
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}
+
+.createPostContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0;
+}
+
+.addPostImageLabel {
+  cursor: pointer;
+  display: block;
+  padding: 8px 12px;
+  background-color: #0095f6;
+  border-radius: 3px;
+  color: white;
+  margin-bottom: 24px;
+  font-weight: 600;
+  width: 200px;
+}
+
+.addPostImageInput {
+  display: none;
+  margin-bottom: 16px;
+
+}
+
+.captionOnCreatePost{
+    border-radius: 3px;
+    padding: 8px;
+    border: 1px solid lightgray;
+    font-size: 14px;
+    margin-bottom: 24px;
+    width: 250px;
+    resize: vertical;
+
+    
+}

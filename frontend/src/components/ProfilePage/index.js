@@ -13,16 +13,14 @@ function ProfilePage() {
   const { id } = useParams();
 
   const posts = useSelector((state) => state.userPosts);
-  const user = useSelector((state)=>state.individualUser)
-  console.log("USER", user)
+  const user = useSelector((state) => state.individualUser);
+  console.log("USER", user);
   const postLists = Object.values(posts);
 
   useEffect(() => {
-      dispatch(loadOneUser(id));
+    dispatch(loadOneUser(id));
     dispatch(getAllUserPostsThunk(id));
   }, [dispatch, id]);
-
-
 
   const handleSubmit = async (id) => {
     await dispatch(loadOnePost(id));
@@ -32,31 +30,33 @@ function ProfilePage() {
 
   return (
     <div className="profile_page">
-      <div className="user_info_wrapper">
-        <div className="avatar_wrapper">
-          <img src={user[0]?.avatar} alt="" />
+      <div className="profilePageWrapper">
+        <div className="user_info_wrapper">
+          <div className="avatar_wrapper">
+            <img src={user[0]?.avatar} alt="" />
+          </div>
+          <div className="user_data_wrapper">
+            <div className="username">
+              <span>{user[0]?.username}</span>
+            </div>
+            <div className="bio">
+              <span>{postLists[0]?.User.bio}</span>
+            </div>
+          </div>
         </div>
-        <div className="user_data_wrapper">
-          <div className="username">
-            <span>{user[0]?.username}</span>
-          </div>
-          <div className="bio">
-            <span>{postLists[0]?.User.bio}</span>
-          </div>
+        <div className="user_posts_wrapper">
+          {postLists.map((post) => (
+            <div key={post.id} className="post_image_wrapper">
+              <div className="post_image_wrapper_inner"></div>
+              <img
+                className="postImageProfilePage"
+                src={post.imageUrl}
+                alt=""
+                onClick={() => handleSubmit(post.id)}
+              />
+            </div>
+          ))}
         </div>
-      </div>
-      <div className="user_posts_wrapper">
-        {postLists.map((post) => (
-          <div key={post.id} className="post_image_wrapper">
-            <div className="post_image_wrapper_inner"></div>
-            <img
-              className="postImageProfilePage"
-              src={post.imageUrl}
-              alt=""
-              onClick={() => handleSubmit(post.id)}
-            />
-          </div>
-        ))}
       </div>
     </div>
   );

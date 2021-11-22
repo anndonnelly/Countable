@@ -102,3 +102,41 @@
   text-align: center;
   color: #8e8e8e;
 }
+
+
+.logOutButton{
+    height: 20px;
+    width: 20px;
+    color: grey;
+}
+
+.logOutButton::before{
+    height: 20px;
+    width: 20px;
+    
+}
+
+.profilePageNav{
+    height: 20px;
+    width: 20px;
+    color: grey;
+    margin-right: 16px;
+}
+
+.profilePageNav::before{
+    height: 20px;
+    width: 20px;
+    
+}
+
+.homeNav{
+    height: 20px;
+    width: 20px;
+    color: grey;
+    margin-right: 16px;
+    
+}
+
+.homeNav{
+    
+}
