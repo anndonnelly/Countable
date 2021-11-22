@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createUser } from "../../store/session";
+// import { createUser } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import "./SignupForm.css";
@@ -12,8 +12,8 @@ const SignupFormPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const sessionUser = useSelector((state)=> state.session.user)
-  //   const [confirmPassword, setConfirmPassword] = useState("");
-  //   const [credential, setCredential] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+    // const [credential, setCredential] = useState("");
   const [avatar, setAvatar] = useState(null);
   // for multuple file upload
   //   const [images, setImages] = useState([]);
@@ -24,24 +24,43 @@ const SignupFormPage = () => {
   if (user) return <Redirect to={`/users/${sessionUser.id}`} />;
     
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let newErrors = [];
-    dispatch(createUser({ username, email, password, avatar }))
-      .then(() => {
-        setUsername("");
-        setEmail("");
-        setPassword("");
-        setAvatar(null);
-      })
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          newErrors = data.errors;
-          setErrors(newErrors);
-        }
-      });
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     let newErrors = [];
+//     dispatch(createUser({ username, email, password, avatar }))
+//       .then(() => {
+//         setUsername("");
+//         setEmail("");
+//         setPassword("");
+//         setAvatar(null);
+//       })
+//       .catch(async (res) => {
+//         const data = await res.json();
+//         if (data && data.errors) {
+//           newErrors = data.errors;
+//           setErrors(newErrors);
+//         }
+//       });
+//   };
+
+
+
+     const handleSubmit = (e) => {
+       e.preventDefault();
+       if (password === confirmPassword) {
+         setErrors([]);
+         return dispatch(
+           sessionActions.createUser({ email, username, password, avatar })
+         ).catch(async (res) => {
+           const data = await res.json();
+           if (data && data.errors) setErrors(data.errors);
+         });
+       }
+       return setErrors([
+         "Confirm Password field must be the same as the Password field",
+       ]);
+     };
+
 
   const updateFile = (e) => {
     const file = e.target.files[0];
@@ -70,6 +89,8 @@ const SignupFormPage = () => {
   //      return demo;
   //    };
 
+
+ 
   return (
     <div className="formSignUpPage">
       <div className="mainSignUpPage">
@@ -81,8 +102,13 @@ const SignupFormPage = () => {
               alt=""
             ></img>
           </div>
-          {errors.length > 0 &&
-            errors.map((error) => <div key={error}>{error}</div>)}
+          { <ul>
+            {errors.map((error, idx) => (
+            <li className="textError" key={idx}>
+                {error}
+            </li>
+            ))}
+             </ul>}
           <form className="signUpFormOnLogin" onSubmit={handleSubmit}>
             <input
               className="signUpFormInput"
@@ -100,7 +126,6 @@ const SignupFormPage = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-
             <input
               className="signUpFormInput"
               required
@@ -109,15 +134,14 @@ const SignupFormPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {/* <input
+            <input
               className="signUpFormInput"
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-            /> */}
-
+            />
             <label className="addPic">
               Profile Picture
               <input
