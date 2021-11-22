@@ -3,6 +3,7 @@ import { createUser } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import "./SignupForm.css";
+import "../CountablePosts/CreatePostForm.css";
 import * as sessionActions from "../../store/session";
 
 
@@ -117,11 +118,11 @@ const SignupFormPage = () => {
               required
             /> */}
 
-            <label className="profilePictureSignUp">
-              Profile Picture:
+            <label className="addPic">
+              Profile Picture
               <input
-                className="signUpFormInput"
-                placeholder=""
+                className="addPostImageInput"
+                // placeholder=""
                 name="avatar"
                 type="file"
                 required

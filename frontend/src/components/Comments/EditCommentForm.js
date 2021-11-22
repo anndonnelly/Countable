@@ -36,12 +36,15 @@ const EditCommentForm = ({ comment }) => {
 
   return (
     <div>
-      <button
-        className={`editButton ${show ? null : "hidden"}`}
+      {/* <button */}
+
+      {/* > */}
+      <i
+        // class=""
+        className={`far fa-edit editButton ${show ? null : "hidden"}`}
         onClick={updateSetShow}
-      >
-        <i class="far fa-edit"></i>
-      </button>
+      ></i>
+      {/* </button> */}
 
       {isClicked && (
         <div>

@@ -66,11 +66,13 @@ module.exports = {
             "https://res.cloudinary.com/dis83syog/image/upload/v1637433506/Countable/Screen_Shot_2021-11-20_at_1.38.17_PM_f2geoq.png",
           bio: "Dog momma to Peggy and Molly. Not affiliated with Buttrition Ltd",
         },
-        // {
-        //   email: "roblynch@gmail.com",
-        //   username: "roblynch",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
+        {
+          email: "roblynch@gmail.com",
+          username: "roblynch",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
         {
           email: "anniemonaghan3@gmail.com",
           username: "anniemonaghan",
@@ -78,21 +80,27 @@ module.exports = {
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637339157/Countable/IMG-5986_xmphkj.jpg",
         },
-        // {
-        //   email: "Rachel.Fitzpatrick@ergogroup.ie",
-        //   username: "rachfitz",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
-        // {
-        //   email: "jenfitz@live.ie",
-        //   username: "jenfitz",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
-        // {
-        //   email: "jill.donnelly27@mail.dcu.ie",
-        //   username: "jilldonnelly",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
+        {
+          email: "Rachel.Fitzpatrick@ergogroup.ie",
+          username: "rachfitz",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
+        {
+          email: "jenfitz@live.ie",
+          username: "jenfitz",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
+        {
+          email: "jill.donnelly27@mail.dcu.ie",
+          username: "jilldonnelly",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
         {
           email: "juliewagner@gmail.com",
           username: "juliewagner",
@@ -100,16 +108,20 @@ module.exports = {
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637374015/Countable/unnamed_kaxigm.jpg",
         },
-        // {
-        //   email: "curtiscassell@gmail.com",
-        //   username: "curtiscassell",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
-        // {
-        //   email: "noahspencer@gmail.com",
-        //   username: "noahspencer",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
+        {
+          email: "curtiscassell@gmail.com",
+          username: "curtiscassell",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
+        {
+          email: "noahspencer@gmail.com",
+          username: "noahspencer",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
         {
           email: "parkershaw@gmail.com",
           username: "parkershaw",
@@ -143,14 +155,17 @@ module.exports = {
           email: "danpurcell@gmail.com",
           username: "dzanpurcell",
           hashedPassword: bcrypt.hashSync("password"),
-          avatar: "https://res.cloudinary.com/dis83syog/image/upload/v1637445100/Countable/Screen_Shot_2021-11-20_at_4.51.30_PM_uqxrox.png",
-            bio: "Dannotate - To leave confusing convoluted drawings on Zoom calls, esp. when no one asked for them"
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637445100/Countable/Screen_Shot_2021-11-20_at_4.51.30_PM_uqxrox.png",
+          bio: "Dannotate - To leave confusing convoluted drawings on Zoom calls, esp. when no one asked for them",
         },
-        // {
-        //   email: "allyfoley@gmail.com",
-        //   username: "allyfoley",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
+        {
+          email: "allyfoley@gmail.com",
+          username: "allyfoley",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
         {
           email: "lucymccourt@gmail.com",
           username: "lucymccourt",
@@ -159,11 +174,13 @@ module.exports = {
             "https://res.cloudinary.com/dis83syog/image/upload/v1637430833/Countable/Screen_Shot_2021-11-20_at_12.53.40_PM_bnzhel.png",
           bio: "Avid Runner. Currently based in 📍 Nedlands, Perth",
         },
-        // {
-        //   email: "michaelglynn@gmail.com",
-        //   username: "michaelglynn",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
+        {
+          email: "michaelglynn@gmail.com",
+          username: "michaelglynn",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
         {
           email: "megancaseydiviney@gmail.com",
           username: "megancaseydiviney",
@@ -171,11 +188,13 @@ module.exports = {
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637340283/Countable/7bca2c12-4e86-4e6e-bd14-ed92f14664db_okvnid.jpg",
         },
-        // {
-        //   email: "patrickstory@gmail.com",
-        //   username: "patrickstory",
-        //   hashedPassword: bcrypt.hashSync("password"),
-        // },
+        {
+          email: "patrickstory@gmail.com",
+          username: "patrickstory",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+        },
         {
           email: "maevedonnelly@gmail.com",
           username: "maevedonnelly",

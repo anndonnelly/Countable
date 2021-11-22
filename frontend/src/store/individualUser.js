@@ -11,6 +11,7 @@ const getOneUser = (user) => {
 };
 
 export const loadOneUser = (userId) => async (dispatch) => {
+  
   const res = await fetch(`/api/users/${userId}`);
   if (res.ok) {
     const oneUser = await res.json();

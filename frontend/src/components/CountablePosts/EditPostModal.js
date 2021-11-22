@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import { loadOnePost } from "../../store/individualpost";
 import { useDispatch } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
+import "../CountablePosts/CreatePostForm.css";
 import { useSelector } from "react-redux";
-
 
 function EditPostModal({ post }) {
   const dispatch = useDispatch();
@@ -15,8 +15,7 @@ function EditPostModal({ post }) {
   const [comments, setComments] = useState({});
   const numberOfComments = post?.Comments?.length;
 
-//   const allComments = useSelector((state) => state.individualPost.Comments);
-  
+  //   const allComments = useSelector((state) => state.individualPost.Comments);
 
   // IFFE
   useEffect(() => {

@@ -32,7 +32,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
       },
       createdAt: {
-    
         type: Sequelize.DATE,
       },
       updatedAt: {
