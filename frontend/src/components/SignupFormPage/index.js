@@ -64,6 +64,9 @@ const SignupFormPage = () => {
 
   const updateFile = (e) => {
     const file = e.target.files[0];
+    // if (!file)setAvatar(
+    //   "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg"
+    // );
     if (file) setAvatar(file);
   };
 
@@ -149,7 +152,7 @@ const SignupFormPage = () => {
                 // placeholder=""
                 name="avatar"
                 type="file"
-                required
+                // required
                 onChange={updateFile}
               />
             </label>

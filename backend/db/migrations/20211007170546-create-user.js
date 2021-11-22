@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
       },
       avatar: {
-        type: Sequelize.STRING,
+          type: Sequelize.STRING,
       },
       bio: {
         type: Sequelize.TEXT,
@@ -35,7 +35,6 @@ module.exports = {
         type: Sequelize.DATE,
       },
       updatedAt: {
-        
         type: Sequelize.DATE,
       },
     });

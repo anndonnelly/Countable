@@ -24,11 +24,11 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage("Password must be 6 characters or more."),
-  check("avatar")
-    .exists({ checkFalsy: true })
-    // .isImage()
-    .notEmpty()
-    .withMessage("Please provide a profile picture for your account"),
+//   check("avatar")
+//     .exists({ checkFalsy: true }),
+//     .isImage()
+//     .notEmpty()
+//     .withMessage("Please provide a profile picture for your account"),
   handleValidationErrors,
 ];
 
@@ -54,7 +54,7 @@ router.post(
   validateSignup,
   asyncHandler(async (req, res) => {
     const { email, password, username } = req.body;
-    const avatar = await singlePublicFileUpload(req.file);
+    const avatar = req.file ? await singlePublicFileUpload(req.file) : "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg"
     const user = await User.signup({
       username,
       email,
