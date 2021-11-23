@@ -11,7 +11,7 @@ router.get(
         where: {postId: id},
         // include :[{model:User}]
     });
-    console.log("TEST----->", comments)
+  
     return res.json(comments);
   })
 );

@@ -14,7 +14,7 @@ function ProfilePage() {
 
   const posts = useSelector((state) => state.userPosts);
   const user = useSelector((state) => state.individualUser);
-  console.log("USER", user);
+
   const postLists = Object.values(posts);
 
   useEffect(() => {

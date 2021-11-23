@@ -12,7 +12,7 @@ const getOneUser = (user) => {
 
 export const loadOneUser = (userId) => async (dispatch) => {
   
-  const res = await fetch(`/api/users/${userId}`);
+  const res = await csrfFetch(`/api/users/${userId}`);
   if (res.ok) {
     const oneUser = await res.json();
     dispatch(getOneUser(oneUser));
@@ -22,7 +22,7 @@ export const loadOneUser = (userId) => async (dispatch) => {
 
 const initialState = {};
 const individualUserReducer = (state = initialState, action) => {
-  const newState = { ...state };
+//   const newState = { ...state };
   switch (action.type) {
     case GET_ONE_USER: {
       return action.user;

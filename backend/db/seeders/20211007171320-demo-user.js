@@ -26,7 +26,7 @@ module.exports = {
           username: "anndonnelly",
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
-            "https://res.cloudinary.com/dis83syog/image/upload/v1637338035/Countable/EEBCFE81-78E0-4DA1-B98C-82DAC836F310_h3g063.jpg",
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637629611/Countable/Screen_Shot_2021-11-22_at_8.06.32_PM_sf7msz.png",
         },
         {
           email: "patriciambdonnelly@gmail.com",
@@ -113,14 +113,14 @@ module.exports = {
           username: "curtiscassell",
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
-            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637629063/Countable/Screen_Shot_2021-11-22_at_7.57.28_PM_irgzau.png",
         },
         {
           email: "noahspencer@gmail.com",
           username: "noahspencer",
           hashedPassword: bcrypt.hashSync("password"),
           avatar:
-            "https://res.cloudinary.com/dis83syog/image/upload/v1637337889/Countable/download_eeyywr.jpg",
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637374015/Countable/unnamed_kaxigm.jpg",
         },
         {
           email: "parkershaw@gmail.com",

@@ -17,7 +17,7 @@ function CreatePostModal() {
   if (sessionUser) {
     sessionLinks = (
       <i
-        class="far fa-plus-square create-post-button"
+        className="far fa-plus-square create-post-button"
         onClick={() => setShowPostModal(true)}
       ></i>
     );

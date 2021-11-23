@@ -40,7 +40,6 @@ const EditCommentForm = ({ comment }) => {
 
       {/* > */}
       <i
-        // class=""
         className={`far fa-edit editButton ${show ? null : "hidden"}`}
         onClick={updateSetShow}
       ></i>

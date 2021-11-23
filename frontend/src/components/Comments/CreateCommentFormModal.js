@@ -145,7 +145,7 @@ function CreateCommentFormModal() {
                 <div className="postModalComment">
                   <img
                     className="commentUserPhoto"
-                    src={comment.User.avatar}
+                    src={comment?.User?.avatar}
                     alt=""
                   >
                   </img>
@@ -153,9 +153,9 @@ function CreateCommentFormModal() {
                     <h3 className="commentUserName">
                       <Link
                         onClick={() => dispatch(hideModal())}
-                        to={`/users/${comment.User.id}`}
+                        to={`/users/${comment?.User?.id}`}
                       >
-                        {comment.User.username}
+                        {comment?.User?.username}
                       </Link>
                     </h3>
                     <span className="spanComment">{comment.comment}</span>
