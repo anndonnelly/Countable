@@ -97,13 +97,13 @@ module.exports = {
           {
             comment:
               "Residents have been complaining to the city about the endless issues and lack of communication.",
-            postId: 21,
+            postId: 20,
             userId: 12,
           },
           {
             comment:
               "Park Slope residents blame the construction work spanning Sixth Avenue from Union Street to Park Place, where the street has been dug up to replace underground water mains.",
-            postId: 21,
+            postId: 20,
             userId: 16,
           },
           {

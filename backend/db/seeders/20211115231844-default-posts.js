@@ -118,6 +118,13 @@ module.exports = {
         },
         {
           imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637687290/Countable/35097bd9-b93c-4137-a0cd-96b194849251_1_fjbd0h.jpg",
+          caption:
+            "Poor public transport solutions lead to traffic jams, delays and ongoing environmental damage",
+          userId: 27,
+        },
+        {
+          imageUrl:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637430361/Countable/538319cf-3374-46fc-87eb-b93e0e471a0b_skdypc.jpg",
           caption:
             "I am an avid runner and have recently moved to Nedlands, Perth, Australia with high hopes for new running routes. I am finding running around Nedlands - a suburban area - difficult to get the hang of despite it being surrounded by green areas and very close to the Swan River. There is often a footpath only on one side of the street and the area is poorly lit at night time. What I loved about running is the fact that you can do it from your front door. It would be great if there were signposts at the corner of every other street with distances written to the river, university and beach for example. That way, I would be able to find my way to lovely running routes without looking at maps on my phone while I run - which is in itself quite dangerous! Just a thought 🏃🏼‍♀️",
@@ -178,6 +185,12 @@ module.exports = {
           caption:
             "Please join us Saturday December 4th to protest the demolition of a beloved old building containing a mix of independent shops on Merchant’s Arch Lane in Dublin.",
           userId: 1,
+        },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637687024/Countable/580c7641-4c32-474d-b79e-6b0d64e352b7_vowvds.jpg",
+          caption: "So disappointing to see this on the seafront this morning",
+          userId: 7,
         },
       ],
       {}
