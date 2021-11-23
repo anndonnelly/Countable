@@ -30,7 +30,7 @@ export const loadOnePost = (post) => async (dispatch) => {
 
   if (res.ok) {
     const onePost = await res.json();
-console.log("------->", onePost.Comments,"\n\n\n")
+
 //     onePost.Comments.map((comment) => {
 //     return comment.createdAt.sort((a, b)=> new Date(a.createdAt) - new Date(b.createdAt))
 // })

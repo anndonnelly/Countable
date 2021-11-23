@@ -17,7 +17,7 @@ function CreateCommentFormModal() {
   const dispatch = useDispatch();
   const history = useHistory();
   const ownerId = useSelector((state) => state.session.user.id);
-  const user = useSelector((state) => state.session.user);
+//   const user = useSelector((state) => state.session.user);
   const [edit, setEdit] = useState(false);
   const [comment, setComment] = useState("");
   //   const [valErrors, setValErrors] = useState([]);
@@ -95,7 +95,7 @@ function CreateCommentFormModal() {
               <svg
                 onClick={deletePost}
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 viewBox="0 0 20 20"
                 height="1em"
                 width="1em"
@@ -103,18 +103,17 @@ function CreateCommentFormModal() {
                 fill="currentColor"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
               {/* <button value={edit} className="" onClick={editPost}> */}
               <svg
                 value={edit}
-                className=""
+                className="h-6 w-6"
                 onClick={editPost}
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -147,8 +146,7 @@ function CreateCommentFormModal() {
                     className="commentUserPhoto"
                     src={comment?.User?.avatar}
                     alt=""
-                  >
-                  </img>
+                  ></img>
                   <div className="post-content-wrapper">
                     <h3 className="commentUserName">
                       <Link
@@ -167,11 +165,10 @@ function CreateCommentFormModal() {
                         <EditCommentForm comment={comment} />
                         {/* PUT IT IN THE BIN */}
                         <svg
-                          className="deleteComment"
+                          className="deleteComment h-5 w-5"
                           id={comment.id}
                           onClick={deleteComment}
                           xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5"
                           viewBox="0 0 20 20"
                           height="1em"
                           width="1em"
@@ -179,9 +176,9 @@ function CreateCommentFormModal() {
                           fill="currentColor"
                         >
                           <path
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                           />
                         </svg>
                       </div>

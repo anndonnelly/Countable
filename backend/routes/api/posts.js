@@ -43,7 +43,7 @@ router.get(
         },
       ],
     }); 
-    console.log("-------->", post.Comments)
+
     const onePost = await res.json(post);
     return onePost;
   })

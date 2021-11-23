@@ -83,7 +83,7 @@ export const deleteCommentThunk = (id) => async (dispatch) => {
 
 const initialState = {};
 export default function commentsReducer(state = initialState, action) {
-  const newState = { ...state };
+//   const newState = { ...state };
   switch (action.type) {
     case GET_COMMENTS:
       const allComments = {};
