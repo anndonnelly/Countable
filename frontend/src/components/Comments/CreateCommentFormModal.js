@@ -165,7 +165,6 @@ function CreateCommentFormModal() {
                     {comment.userId === ownerId ? (
                       <div className="buttons-wrapper">
                         <EditCommentForm comment={comment} />
-
                         {/* PUT IT IN THE BIN */}
                         <svg
                           className="deleteComment"

@@ -27,13 +27,19 @@ const editComment = (comment) => {
 
 export const loadOnePost = (post) => async (dispatch) => {
   const res = await fetch(`/api/posts/one/${post}`);
+
   if (res.ok) {
     const onePost = await res.json();
-
+// console.log("------->", onePost,"\n\n\n")
+//     onePost.Comments.map((comment) => {
+//     return comment.createdAt.sort((a, b)=> new Date(a.createdAt) - new Date(b.createdAt))
+// })
     dispatch(getOnePost(onePost));
     return onePost;
   }
 };
+
+
 
 export const editOnePost = (payload, id) => async (dispatch) => {
   const res = await csrfFetch(`/api/posts/${id}`, {

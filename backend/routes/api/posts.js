@@ -15,6 +15,7 @@ router.get(
         },
         {
           model: Comment,
+        //   order: [["createdAt", "DESC"]],
         },
       ],
     });
@@ -33,13 +34,16 @@ router.get(
         },
         {
           model: Comment,
-          include: [{
-              model: User
-          }]
+          include: [
+            {
+              model: User,
+            },
+          ],
+        //   order: [["createdAt", "DESC"]],
         },
       ],
     }); 
-    
+    console.log("-------->", post.Comments)
     const onePost = await res.json(post);
     return onePost;
   })
