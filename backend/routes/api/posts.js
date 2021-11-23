@@ -33,9 +33,13 @@ router.get(
         },
         {
           model: Comment,
+          include: [{
+              model: User
+          }]
         },
       ],
     }); 
+    
     const onePost = await res.json(post);
     return onePost;
   })

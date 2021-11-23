@@ -8,8 +8,10 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const comments = await Comment.findAll({
-        where: {postId: id}
+        where: {postId: id},
+        // include :[{model:User}]
     });
+    console.log("TEST----->", comments)
     return res.json(comments);
   })
 );

@@ -17,6 +17,7 @@ function CreateCommentFormModal() {
   const dispatch = useDispatch();
   const history = useHistory();
   const ownerId = useSelector((state) => state.session.user.id);
+  const user = useSelector((state) => state.session.user);
   const [edit, setEdit] = useState(false);
   const [comment, setComment] = useState("");
   //   const [valErrors, setValErrors] = useState([]);
@@ -107,7 +108,6 @@ function CreateCommentFormModal() {
                   clip-rule="evenodd"
                 />
               </svg>
-
               {/* <button value={edit} className="" onClick={editPost}> */}
               <svg
                 value={edit}
@@ -143,10 +143,20 @@ function CreateCommentFormModal() {
             post.Comments?.map((comment) => (
               <li className="postModalCommentWrapper" key={comment.id}>
                 <div className="postModalComment">
-                  <div className="commentUserPhoto"></div>
+                  <img
+                    className="commentUserPhoto"
+                    src={comment.User.avatar}
+                    alt=""
+                  >
+                  </img>
                   <div className="post-content-wrapper">
                     <h3 className="commentUserName">
-                      <Link>commentUser</Link>
+                      <Link
+                        onClick={() => dispatch(hideModal())}
+                        to={`/users/${comment.User.id}`}
+                      >
+                        {comment.User.username}
+                      </Link>
                     </h3>
                     <span className="spanComment">{comment.comment}</span>
                     {/* <div id={comment.id} onClick={editComment}>
@@ -177,7 +187,6 @@ function CreateCommentFormModal() {
                         </svg>
                       </div>
                     ) : null}
-                    {/* <img className="editIcon" scr="https://res.cloudinary.com/dis83syog/image/upload/v1637344420/Countable/download_dhs0ho.png" alt=""></img> */}
                   </div>
                 </div>
                 <div></div>
@@ -191,7 +200,7 @@ function CreateCommentFormModal() {
                 id="addCommentBox"
                 placeholder="Add a comment..."
                 type="text"
-                require
+                required
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
               />
