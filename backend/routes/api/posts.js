@@ -15,7 +15,7 @@ router.get(
         },
         {
           model: Comment,
-        //   order: [["createdAt", "DESC"]],
+        //   order: [["createdAt", "ASC"]],
         },
       ],
     });
@@ -39,7 +39,7 @@ router.get(
               model: User,
             },
           ],
-        //   order: [["createdAt", "DESC"]],
+        //   order: [["createdAt", "ASC"]],
         },
       ],
     }); 
