@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 // import { setCurrentModal } from "../../store/modal";
 import "./CreatePostModal.css"
 
+
 function CreatePostModal() {
   const [showPostModal, setShowPostModal] = useState(false);
   const sessionUser = useSelector((state) => state.session.user);

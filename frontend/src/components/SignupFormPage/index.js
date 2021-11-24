@@ -6,73 +6,44 @@ import "./SignupForm.css";
 import "../CountablePosts/CreatePostForm.css";
 import * as sessionActions from "../../store/session";
 
-
 const SignupFormPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const sessionUser = useSelector((state)=> state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
   const [confirmPassword, setConfirmPassword] = useState("");
-    // const [credential, setCredential] = useState("");
   const [avatar, setAvatar] = useState(null);
-  // for multuple file upload
-  //   const [images, setImages] = useState([]);
   const [errors, setErrors] = useState([]);
+  const [inputLength, setInputLength] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   if (user) return <Redirect to={`/users/${sessionUser.id}`} />;
-    
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     let newErrors = [];
-//     dispatch(createUser({ username, email, password, avatar }))
-//       .then(() => {
-//         setUsername("");
-//         setEmail("");
-//         setPassword("");
-//         setAvatar(null);
-//       })
-//       .catch(async (res) => {
-//         const data = await res.json();
-//         if (data && data.errors) {
-//           newErrors = data.errors;
-//           setErrors(newErrors);
-//         }
-//       });
-//   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password === confirmPassword) {
+      setErrors([]);
+      return dispatch(
+        sessionActions.createUser({ email, username, password, avatar })
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+    }
 
+    setInputLength(false);
 
-
-     const handleSubmit = (e) => {
-       e.preventDefault();
-       if (password === confirmPassword) {
-         setErrors([]);
-         return dispatch(
-           sessionActions.createUser({ email, username, password, avatar })
-         ).catch(async (res) => {
-           const data = await res.json();
-           if (data && data.errors) setErrors(data.errors);
-         });
-       }
-       return setErrors([
-         "Confirm Password field must be the same as the Password field",
-       ]);
-     };
-
+    return setErrors([
+      "Confirm Password field must be the same as the Password field",
+    ]);
+  };
 
   const updateFile = (e) => {
     const file = e.target.files[0];
-
     if (file) setAvatar(file);
   };
-
-  // for multiple file upload
-  //   const updateFiles = (e) => {
-  //     const files = e.target.files;
-  //     setImages(files);
-  //   };
 
   const demoUser = async () => {
     return dispatch(
@@ -90,8 +61,6 @@ const SignupFormPage = () => {
   //      return demo;
   //    };
 
-
- 
   return (
     <div className="formSignUpPage">
       <div className="mainSignUpPage">
@@ -103,13 +72,15 @@ const SignupFormPage = () => {
               alt=""
             ></img>
           </div>
-          { <ul>
-            {errors.map((error, idx) => (
-            <li className="textError" key={idx}>
-                {error}
-            </li>
-            ))}
-             </ul>}
+          {
+            <ul>
+              {errors.map((error, idx) => (
+                <li className="textError" key={idx}>
+                  {error}
+                </li>
+              ))}
+            </ul>
+          }
           <form className="signUpFormOnLogin" onSubmit={handleSubmit}>
             <input
               className="signUpFormInput"
@@ -143,17 +114,24 @@ const SignupFormPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
+
             <label className="addPic">
               Profile Picture
               <input
                 className="addPostImageInput"
-                // placeholder=""
                 name="avatar"
                 type="file"
                 // required
-                onChange={updateFile}
+                onChange={(e) => {
+                  if (e.currentTarget.files.length) {
+                    setInputLength(true);
+                  }
+                  updateFile(e);
+                }}
               />
             </label>
+            {inputLength && <i className="far fa-check-circle tick"></i>}
+
             <button className="signUpButton" type="submit">
               Sign Up
             </button>
