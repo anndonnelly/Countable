@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       caption: {
-        type: Sequelize.STRING(350),
+        type: Sequelize.TEXT,
       },
       userId: {
         type: Sequelize.INTEGER,
