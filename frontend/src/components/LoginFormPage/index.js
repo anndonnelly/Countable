@@ -26,13 +26,11 @@ function LoginFormPage() {
     );
   };
 
-  
-
   const demoUser = async () => {
-      setCredential("")
-      setPassword("")
+      setCredential("Demo-lition");
+      setPassword("password");
     return dispatch(
-      sessionActions.login({ credential: "Demo-lition", password: "password" })
+      sessionActions.login({ credential, password })
     );
   };
 
@@ -69,7 +67,7 @@ function LoginFormPage() {
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
-              required
+            //   required
             />
             <input
               className="loginFormInput"
@@ -77,7 +75,7 @@ function LoginFormPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
+            //   required
             />
             <button className="loginButton" type="submit">
               Log In

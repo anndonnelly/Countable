@@ -24,11 +24,6 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage("Password must be 6 characters or more."),
-//   check("avatar")
-//     .exists({ checkFalsy: true }),
-//     .isImage()
-//     .notEmpty()
-//     .withMessage("Please provide a profile picture for your account"),
   handleValidationErrors,
 ];
 
@@ -61,7 +56,6 @@ router.post(
       password,
       avatar,
     });
-
     setTokenCookie(res, user);
     return res.json({
       user,
