@@ -63,6 +63,12 @@ const SignupFormPage = () => {
 
   return (
     <div className="formSignUpPage">
+      <div className="tagline-wrapper">
+        <span>
+          Countable - A platform for users to hold politicians accountable for
+          varying issues in their neighborhood.
+        </span>
+      </div>
       <div className="mainSignUpPage">
         <div className="formWrapper">
           <div className="imageWrapper">
@@ -115,22 +121,24 @@ const SignupFormPage = () => {
               required
             />
 
-            <label className="addPic">
-              Profile Picture
-              <input
-                className="addPostImageInput"
-                name="avatar"
-                type="file"
-                // required
-                onChange={(e) => {
-                  if (e.currentTarget.files.length) {
-                    setInputLength(true);
-                  }
-                  updateFile(e);
-                }}
-              />
-            </label>
-            {inputLength && <i className="far fa-check-circle tick"></i>}
+            <div className="add-pic-wrapper">
+              <label className="addPic">
+                Profile Picture
+                <input
+                  className="addPostImageInput"
+                  name="avatar"
+                  type="file"
+                  // required
+                  onChange={(e) => {
+                    if (e.currentTarget.files.length) {
+                      setInputLength(true);
+                    }
+                    updateFile(e);
+                  }}
+                />
+              </label>
+              {inputLength && <i className="far fa-check-circle tick"></i>}
+            </div>
 
             <button className="signUpButton" type="submit">
               Sign Up

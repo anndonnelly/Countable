@@ -19,13 +19,11 @@
   font-size: 16px;
   border: 2px solid #0095f6;
   border-radius: 4px;
-  
 }
 
-.createPostButton:hover{
-    background-color: #eeeeee;
+.createPostButton:hover {
+  background-color: #eeeeee;
 }
-
 
 .createPostHeader {
   font-weight: 600;
@@ -53,21 +51,29 @@
   width: 200px;
 }
 
+.add-img-wrapper {
+  background-color: red;
+  position: relative;
+}
+
 .addPostImageInput {
   display: none;
   margin-bottom: 16px;
-
 }
 
-.captionOnCreatePost{
-    border-radius: 3px;
-    padding: 8px;
-    border: 1px solid lightgray;
-    font-size: 14px;
-    margin-bottom: 24px;
-    width: 250px;
-    resize: vertical;
-
-    
+.captionOnCreatePost {
+  border-radius: 3px;
+  padding: 8px;
+  border: 1px solid lightgray;
+  font-size: 14px;
+  margin-bottom: 24px;
+  width: 250px;
+  resize: vertical;
 }
 
+.add-img-wrapper .tick {
+  position: absolute;
+  color: green;
+  right: -20px;
+  top: 10px;
+}

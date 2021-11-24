@@ -4,16 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import "./LoginForm.css";
 
-
 function LoginFormPage() {
   const dispatch = useDispatch();
-  
+
   const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/posts"/>;
+  if (sessionUser) return <Redirect to="/posts" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,25 +26,29 @@ function LoginFormPage() {
   };
 
   const demoUser = async () => {
-      setCredential("Demo-lition");
-      setPassword("password");
-    return dispatch(
-      sessionActions.login({ credential, password })
-    );
+    setCredential("Demo-lition");
+    setPassword("password");
+    return dispatch(sessionActions.login({ credential, password }));
   };
 
-//   const demoUserTwo = async (e) => {
-//     e.preventDefault();
-//     setCredential("DemoTwo");
-//     setPassword("password");
-//     const demo = dispatch(
-//       sessionActions.login({ credential: "DemoTwo", password: "password" })
-//     );
-//     return demo;
-//   };
+  //   const demoUserTwo = async (e) => {
+  //     e.preventDefault();
+  //     setCredential("DemoTwo");
+  //     setPassword("password");
+  //     const demo = dispatch(
+  //       sessionActions.login({ credential: "DemoTwo", password: "password" })
+  //     );
+  //     return demo;
+  //   };
 
   return (
     <div className="formLoginPage">
+      <div className="tagline-wrapper">
+        <span>
+          Countable - A platform for users to hold politicians accountable for
+          varying issues in their neighborhood.
+        </span>
+      </div>
       <div className="mainLoginPage">
         <div className="formWrapper">
           <div className="imageWrapper">
@@ -67,7 +70,7 @@ function LoginFormPage() {
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
-            //   required
+              //   required
             />
             <input
               className="loginFormInput"
@@ -75,7 +78,7 @@ function LoginFormPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            //   required
+              //   required
             />
             <button className="loginButton" type="submit">
               Log In

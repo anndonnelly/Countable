@@ -8,6 +8,10 @@
   height: 100vh;
   background-color: rgb(250 250 250);
   padding: 100px 0;
+  background-image: url("https://res.cloudinary.com/dis83syog/image/upload/v1637762802/Countable/boxed-water-is-better-by64zfQx1Do-unsplash_urbayv.jpg");
+  background-size: 100%;
+  background-position: 0px -200px;
+  background-repeat: no-repeat;
 }
 
 .formWrapper {
@@ -18,6 +22,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.tagline-wrapper {
+  /* background-color: lime; */
+  width: 25%;
+  position: absolute;
+  top: 30%;
+  left: 50px;
+}
+
+.tagline-wrapper span {
+  /* background-color: red; */
+  font-size: 30px;
+  color: white;
+  font-family: "Inter", sans-serif;
 }
 
 .imageWrapper {
@@ -66,6 +85,12 @@
   padding: 0 8px;
 }
 
+.add-pic-wrapper {
+  width: 100%;
+  /* background-color: red; */
+  position: relative;
+}
+
 .addPic {
   width: 100%;
   cursor: pointer;
@@ -80,7 +105,7 @@
   align-items: center;
   display: flex;
   margin-top: 10px;
-   
+  position: relative;
 }
 
 .signUpButton {
@@ -102,6 +127,9 @@
   color: rgb(192, 190, 190);
 }
 
-.far{
-    color:green
+.tick {
+  position: absolute;
+  color: green;
+  right: -20px;
+  top: 20px;
 }

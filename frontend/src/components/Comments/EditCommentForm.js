@@ -4,7 +4,6 @@ import { loadOnePost } from "../../store/individualpost";
 import "./EditCommentForm.css";
 import { editCommentThunk } from "../../store/individualpost";
 
-
 const EditCommentForm = ({ comment }) => {
   const dispatch = useDispatch();
   const [editComment, setEditComment] = useState(comment.comment);
@@ -59,7 +58,7 @@ const EditCommentForm = ({ comment }) => {
           ></textarea>
           <button
             onClick={handleSubmit}
-            className={`editButton ${show ? "hidden" : null}`}
+            className={`editButton first ${show ? "hidden" : null}`}
           >
             Update Comment
           </button>

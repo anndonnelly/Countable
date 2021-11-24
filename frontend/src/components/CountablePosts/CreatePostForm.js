@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { createPostThunk } from "../../store/posts";
@@ -13,8 +13,8 @@ function CreatePostForm({ setShowPostModal }) {
   const history = useHistory();
 
   const ownerId = useSelector((state) => state.session.user.id);
-const [inputLength, setInputLength] = useState(false)
-const [imagePreview, setImagePreview] = useState(null)
+  const [inputLength, setInputLength] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -30,17 +30,18 @@ const [imagePreview, setImagePreview] = useState(null)
         .required("Caption must be be between 5 and 350 characters"),
       imageUrl: yup.mixed().required("Please provide an image for your post."),
     }),
-    onSubmit: async (values, {setSubmitting}) => {
-       dispatch(createPostThunk(values)).then(()=>dispatch(getAllPostsThunk()));
-    //   if (createdPost) {
-        // dispatch(loadOnePost(createdPost.id));
-        setShowPostModal(false);
-        history.push(`/posts`);
-        setInputLength(false)
-        setImagePreview(null)
+    onSubmit: async (values, { setSubmitting }) => {
+      dispatch(createPostThunk(values)).then(() =>
+        dispatch(getAllPostsThunk())
+      );
+      //   if (createdPost) {
+      // dispatch(loadOnePost(createdPost.id));
+      setShowPostModal(false);
+      history.push(`/posts`);
+      setInputLength(false);
+      setImagePreview(null);
     },
   });
-
 
   return (
     <div className="createPostModal">
@@ -49,26 +50,39 @@ const [imagePreview, setImagePreview] = useState(null)
       </div>
       <form className="createPostContainer" onSubmit={formik.handleSubmit}>
         <div>
-            {imagePreview && <img style={{width:"100px", height:"100px"}}src={imagePreview} alt=""></img>}
-          <label className="addPostImageLabel">
-            Select from computer
-            <input
-              className="addPostImageInput"
-              type="file"
-              name="imageUrl"
-              id="imageUrl"
-              //   multiple
-              //   required
-              onChange={(event) => {
-                  if (event.currentTarget.files.length){
-                      setInputLength(true)
+          {imagePreview && (
+            <img
+              style={{ width: "100px", height: "100px" }}
+              src={imagePreview}
+              alt=""
+            ></img>
+          )}
+          <div className="add-img-wrapper">
+            <label className="addPostImageLabel">
+              Select from computer
+              <input
+                className="addPostImageInput"
+                type="file"
+                name="imageUrl"
+                id="imageUrl"
+                //   multiple
+                //   required
+                onChange={(event) => {
+                  if (event.currentTarget.files.length) {
+                    setInputLength(true);
                   }
-                  setImagePreview(URL.createObjectURL(event.currentTarget.files[0]))
-                formik.setFieldValue("imageUrl", event.currentTarget.files[0]);
-              }}
-            ></input>
-          </label>
-          {inputLength && <i className="far fa-check-circle tick"></i>}
+                  setImagePreview(
+                    URL.createObjectURL(event.currentTarget.files[0])
+                  );
+                  formik.setFieldValue(
+                    "imageUrl",
+                    event.currentTarget.files[0]
+                  );
+                }}
+              ></input>
+            </label>
+            {inputLength && <i className="far fa-check-circle tick"></i>}
+          </div>
           {formik.touched.imageUrl && formik.errors.imageUrl ? (
             <div className="errorText">{formik.errors.imageUrl}</div>
           ) : null}
