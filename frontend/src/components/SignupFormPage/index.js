@@ -65,8 +65,7 @@ const SignupFormPage = () => {
     <div className="formSignUpPage">
       <div className="tagline-wrapper">
         <span>
-          Countable - A platform for users to hold politicians accountable for
-          varying issues in their neighborhood.
+          Countable - helping you rate the quality of local services and hold local officials to account
         </span>
       </div>
       <div className="mainSignUpPage">
