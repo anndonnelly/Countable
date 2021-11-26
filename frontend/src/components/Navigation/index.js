@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import CreatePostModal from "../CountablePosts/CreatePostModal";
 import { searchUsers } from "../../store/search";
-import { useDispatch } from "react-redux";
-import "./Navigation.css";
 import { getAllUserPostsThunk } from "../../store/userPosts";
 import { useHistory } from "react-router";
+import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);

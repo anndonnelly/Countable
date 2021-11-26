@@ -3,16 +3,18 @@ import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import "./LoginForm.css";
+import { useHistory } from "react-router-dom";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
-
+const history = useHistory()
   const sessionUser = useSelector((state) => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/users/1" />;
+  if (sessionUser) return <Redirect to="/" />;
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +35,7 @@ function LoginFormPage() {
  const demoUser = async () => {
    return dispatch(
      sessionActions.login({ credential: "Demo-lition", password: "password" })
-   );
+   ).then(history.push("/users/1"));
  };
 
   //   const demoUserTwo = async (e) => {
