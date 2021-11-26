@@ -25,11 +25,16 @@ function LoginFormPage() {
     );
   };
 
-  const demoUser = async () => {
-    setCredential("Demo-lition");
-    setPassword("password");
-    return dispatch(sessionActions.login({ credential, password }));
-  };
+//   const demoUser = async () => {
+//     setCredential("Demo-lition");
+//     setPassword("password");
+//     return dispatch(sessionActions.login({ credential, password }));
+//   };
+ const demoUser = async () => {
+   return dispatch(
+     sessionActions.login({ credential: "Demo-lition", password: "password" })
+   );
+ };
 
   //   const demoUserTwo = async (e) => {
   //     e.preventDefault();
@@ -65,8 +70,8 @@ function LoginFormPage() {
             </ul>
             <input
               className="loginFormInput"
-              placeholder="Username or Email"
-              type="text"
+              placeholder="Email"
+              type="email"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
               //   required
