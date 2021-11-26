@@ -192,6 +192,13 @@ module.exports = {
           caption: "So disappointing to see this on the seafront this morning",
           userId: 7,
         },
+        {
+          imageUrl:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637962619/Countable/unnamed_igabm3.jpg",
+          caption:
+            "Extend Lifeguard Cover. This is the busiest end of the beach where hundreds swim in the summer yet the lifeguard cover stops short of it ! Please extend it ! 🤗",
+          userId: 31,
+        },
       ],
       {}
     );

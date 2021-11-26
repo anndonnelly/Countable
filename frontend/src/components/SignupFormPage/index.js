@@ -65,7 +65,8 @@ const SignupFormPage = () => {
     <div className="formSignUpPage">
       <div className="tagline-wrapper">
         <span>
-          Countable - helping you rate the quality of local services and hold local officials to account
+          Countable - helping you rate the quality of local services and hold
+          local officials to account
         </span>
       </div>
       <div className="mainSignUpPage">
@@ -100,6 +101,7 @@ const SignupFormPage = () => {
               required
               type="email"
               placeholder="Email"
+              autoComplete="off"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -108,6 +110,7 @@ const SignupFormPage = () => {
               required
               type="password"
               placeholder="Password"
+              autoComplete="off"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />

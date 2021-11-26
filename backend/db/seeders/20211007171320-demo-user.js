@@ -223,6 +223,13 @@ module.exports = {
           avatar:
             "https://res.cloudinary.com/dis83syog/image/upload/v1637343682/Countable/59807764_xtlqeg.jpg",
         },
+        {
+          email: "emerwoodfull@gmail.com",
+          username: "emerwoodfull",
+          hashedPassword: bcrypt.hashSync("password"),
+          avatar:
+            "https://res.cloudinary.com/dis83syog/image/upload/v1637964477/Countable/unnamed_esknfy.jpg",
+        },
       ],
       {}
     );

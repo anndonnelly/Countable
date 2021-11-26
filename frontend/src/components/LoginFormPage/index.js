@@ -50,7 +50,8 @@ function LoginFormPage() {
     <div className="formLoginPage">
       <div className="tagline-wrapper">
         <span>
-          Countable - helping you rate the quality of local services and hold local officials to account
+          Countable - helping you rate the quality of local services and hold
+          local officials to account
         </span>
       </div>
       <div className="mainLoginPage">
@@ -72,6 +73,7 @@ function LoginFormPage() {
               className="loginFormInput"
               placeholder="Email"
               type="email"
+              autoComplete="off"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
               //   required
@@ -79,6 +81,7 @@ function LoginFormPage() {
             <input
               className="loginFormInput"
               placeholder="Password"
+              autoComplete="off"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
