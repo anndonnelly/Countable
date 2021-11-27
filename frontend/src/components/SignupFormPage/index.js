@@ -16,6 +16,7 @@ const SignupFormPage = () => {
   const [errors, setErrors] = useState([]);
   const [inputLength, setInputLength] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
+ 
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -122,11 +123,11 @@ const SignupFormPage = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
-
             <div className="add-pic-wrapper">
               <label className="addPic">
                 Profile Picture
                 <input
+                  accept="image/*"
                   className="addPostImageInput"
                   name="avatar"
                   type="file"

@@ -15,6 +15,7 @@ function CreatePostForm({ setShowPostModal }) {
   const ownerId = useSelector((state) => state.session.user.id);
   const [inputLength, setInputLength] = useState(false);
   const [imagePreview, setImagePreview] = useState(null);
+  const supportedFormats = ["image/jpg", "image/jpeg", "image/png"];
 
   const formik = useFormik({
     initialValues: {
@@ -28,7 +29,14 @@ function CreatePostForm({ setShowPostModal }) {
         .min(5)
         .max(350)
         .required("Caption must be be between 5 and 350 characters"),
-      imageUrl: yup.mixed().required("Please provide an image for your post."),
+      imageUrl: yup
+        .mixed()
+        .required("Please provide an image for your post.")
+        .test(
+          "format",
+          "supported formats: png, jpeg, jpg",
+          (value) => !value || (value && supportedFormats.includes(value.type))
+        ),
     }),
     onSubmit: async (values, { setSubmitting }) => {
       dispatch(createPostThunk(values)).then(() =>
@@ -42,6 +50,10 @@ function CreatePostForm({ setShowPostModal }) {
       setImagePreview(null);
     },
   });
+
+   
+
+    
 
   return (
     <div className="createPostModal">
