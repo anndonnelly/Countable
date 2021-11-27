@@ -13,10 +13,10 @@ const SignupFormPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [avatar, setAvatar] = useState(null);
+  const [src, setSrc] = useState(null);
   const [errors, setErrors] = useState([]);
   const [inputLength, setInputLength] = useState(false);
-  const [imagePreview, setImagePreview] = useState(null);
- 
+  const [image, setImage] = useState(false);
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -24,6 +24,11 @@ const SignupFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (avatar && image === false) {
+      const arr = [...errors];
+      arr.push("Please provide an appropraite image file");
+      return setErrors(arr);
+    }
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
@@ -43,7 +48,10 @@ const SignupFormPage = () => {
 
   const updateFile = (e) => {
     const file = e.target.files[0];
-    if (file) setAvatar(file);
+    if (file) {
+        setAvatar(file)
+        setSrc(URL.createObjectURL(file));
+    };
   };
 
   const demoUser = async () => {
@@ -140,6 +148,7 @@ const SignupFormPage = () => {
                   }}
                 />
               </label>
+
               {inputLength && <i className="far fa-check-circle tick"></i>}
             </div>
 
@@ -175,6 +184,14 @@ const SignupFormPage = () => {
           </p>
         </div>
       </div>
+      <img
+        className="preview-img"
+        src={src}
+        hidden= {true}
+        alt=""
+        onError={() => setImage(false)}
+        onLoad={() => setImage(true)}
+      ></img>
     </div>
   );
 };

@@ -6,7 +6,7 @@ const { User } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
-const {Op} = require('sequelize')
+const { Op } = require('sequelize')
 const {singleMulterUpload} = require("../../awsS3.js")
 const {singlePublicFileUpload} = require("../../awsS3.js");
 
