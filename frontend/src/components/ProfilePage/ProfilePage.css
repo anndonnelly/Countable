@@ -10,7 +10,6 @@
   width: 100%;
   height: calc(100% - 64px);
   /* margin: 0 auto; */
-  
 }
 
 .profilePageWrapper {
@@ -27,7 +26,7 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 40px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   padding-bottom: 20px;
   border-bottom: solid 2px rgba(128, 128, 128, 0.26);
   position: relative;
@@ -84,9 +83,51 @@
   /* background-color: lightsalmon; */
 }
 
+.user_posts_wrapper_outer {
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+}
+
+.user_posts_wrapper_outer .section-selector {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  /* background-color: lightgrey; */
+}
+
+.user_posts_wrapper_outer .section-selector .section-selector-button {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  color: rgb(142, 142, 142);
+  justify-content: center;
+}
+
+.user_posts_wrapper_outer
+  .section-selector
+  .section-selector-button
+  > *:first-child {
+  margin-right: 5px;
+}
+
+.user_posts_wrapper_outer
+  .section-selector
+  .section-selector-button
+  .svg-wrapper {
+  width: 24px;
+  height: 100%;
+  /* background-color: red; */
+}
+
+.user_posts_wrapper_outer .section-selector .section-selector-button span {
+  font-size: 11px;
+  font-family: "Inter", sans-serif;
+}
+
 .profile_page .user_posts_wrapper {
   flex: 1 1 auto;
-  /* background-color: grey; */
+  background-color: grey;
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

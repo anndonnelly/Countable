@@ -1,13 +1,13 @@
 .posts {
-    height: fit-content;
-    width: 600px;
-    border: 1px solid #a1a1a1;
-    align-items: center;
-    position: relative;
-    margin: 0 auto;
-    margin-top: 20px;
-    background-color: white;
-    }
+  height: fit-content;
+  width: 600px;
+  border: 1px solid #a1a1a1;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: white;
+}
 
 .postImage {
   cursor: pointer;
@@ -15,34 +15,37 @@
 }
 
 .inline {
-    display: inline;
+  display: inline;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .align-items {
-    align-items: center;
+  align-items: center;
 }
 
 .usernameContainer {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .side-spacing {
-    padding-left: 5px;
-    padding-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .vertical-spacing {
-    padding-top: 5px;
-    padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
+.last-comment-wrapper {
+  overflow-wrap: break-word;
+}

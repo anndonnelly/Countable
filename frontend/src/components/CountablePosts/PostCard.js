@@ -20,7 +20,7 @@ function PostCard({ post }) {
 
     if (post.Comments) {
       const comment = post?.Comments[post.Comments.length - 1];
-      return <div>{comment.comment}</div>;
+      return <div className="last-comment-wrapper">{comment.comment}</div>;
     }
   };
 

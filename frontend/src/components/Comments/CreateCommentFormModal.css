@@ -102,7 +102,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  margin: 0
+  margin: 0;
 }
 
 .commentUserPhoto {
@@ -131,6 +131,7 @@
   font-size: 14px;
   word-wrap: break-word;
   grid-area: comment;
+  overflow-wrap: break-word;
 }
 
 .buttons-wrapper {
