@@ -11,7 +11,6 @@ import "./ProfilePage.css";
 function ProfilePage() {
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log("ID-DEFUCK",id)
 
   const posts = useSelector((state) => state.userPosts);
   const user = useSelector((state) => state?.individualUser);
