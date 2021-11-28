@@ -4,12 +4,15 @@ import { Redirect, Link } from "react-router-dom";
 import "./SignupForm.css";
 import "../CountablePosts/CreatePostForm.css";
 import * as sessionActions from "../../store/session";
+import { useHistory } from "react-router";
 
 const SignupFormPage = () => {
+  const history = useHistory();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const sessionUser = useSelector((state) => state.session.user);
+  const [credential, setCredential] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [avatar, setAvatar] = useState(null);
   const [src, setSrc] = useState(null);
@@ -19,8 +22,7 @@ const SignupFormPage = () => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-//   if (user) return <Redirect to={`/users/${sessionUser.id}`} />;
-if (user) return <Redirect to={`/posts`} />;
+  if (user) return <Redirect to={`/users/${sessionUser.id}`} />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,10 +56,20 @@ if (user) return <Redirect to={`/posts`} />;
     }
   };
 
-  const demoUser = async () => {
-    return dispatch(
+  //   const demoUser = async () => {
+  //     return dispatch(
+  //       sessionActions.login({ credential: "Demo-lition", password: "password" })
+  //     );
+  //   };
+  const demoUser = async (e) => {
+    e.preventDefault();
+    setCredential("Demo-lition");
+    setPassword("password");
+    const demo = dispatch(
       sessionActions.login({ credential: "Demo-lition", password: "password" })
     );
+    history.push("/posts");
+    return demo;
   };
 
   //    const demoUserTwo = async (e) => {
