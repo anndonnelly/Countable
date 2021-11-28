@@ -29,7 +29,9 @@ const history = useHistory()
   const demoUser = async () => {
     setCredential("Demo-lition");
     setPassword("password");
-    return dispatch(sessionActions.login({ credential, password }));
+    return dispatch(sessionActions.login({ credential, password })).then(
+      history.push("/users/1")
+    );
   };
 //  const demoUser = async () => {
 //    return dispatch(
