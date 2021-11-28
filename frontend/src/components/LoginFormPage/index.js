@@ -26,11 +26,17 @@ const history = useHistory()
     );
   };
 
-  const demoUser = async () => {
-    setCredential("Demo-lition");
-    setPassword("password");
-    return dispatch(sessionActions.login({ credential, password }))
-  };
+   const demoUser = async (e) => {
+     e.preventDefault();
+     setCredential("Demo-lition");
+     setPassword("password");
+     const demo = dispatch(
+       sessionActions.login({ credential: "Demo-lition", password: "password" })
+     );
+     history.push("/posts");
+     return demo;
+   };
+
 //  const demoUser = async () => {
 //    return dispatch(
 //      sessionActions.login({ credential: "Demo-lition", password: "password" })
