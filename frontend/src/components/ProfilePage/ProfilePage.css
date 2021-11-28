@@ -127,7 +127,7 @@
 
 .profile_page .user_posts_wrapper {
   flex: 1 1 auto;
-  background-color: grey;
+  /* background-color: grey; */
 
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
