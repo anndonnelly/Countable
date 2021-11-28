@@ -12,7 +12,7 @@ const history = useHistory()
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/"/>;
+  if (sessionUser) return <Redirect to="/posts"/>;
   
 
   const handleSubmit = (e) => {
@@ -29,9 +29,7 @@ const history = useHistory()
   const demoUser = async () => {
     setCredential("Demo-lition");
     setPassword("password");
-    return dispatch(sessionActions.login({ credential, password })).then(
-      history.push("/users/1")
-    );
+    return dispatch(sessionActions.login({ credential, password }))
   };
 //  const demoUser = async () => {
 //    return dispatch(
