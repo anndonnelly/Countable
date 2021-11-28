@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
@@ -15,6 +15,7 @@ import Modal from "./components/Modal";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
     if (process.env.NODE_ENV !== "production") restoreCSRF();
@@ -37,10 +38,9 @@ function App() {
                 <SinglePost />
             </Route> */}
           <ProtectedRoute exact path="/posts" component={Feed}></ProtectedRoute>
-          <ProtectedRoute
-            path="/users/:id"
-            component={ProfilePage}
-          ></ProtectedRoute>
+          <Route path="/users/:id">
+            {sessionUser ? <ProfilePage /> : <LoginFormPage />}
+          </Route>
         </Switch>
       )}
       <Footer />

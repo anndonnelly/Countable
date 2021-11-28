@@ -90,7 +90,7 @@ function Navigation({ isLoaded }) {
             </NavLink>
             <div>
               <CreatePostModal />
-            </div>
+            </div> 
             <NavLink to={`/users/${sessionUser.id}`}>
               <i className="far fa-user-circle profilePageNav"></i>
             </NavLink>
