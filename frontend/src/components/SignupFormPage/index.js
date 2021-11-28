@@ -49,9 +49,9 @@ const SignupFormPage = () => {
   const updateFile = (e) => {
     const file = e.target.files[0];
     if (file) {
-        setAvatar(file)
-        setSrc(URL.createObjectURL(file));
-    };
+      setAvatar(file);
+      setSrc(URL.createObjectURL(file));
+    }
   };
 
   const demoUser = async () => {
@@ -96,7 +96,11 @@ const SignupFormPage = () => {
               ))}
             </ul>
           }
-          <form className="signUpFormOnLogin" onSubmit={handleSubmit}>
+          <form
+            autoComplete="chrome-off"
+            className="signUpFormOnLogin"
+            onSubmit={handleSubmit}
+          >
             <input
               className="signUpFormInput"
               type="text"
@@ -110,7 +114,6 @@ const SignupFormPage = () => {
               required
               type="email"
               placeholder="Email"
-              autoComplete="off"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -119,7 +122,6 @@ const SignupFormPage = () => {
               required
               type="password"
               placeholder="Password"
-              autoComplete="off"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -151,7 +153,6 @@ const SignupFormPage = () => {
 
               {inputLength && <i className="far fa-check-circle tick"></i>}
             </div>
-
             <button className="signUpButton" type="submit">
               Sign Up
             </button>
@@ -187,7 +188,7 @@ const SignupFormPage = () => {
       <img
         className="preview-img"
         src={src}
-        hidden= {true}
+        hidden={true}
         alt=""
         onError={() => setImage(false)}
         onLoad={() => setImage(true)}

@@ -50,7 +50,7 @@ function PostCard({ post }) {
         <Link to={`/users/${post.userId}`}>
           <span className="bold">{post?.User?.username}</span>
         </Link>
-        <span> {post.caption}</span>
+        <span className="caption"> {post.caption}</span>
       </div>
       <CommentCard post={post} />
       <div className="side-spacing">{lastComment()}</div>
