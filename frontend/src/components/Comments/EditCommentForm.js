@@ -35,15 +35,10 @@ const EditCommentForm = ({ comment }) => {
 
   return (
     <div>
-      {/* <button */}
-
-      {/* > */}
       <i
         className={`far fa-edit editButton ${show ? null : "hidden"}`}
         onClick={updateSetShow}
       ></i>
-      {/* </button> */}
-
       {isClicked && (
         <div>
           <textarea

@@ -25,7 +25,6 @@
 }
 
 .tagline-wrapper {
-  /* background-color: lime; */
   width: 25%;
   position: absolute;
   top: 30%;
@@ -33,11 +32,9 @@
 }
 
 .tagline-wrapper span {
-  /* background-color: red; */
   font-size: 30px;
   color: white;
   font-family: "Inter", sans-serif;
-  
 }
 
 .imageWrapper {
@@ -88,7 +85,6 @@
 
 .add-pic-wrapper {
   width: 100%;
-  /* background-color: red; */
   position: relative;
 }
 
@@ -101,7 +97,6 @@
   color: white;
   font-size: 14px;
   font-weight: 600;
-  /* text-align: center; */
   justify-content: center;
   align-items: center;
   display: flex;

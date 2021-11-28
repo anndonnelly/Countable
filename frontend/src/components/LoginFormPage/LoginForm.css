@@ -25,7 +25,6 @@
 }
 
 .tagline-wrapper {
-  /* background-color: lime; */
   width: 25%;
   position: absolute;
   top: 30%;
@@ -33,7 +32,6 @@
 }
 
 .tagline-wrapper span {
-  /* background-color: red; */
   font-size: 30px;
   color: white;
   font-family: "Inter", sans-serif;

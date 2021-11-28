@@ -38,14 +38,12 @@ function PostCard({ post }) {
           <span className="bold">{post?.User?.username}</span>
         </Link>
       </span>
-      {/* <Link key={post.id} to={`/posts/${post.id}`}> */}
       <img
         onClick={handleSubmit}
         className="postImage"
         src={post.imageUrl}
         alt=""
       ></img>
-      {/* </Link> */}
       <div className="side-spacing vertical-spacing">
         <Link to={`/users/${post.userId}`}>
           <span className="bold">{post?.User?.username}</span>

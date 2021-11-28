@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { Modal } from "../../context/Modal";
-// import PostCard from "../CountablePosts/PostCard";
-// import { Link } from "react-router-dom";
-// import CreateCommentForm from "./CreateCommentForm";
 import { loadOnePost } from "../../store/individualpost";
 import { useDispatch } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
@@ -13,10 +9,7 @@ import "./CommentCard.css";
 
 function CommentCard({ post }) {
     const dispatch = useDispatch();
-    // const [postDetailModal, setPostDetailModal] = useState(false);
     const numberOfComments = post?.Comments?.length;
-    
-    // const allComments = useSelector((state) => state.individualPost.Comments);
     const [comments, setComments] = useState({})
 
     // IFFE

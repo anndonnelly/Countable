@@ -1,12 +1,8 @@
 .postModal {
-  /* position: absolute;
-  top: 0; */
   flex: 1 1 100%;
   background-color: white;
   display: flex;
   grid-template-columns: 1fr 1fr;
-  /* fraction = equal width columns = 50% 50% */
-  /* column-gap: 16px; */
 }
 
 .postCaption {
@@ -21,7 +17,6 @@
   align-items: center;
   overflow: hidden;
   justify-content: center;
-  /* background-color: blue; */
 }
 
 .user-edit-buttons-wrapper {
@@ -30,16 +25,16 @@
 }
 
 .postModalImage {
-  /* width: 100%; */
+
   max-width: 100%;
   max-height: 100%;
   display: block;
   height: inherit;
-  /* background-color: blue; */
+
 }
 
 .rightSideModal {
-  /* background-color: red; */
+  
   display: flex;
   flex-direction: column;
 }
@@ -50,7 +45,6 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid lightgray;
-  /* margin-bottom: 24px; */
   padding: 14px 16px;
 }
 
@@ -64,19 +58,15 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  /* background: black; */
   margin-right: 16px;
 }
 
 .userLink {
-  /* font-size: 20px; */
+
   font-weight: 500;
-  /* color: blue; */
 }
 
 .closeModal {
-  /* width: 32px; */
-  /* justify-content: flex-end; */
   height: 32px;
   display: flex;
   justify-content: center;
@@ -84,12 +74,6 @@
   cursor: pointer;
   flex: 0 0 auto;
 }
-
-/* .closeModalIcon {
-}
-
-.anyComments {
-} */
 
 .post-content-wrapper {
   display: grid;
@@ -114,7 +98,7 @@
   height: 32px !important;
   margin-right: 18px;
   border-radius: 50%;
-  /* background-color: black; */
+  
 }
 
 .commentScroll {
@@ -144,30 +128,19 @@
   display: flex;
 }
 
-/* .editIcon{
-    width: 25px;
-    height: 50px
-} */
 
 .deleteComment {
   cursor: pointer;
 }
 
-.comment-form-wrapper {
-  /* background-color: aqua; */
-}
 
 .comment-form-wrapper form {
   display: flex;
-
-  /* background-color: aqua; */
 }
 
 .comment-form-wrapper form .fieldDiv {
   flex: 1 1 auto;
 }
-
-/* .comment-form-wrapper form .fieldDiv { */
 
 .comment-form-wrapper form .createCommentButton {
   flex: 0 0 50px;

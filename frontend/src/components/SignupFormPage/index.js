@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { createUser } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
 import "./SignupForm.css";

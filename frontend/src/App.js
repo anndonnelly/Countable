@@ -23,25 +23,25 @@ function App() {
 
   return (
     <>
-        <Modal/>
-        <Navigation isLoaded={isLoaded} />
-        {isLoaded && (
-            <Switch>
-            <Route exact path="/">
-                <LoginFormPage />
-            </Route>
-            <Route path="/signup">
-                <SignupFormPage />
-            </Route>
-            {/* <Route path="/posts/:id">
+      <Modal />
+      <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
+        <Switch>
+          <Route exact path="/">
+            <LoginFormPage />
+          </Route>
+          <Route path="/signup">
+            <SignupFormPage />
+          </Route>
+          {/* <Route path="/posts/:id">
                 <SinglePost />
             </Route> */}
-            <ProtectedRoute exact path="/posts" component={Feed}>
-            </ProtectedRoute>
-            <Route path="/users/:id">
-                <ProfilePage />
-            </Route>
-            </Switch>
+          <ProtectedRoute exact path="/posts" component={Feed}></ProtectedRoute>
+          <ProtectedRoute
+            path="/users/:id"
+            component={ProfilePage}
+          ></ProtectedRoute>
+        </Switch>
       )}
       <Footer />
     </>

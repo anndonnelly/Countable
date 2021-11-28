@@ -59,30 +59,6 @@ export const getAllPostsThunk = () => async (dispatch) => {
   }
 };
 
-// Profile Page
-// export const getAllUserPostsThunk = (id) => async (dispatch) => {
-//   const response = await csrfFetch(`/api/posts/users/${id}`);
-
-//   if (response.ok) {
-//     let posts = await response.json();
-
-//     dispatch(getUsersPostsAction(posts));
-//   }
-// };
-
-// export const createPostThunk = (payload) => async (dispatch) => {
-//   const response = await csrfFetch("/api/posts", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify(payload),
-//   });
-
-//   if (response.ok) {
-//     const newPost = await response.json();
-//     dispatch(createPostAction(newPost));
-//     return newPost;
-//   }
-// };
 
 export const createPostThunk = (post) => async (dispatch) => {
   const { caption, imageUrl, userId } = post;
@@ -114,7 +90,6 @@ export const createPostThunk = (post) => async (dispatch) => {
     return newPost;
   }
 };
-
 
 export const editCommentThunk = (payload) => async (dispatch) => {
   const { id } = payload;

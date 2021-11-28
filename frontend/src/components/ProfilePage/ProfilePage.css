@@ -117,7 +117,6 @@
   .svg-wrapper {
   width: 24px;
   height: 100%;
-  /* background-color: red; */
 }
 
 .user_posts_wrapper_outer .section-selector .section-selector-button span {
@@ -127,13 +126,10 @@
 
 .profile_page .user_posts_wrapper {
   flex: 1 1 auto;
-  /* background-color: grey; */
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 20px;
-
   justify-items: center;
   align-items: center;
 }
@@ -141,7 +137,6 @@
 .post_image_wrapper {
   width: 293px;
   height: 293px;
-  /* background-color: green; */
   overflow: hidden;
 
   display: flex;
@@ -151,11 +146,9 @@
 }
 
 .post_image_wrapper .post_image_wrapper_inner {
-  /* background-color: maroon; */
+
   width: 400px;
   height: 293px;
-  /* opacity: 50%; */
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,6 +159,4 @@
   height: 100%;
   width: auto;
   cursor: pointer;
-  /* opacity: 50%; */
-  /* border-radius: 5px; */
 }

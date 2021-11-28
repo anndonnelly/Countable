@@ -17,16 +17,13 @@ function CreateCommentFormModal() {
   const dispatch = useDispatch();
   const history = useHistory();
   const ownerId = useSelector((state) => state.session.user.id);
-//   const user = useSelector((state) => state.session.user);
   const [edit, setEdit] = useState(false);
   const [comment, setComment] = useState("");
-  //   const [valErrors, setValErrors] = useState([]);
   const post = useSelector((state) => state.individualPost);
-  //   const [isEditing, setIsEditing] = useState(false);
-  //   const postId = posts[posts.id]?.Comments
+
 
   const deletePost = async () => {
-    // await dispatch(getAllPostsThunk());
+    
     dispatch(hideModal());
     await dispatch(deletePostThunk(post.id));
     history.push("/posts");
@@ -52,22 +49,13 @@ function CreateCommentFormModal() {
     };
 
     await dispatch(createCommentThunk(payload));
-    // .then((res) => {
-    //   return res;
-    // });
+  
 
     dispatch(loadOnePost(post.id));
     await dispatch(getAllPostsThunk());
     setComment("");
   };
 
-  // const editComment = async (e) => {
-  //     e.preventDefault();
-  //     const commentId = e.target.id;
-  //     <EditCommentForm commentId={commentId} />;
-  //     setIsEditing(true)
-  //     // dispatch(setCurrentModal(EditCommentForm));
-  // };
 
   return (
     <div className="postModal">
@@ -108,7 +96,6 @@ function CreateCommentFormModal() {
                   clipRule="evenodd"
                 />
               </svg>
-              {/* <button value={edit} className="" onClick={editPost}> */}
               <svg
                 value={edit}
                 className="h-6 w-6"
@@ -122,13 +109,12 @@ function CreateCommentFormModal() {
                 tyle={{ transform: "rotate(360deg)" }}
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
                 />
               </svg>
-              {/* </button> */}
             </div>
           ) : null}
           <div className="closeModal" onClick={() => dispatch(hideModal())}>
@@ -157,13 +143,9 @@ function CreateCommentFormModal() {
                       </Link>
                     </h3>
                     <span className="spanComment">{comment.comment}</span>
-                    {/* <div id={comment.id} onClick={editComment}>
-                      EDIT
-                    </div> */}
                     {comment.userId === ownerId ? (
                       <div className="buttons-wrapper">
                         <EditCommentForm comment={comment} />
-                        {/* PUT IT IN THE BIN */}
                         <svg
                           className="deleteComment h-5 w-5"
                           id={comment.id}

@@ -15,8 +15,6 @@ function EditPostModal({ post }) {
   const [comments, setComments] = useState({});
   const numberOfComments = post?.Comments?.length;
 
-  //   const allComments = useSelector((state) => state.individualPost.Comments);
-
   // IFFE
   useEffect(() => {
     (() => {

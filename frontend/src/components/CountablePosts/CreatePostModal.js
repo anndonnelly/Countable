@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "../../context/Modal";
 import CreatePostForm from "./CreatePostForm";
 import { useSelector } from "react-redux";
-// import { setCurrentModal } from "../../store/modal";
 import "./CreatePostModal.css"
 
 

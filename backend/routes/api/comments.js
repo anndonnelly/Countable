@@ -9,7 +9,6 @@ router.get(
     const id = req.params.id;
     const comments = await Comment.findAll({
         where: {postId: id},
-        // include :[{model:User}]
     });
   
     return res.json(comments);

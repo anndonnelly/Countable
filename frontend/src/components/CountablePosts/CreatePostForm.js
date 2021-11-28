@@ -5,7 +5,6 @@ import { createPostThunk } from "../../store/posts";
 import { getAllPostsThunk } from "../../store/posts";
 import * as yup from "yup";
 import { useFormik } from "formik";
-// import "./CreatePostForm.css";
 import "./CreatePostForm.css";
 
 function CreatePostForm({ setShowPostModal }) {
@@ -42,8 +41,7 @@ function CreatePostForm({ setShowPostModal }) {
       dispatch(createPostThunk(values)).then(() =>
         dispatch(getAllPostsThunk())
       );
-      //   if (createdPost) {
-      // dispatch(loadOnePost(createdPost.id));
+  
       setShowPostModal(false);
       history.push(`/posts`);
       setInputLength(false);

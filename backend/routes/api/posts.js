@@ -15,7 +15,6 @@ router.get(
         },
         {
           model: Comment,
-        //   order: [["createdAt", "ASC"]],
         },
       ],
     });
@@ -39,7 +38,6 @@ router.get(
               model: User,
             },
           ],
-        //   order: [["createdAt", "ASC"]],
         },
       ],
     }); 
@@ -48,15 +46,6 @@ router.get(
     return onePost;
   })
 );
-
-
-// {
-//       include: 
-//         {
-//           model: Comment,
-//           where: {postId: id}
-//         },
-//     });
 
 // Profile Page
 router.get(
@@ -73,18 +62,10 @@ router.get(
   })
 );
 
-// router.post(
-//   "/",
-//   asyncHandler(async(req, res) => {
-//     const post = await Post.create(req.body);
-//     return res.json(post);
-//   })
-// );
 
 router.post(
   "/",
   singleMulterUpload("imageUrl"),
-//   validateSignup,
   asyncHandler(async (req, res) => {
     const { caption, userId } = req.body;
     const imageUrl = await singlePublicFileUpload(req.file);

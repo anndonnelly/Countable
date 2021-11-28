@@ -47,10 +47,9 @@ function ProfilePage() {
         <div className="user_posts_wrapper_outer">
           <div className="section-selector">
             <div className="section-selector-button">
-              {/* <div className="svg-wrapper"></div> */}
               <svg
                 aria-label=""
-                class="_8-yf5 "
+                className="_8-yf5 "
                 color="#8e8e8e"
                 fill="#8e8e8e"
                 height="12"
@@ -62,9 +61,9 @@ function ProfilePage() {
                   fill="none"
                   height="18"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   width="18"
                   x="3"
                   y="3"
@@ -72,9 +71,9 @@ function ProfilePage() {
                 <line
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   x1="9.015"
                   x2="9.015"
                   y1="3"
@@ -83,9 +82,9 @@ function ProfilePage() {
                 <line
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   x1="14.985"
                   x2="14.985"
                   y1="3"
@@ -94,9 +93,9 @@ function ProfilePage() {
                 <line
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   x1="21"
                   x2="3"
                   y1="9.015"
@@ -105,9 +104,9 @@ function ProfilePage() {
                 <line
                   fill="none"
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   x1="21"
                   x2="3"
                   y1="14.985"
@@ -138,12 +137,3 @@ function ProfilePage() {
 
 export default ProfilePage;
 
-// {
-//   post &&
-//     Object.values(post?.Comments).map((comment) => (
-//       <div>
-//         <li key={comment.id}>{comment.comment}</li>
-//         <br></br>
-//       </div>
-//     ));
-// }
