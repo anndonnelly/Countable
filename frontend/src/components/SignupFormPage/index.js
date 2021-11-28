@@ -19,7 +19,8 @@ const SignupFormPage = () => {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
-  if (user) return <Redirect to={`/users/${sessionUser.id}`} />;
+//   if (user) return <Redirect to={`/users/${sessionUser.id}`} />;
+if (user) return <Redirect to={`/posts`} />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
