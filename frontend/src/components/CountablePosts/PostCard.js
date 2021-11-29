@@ -9,10 +9,12 @@ import { setCurrentModal } from "../../store/modal";
 import { showModal } from "../../store/modal";
 import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
 
+
 function PostCard({ post }) {
   const dispatch = useDispatch();
   const numberOfComments = post?.Comments?.length;
   const hasComments = numberOfComments > 0;
+  
   const lastComment = () => {
     if (!hasComments) {
       return null;

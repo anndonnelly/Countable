@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadOnePost } from "../../store/individualpost";
-import "./EditCommentForm.css";
 import { editCommentThunk } from "../../store/individualpost";
+import "./EditCommentForm.css";
 
 const EditCommentForm = ({ comment }) => {
   const dispatch = useDispatch();

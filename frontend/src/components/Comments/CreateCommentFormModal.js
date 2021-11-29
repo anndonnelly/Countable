@@ -11,7 +11,9 @@ import EditPostForm from "../CountablePosts/EditPostForm";
 import "./CreateCommentFormModal.css";
 import { loadOnePost } from "../../store/individualpost";
 import { deleteCommentThunk } from "../../store/comments";
+
 import EditCommentForm from "./EditCommentForm";
+
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -21,11 +23,10 @@ function CreateCommentFormModal() {
   const [comment, setComment] = useState("");
   const post = useSelector((state) => state.individualPost);
 
-
   const deletePost = async () => {
-    
     dispatch(hideModal());
     await dispatch(deletePostThunk(post.id));
+
     history.push("/posts");
   };
 
@@ -33,6 +34,8 @@ function CreateCommentFormModal() {
     e.preventDefault();
     const commentId = e.currentTarget.id;
     await dispatch(deleteCommentThunk(commentId));
+   
+    await dispatch(getAllPostsThunk());
     dispatch(loadOnePost(post.id));
   };
 
@@ -49,13 +52,10 @@ function CreateCommentFormModal() {
     };
 
     await dispatch(createCommentThunk(payload));
-  
-
     dispatch(loadOnePost(post.id));
     await dispatch(getAllPostsThunk());
     setComment("");
   };
-
 
   return (
     <div className="postModal">

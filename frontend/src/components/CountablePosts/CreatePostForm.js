@@ -75,6 +75,7 @@ function CreatePostForm({ setShowPostModal }) {
                 type="file"
                 name="imageUrl"
                 id="imageUrl"
+                accept="image/*"
                 //   multiple
                 //   required
                 onChange={(event) => {

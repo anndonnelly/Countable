@@ -48,6 +48,8 @@ const editComment = (comment) => {
     comment,
   };
 };
+
+
 //THUNKS
 export const getAllPostsThunk = () => async (dispatch) => {
   const response = await csrfFetch("/api/posts");
@@ -118,6 +120,8 @@ export const deletePostThunk = (id) => async (dispatch) => {
   }
 };
 
+
+
 //REDUCER
 const initialState = {};
 export default function postsReducer(state = initialState, action) {
@@ -156,7 +160,6 @@ export default function postsReducer(state = initialState, action) {
           }
         }
       }
-
       return newState;
     default:
       return state;
