@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { editOnePost } from "../../store/individualpost";
 import { hideModal } from "../../store/modal";
@@ -7,28 +6,38 @@ import { setCurrentModal } from "../../store/modal";
 import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
 import { showModal } from "../../store/modal";
 import { loadOnePost } from "../../store/individualpost";
-
+import * as yup from "yup";
+import { useFormik } from "formik";
 
 const EditPostForm = ({ setIsEditing }) => {
   const dispatch = useDispatch();
   const post = useSelector((state) => state.individualPost);
   const userId = useSelector((state) => state.session.user.id);
-  const [editCaption, setEditCaption] = useState(post.caption);
+//   const [editCaption, setEditCaption] = useState(post.caption);
 
-  const handleEdit = (e) => {
-    e.preventDefault();
-    const payload = {
-      caption: editCaption,
-      userId: userId,
-    };
-   
-    dispatch(editOnePost(payload, post.id)).then(() =>
-      dispatch(loadOnePost(post.id)).then(() =>  dispatch(setCurrentModal(CreateCommentFormModal))
-    ));
+  const formik = useFormik({
+    initialValues: {
+      caption: post.caption,
+      userId,
+    },
+    validationSchema: yup.object({
+      caption: yup
+        .string()
+        .min(5)
+        .max(350)
+        .required("Caption must be be between 5 and 350 characters"),
+    }),
 
-    dispatch(showModal())
+    onSubmit: async (values, { setSubmitting }) => {
+      dispatch(editOnePost(values, post.id)).then(() =>
+        dispatch(loadOnePost(post.id)).then(() =>
+          dispatch(setCurrentModal(CreateCommentFormModal))
+        )
+      );
 
-  };
+      dispatch(showModal());
+    },
+  });
 
   return (
     <div className="createPostModal">
@@ -39,17 +48,26 @@ const EditPostForm = ({ setIsEditing }) => {
         <div className="closeModal" onClick={() => dispatch(hideModal())}>
           x
         </div>
-        <form className="createPostContainer" onSubmit={handleEdit}>
+        <form className="createPostContainer" onSubmit={formik.handleSubmit}>
           <div className="fieldDiv">
             <textarea
+              id="caption"
+              name="caption"
               type="text"
               rows="8"
-              value={editCaption}
-              onChange={(e) => setEditCaption(e.target.value)}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.caption}
             />
           </div>
-
-          <button className="addPostImageLabel" type="submit">
+          {formik.touched.caption && formik.errors.caption ? (
+            <div className="errorText">{formik.errors.caption}</div>
+          ) : null}
+          <button
+           
+            className="addPostImageLabel"
+            type="submit"
+          >
             Update Post
           </button>
         </form>
