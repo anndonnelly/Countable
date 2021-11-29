@@ -16,7 +16,7 @@ Live link: https://countable-dub.herokuapp.com/ Please refer to Wiki pages for f
 * HTML/CSS
 * Node.js
 * Express
-* Postgres
+* PostgreSQL
 * Sequelize
 * React
 * Redux
