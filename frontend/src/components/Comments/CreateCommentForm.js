@@ -36,6 +36,7 @@ function CreateCommentForm({post}) {
           <input
             id="addCommentBox"
             placeholder="Add a comment..."
+            maxLength="350"
             type="text"
             value={comment}
             required

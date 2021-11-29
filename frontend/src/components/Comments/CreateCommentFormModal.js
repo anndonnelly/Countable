@@ -8,11 +8,10 @@ import { useHistory } from "react-router";
 import { hideModal } from "../../store/modal";
 import { setCurrentModal } from "../../store/modal";
 import EditPostForm from "../CountablePosts/EditPostForm";
-import "./CreateCommentFormModal.css";
 import { loadOnePost } from "../../store/individualpost";
 import { deleteCommentThunk } from "../../store/comments";
-
 import EditCommentForm from "./EditCommentForm";
+import "./CreateCommentFormModal.css";
 
 
 function CreateCommentFormModal() {
@@ -178,6 +177,7 @@ function CreateCommentFormModal() {
                 id="addCommentBox"
                 placeholder="Add a comment..."
                 type="text"
+                maxLength="350"
                 required
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
