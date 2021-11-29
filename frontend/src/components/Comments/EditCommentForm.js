@@ -42,7 +42,7 @@ const EditCommentForm = ({ comment }) => {
       {isClicked && (
         <div>
           <textarea
-            maxLength="200"
+            maxLength="350"
             type="text"
             required
             name="editComment"
