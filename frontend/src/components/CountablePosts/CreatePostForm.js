@@ -49,9 +49,6 @@ function CreatePostForm({ setShowPostModal }) {
     },
   });
 
-   
-
-    
 
   return (
     <div className="createPostModal">

@@ -8,6 +8,7 @@ import { showModal } from "../../store/modal";
 import { loadOnePost } from "../../store/individualpost";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import { getAllPostsThunk } from "../../store/posts";
 
 const EditPostForm = ({ setIsEditing }) => {
   const dispatch = useDispatch();
@@ -30,9 +31,9 @@ const EditPostForm = ({ setIsEditing }) => {
 
     onSubmit: async (values, { setSubmitting }) => {
       dispatch(editOnePost(values, post.id)).then(() =>
-        dispatch(loadOnePost(post.id)).then(() =>
-          dispatch(setCurrentModal(CreateCommentFormModal))
-        )
+        dispatch(loadOnePost(post.id))
+          .then(() => dispatch(setCurrentModal(CreateCommentFormModal)))
+          .then(() => dispatch(getAllPostsThunk()))
       );
 
       dispatch(showModal());
