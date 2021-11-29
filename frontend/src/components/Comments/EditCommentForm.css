@@ -1,6 +1,7 @@
 .editButton {
   background: none;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 button.editButton {
