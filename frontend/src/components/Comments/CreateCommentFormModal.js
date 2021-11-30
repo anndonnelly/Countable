@@ -177,7 +177,7 @@ function CreateCommentFormModal() {
                 id="addCommentBox"
                 placeholder="Add a comment..."
                 type="text"
-                maxLength="350"
+                maxLength="1500"
                 required
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}

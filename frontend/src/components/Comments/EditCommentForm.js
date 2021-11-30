@@ -49,7 +49,7 @@ const EditCommentForm = ({ comment }) => {
         .string()
         .min(1)
         .max(350)
-        .required("Comment must be be between 1 and 350 characters"),
+        .required("Comment must be be between 1 and 1500 characters"),
     }),
 
     onSubmit: async (values, { setSubmitting }) => {

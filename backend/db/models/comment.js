@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define(
     "Comment",
     {
-      comment: { type: DataTypes.STRING(350), allowNull: false },
+      comment: { type: DataTypes.STRING(1500), allowNull: false },
       postId: {
         type: DataTypes.INTEGER,
         references: { model: "Posts" },
