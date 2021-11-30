@@ -1,0 +1,9 @@
+.handle404{
+    height: 70vh;
+    /* width: 70vh; */
+    display: flex;
+    /* flex-direction: column; */
+    text-align: center;
+    /* gap: 10rem; */
+    justify-content: center;
+}

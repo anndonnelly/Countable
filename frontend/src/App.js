@@ -11,6 +11,7 @@ import Feed from "./components/Feed";
 import ProfilePage from "./components/ProfilePage";
 import { ProtectedRoute } from "./components/RouteUtil";
 import Modal from "./components/Modal";
+import Handle404 from "./components/Handle404";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,8 +42,10 @@ function App() {
           <Route path="/users/:id">
             {sessionUser ? <ProfilePage /> : <LoginFormPage />}
           </Route>
+          <Handle404 />
         </Switch>
       )}
+
       <Footer />
     </>
   );
