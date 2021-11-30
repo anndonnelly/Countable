@@ -60,7 +60,7 @@ const EditCommentForm = ({ comment }) => {
       //   dispatch(showModal());
     },
   });
-  console.log("FORMIK", formik);
+ 
   return (
     <div>
       <i
