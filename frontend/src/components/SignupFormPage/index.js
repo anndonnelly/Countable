@@ -68,9 +68,8 @@ const SignupFormPage = () => {
     const demo = await dispatch(
       sessionActions.login({ credential: "Demo-lition", password: "password" })
     );
-  
-      history.push("/posts");
-   
+    if (sessionUser) history.push("/posts");
+
     return demo;
   };
 
