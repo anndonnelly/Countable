@@ -65,10 +65,12 @@ const SignupFormPage = () => {
     e.preventDefault();
     setCredential("Demo-lition");
     setPassword("password");
-    const demo = dispatch(
+    const demo = await dispatch(
       sessionActions.login({ credential: "Demo-lition", password: "password" })
     );
-    history.push("/posts");
+  
+      history.push("/posts");
+   
     return demo;
   };
 
