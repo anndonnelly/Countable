@@ -58,13 +58,29 @@ router.get(
         where: { "postId": {[Op.eq]: id}}
       
     });
-
     const allLikes = await res.json(likes);
     return allLikes;
   })
 );
 
+router.post(
+  "/:id/likes",
+  asyncHandler(async (req, res) => {
+    const like = await Like.create(req.body);
+    return res.json(like);
+  })
+);
 
+router.delete(
+  "/:id/likes",
+  asyncHandler(async function (req, res) {
+    const id = req.params.id;
+    const like = await Like.findByPk(id);
+    if (!like) throw new Error("Cannot find like");
+    await like.destroy(req.body);
+    return res.json(like);
+  })
+);
 
 // Profile Page
 router.get(
