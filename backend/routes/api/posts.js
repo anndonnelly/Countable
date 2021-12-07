@@ -1,9 +1,10 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const router = express.Router();
-const {Post, User, Comment} = require("../../db/models")
+const {Post, User, Comment, Like} = require("../../db/models")
 const { singleMulterUpload } = require("../../awsS3.js");
 const { singlePublicFileUpload } = require("../../awsS3.js");
+const {Op} = require("sequelize");
 
 router.get(
   "/",
@@ -46,6 +47,24 @@ router.get(
     return onePost;
   })
 );
+
+
+// Likes
+router.get(
+  "/:id/likes",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const likes = await Like.findAll({
+        where: { "postId": {[Op.eq]: id}}
+      
+    });
+
+    const allLikes = await res.json(likes);
+    return allLikes;
+  })
+);
+
+
 
 // Profile Page
 router.get(
