@@ -159,7 +159,10 @@ function CreateCommentFormModal() {
               fill-rule="evenodd"
             ></path>
           </svg>
-          <p> {numLikes} likes</p>
+          <p>
+            {numLikes} {post.Likes.length === 1 ? "like" : "likes"}
+          </p>
+
           {post &&
             post.Comments?.map((comment) => (
               <li className="postModalCommentWrapper" key={comment.id}>

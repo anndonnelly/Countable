@@ -154,13 +154,13 @@ export const getAllLikesThunk = (id) => async (dispatch) => {
 };
 
 
-export const createLikeThunk = (id) => async (dispatch) => {
+export const createLikeThunk = (payload, id) => async (dispatch) => {
   const response = await csrfFetch(`/api/posts/${id}/likes`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    // body: JSON.stringify(payload),
+    body: JSON.stringify(payload),
   });
 
   if (response.ok) {
@@ -179,7 +179,8 @@ export const deleteLikeThunk = (userId, postId) => async (dispatch) => {
   });
 
   if (response.ok) {
-    dispatch(deleteLikeAction(postId));
+    const bool = response.json()
+    return bool
   }
 };
 
