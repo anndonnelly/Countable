@@ -145,3 +145,22 @@
 .comment-form-wrapper form .createCommentButton {
   flex: 0 0 50px;
 }
+
+.post-card-icons {
+  padding: 6px 2px px 10px;
+  display: flex;
+  grid-gap: 10px;
+  gap: 10px;
+  align-items: center;
+  /* border-top: 0.5px solid #dbdbdb; */
+}
+
+.postcard-icon-comment{
+    position: relative;
+    top: 3px;
+}
+
+.num-likes{
+    padding-top: .5rem;
+    padding-left: .75rem;
+}
