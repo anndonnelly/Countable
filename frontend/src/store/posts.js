@@ -5,6 +5,9 @@ const GET_ONE_POST = "posts/GET_ONE_POST";
 const CREATE_POST = "posts/CREATE_POST";
 const DELETE_POST = "posts/DELETE_POST";
 const EDIT_COMMENT = "comments/EDIT_COMMENT";
+const GET_LIKES = "posts/GET_LIKES";
+const CREATE_LIKE = "posts/CREATE_LIKE";
+const DELETE_LIKE = "posts/DELETE_LIKE";
 
 //ACTION CREATORS
 const getAllPostsAction = (posts) => {
@@ -49,6 +52,26 @@ const editComment = (comment) => {
   };
 };
 
+const getLikesAction = (likes) => {
+    return {
+      type: GET_LIKES,
+      likes,
+    };
+}
+
+const createLikeAction = (like) => {
+    return {
+    type: CREATE_LIKE,
+    like,
+    };
+}
+
+const deleteLikeAction = (id) => {
+    return {
+        type: DELETE_LIKE,
+        id,
+    };
+}
 
 //THUNKS
 export const getAllPostsThunk = () => async (dispatch) => {
@@ -120,6 +143,46 @@ export const deletePostThunk = (id) => async (dispatch) => {
   }
 };
 
+export const getAllLikesThunk = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/posts/${id}/likes`);
+
+  if (response.ok) {
+    const likes = await response.json();
+
+    dispatch(getLikesAction(likes));
+  }
+};
+
+
+export const createLikeThunk = (payload, id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/posts/${id}/likes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    const like = await response.json();
+    dispatch(createLikeAction(like));
+    // potentially not keying into likes appropriately
+
+    // return like;
+  }
+};
+
+
+export const deleteLikeThunk = (userId, postId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/posts/${postId}/likes/${userId}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    const bool = response.json()
+    return bool
+  }
+};
 
 
 //REDUCER
@@ -161,6 +224,10 @@ export default function postsReducer(state = initialState, action) {
         }
       }
       return newState;
+    // case GET_LIKES: {
+    //     const allLikes = {}
+        
+    // }
     default:
       return state;
   }

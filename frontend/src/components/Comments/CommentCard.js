@@ -10,13 +10,14 @@ import "./CommentCard.css";
 function CommentCard({ post }) {
     const dispatch = useDispatch();
     const numberOfComments = post?.Comments?.length;
-    const [comments, setComments] = useState({})
+    const [comments, setComments] = useState({});
 
     // IFFE
     useEffect(() => {
         (()=>{
         const com = dispatch(loadOnePost(post.id))
         setComments(com.Comments)
+        
         })()
     }, [dispatch, post.id]);
 
