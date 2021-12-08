@@ -9,6 +9,10 @@
   background-color: white;
 }
 
+.comment-icon{
+    cursor: pointer;
+}
+
 .postImage {
   cursor: pointer;
   width: 100%;

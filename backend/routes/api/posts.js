@@ -17,6 +17,9 @@ router.get(
         {
           model: Comment,
         },
+        {
+          model: Like,
+        },
       ],
     });
     return res.json(posts);
@@ -39,6 +42,9 @@ router.get(
               model: User,
             },
           ],
+        },
+        {
+          model: Like,
         },
       ],
     }); 
@@ -72,11 +78,17 @@ router.post(
 );
 
 router.delete(
-  "/:id/likes",
+  "/:id/likes/:userId",
   asyncHandler(async function (req, res) {
-    const id = req.params.id;
-    const like = await Like.findByPk(id);
-    if (!like) throw new Error("Cannot find like");
+    const {id, userId} = req.params;
+    
+    const like = await Like.findOne({
+        where: {
+            "postId": id,
+            "userId": userId 
+        }
+    });
+    
     await like.destroy(req.body);
     return res.json(like);
   })
@@ -132,7 +144,7 @@ router.delete(
   asyncHandler(async function (req, res) {
     const id = req.params.id;
     const post = await Post.findByPk(id);
-    if (!post) throw new Error("Cannot find post");
+   
     await post.destroy(req.body);
     return res.json(post);
   })
