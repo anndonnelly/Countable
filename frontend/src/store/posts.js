@@ -66,12 +66,6 @@ const createLikeAction = (like) => {
     };
 }
 
-const deleteLikeAction = (id) => {
-    return {
-        type: DELETE_LIKE,
-        id,
-    };
-}
 
 //THUNKS
 export const getAllPostsThunk = () => async (dispatch) => {

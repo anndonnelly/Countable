@@ -12,6 +12,7 @@ import ProfilePage from "./components/ProfilePage";
 import { ProtectedRoute } from "./components/RouteUtil";
 import Modal from "./components/Modal";
 import Handle404 from "./components/Handle404";
+import AboutMe from "./components/AboutMe";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,11 +43,13 @@ function App() {
           <Route path="/users/:id">
             {sessionUser ? <ProfilePage /> : <LoginFormPage />}
           </Route>
+          <Route path="/about">
+            <AboutMe />
+          </Route>
           <Handle404 />
         </Switch>
       )}
-
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
