@@ -20,7 +20,7 @@ function PostCard({ post }) {
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    setNumLikes(post.Likes.length);
+    setNumLikes(post?.Likes?.length);
   }, [post, dispatch]);
 
   const lastComment = () => {
@@ -142,8 +142,7 @@ function PostCard({ post }) {
         </div>
       </div>
       <p className="num-likes">
-        
-        {numLikes} {post?.Likes.length === 1 ? "like" : "likes"}
+        {numLikes} {post?.Likes?.length === 1 ? "like" : "likes"}
       </p>
       <div className="side-spacing vertical-spacing">
         <Link to={`/users/${post.userId}`}>
