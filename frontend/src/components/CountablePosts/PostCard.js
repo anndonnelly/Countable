@@ -143,7 +143,7 @@ function PostCard({ post }) {
       </div>
       <p className="num-likes">
         
-        {numLikes} {post.Likes.length === 1 ? "like" : "likes"}
+        {numLikes} {post?.Likes.length === 1 ? "like" : "likes"}
       </p>
       <div className="side-spacing vertical-spacing">
         <Link to={`/users/${post.userId}`}>
