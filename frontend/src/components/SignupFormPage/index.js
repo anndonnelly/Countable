@@ -5,6 +5,7 @@ import "./SignupForm.css";
 import "../CountablePosts/CreatePostForm.css";
 import * as sessionActions from "../../store/session";
 import { useHistory } from "react-router";
+import Footer from "../Footer";
 
 const SignupFormPage = () => {
   const history = useHistory();
@@ -85,6 +86,7 @@ if (user) return <Redirect to={`/posts`} />;
   //    };
 
   return (
+      <>
     <div className="formSignUpPage">
       <div className="tagline-wrapper">
         <span>
@@ -208,6 +210,10 @@ if (user) return <Redirect to={`/posts`} />;
         onLoad={() => setImage(true)}
       ></img>
     </div>
+    <div>
+        <Footer/>
+    </div>
+    </>
   );
 };
 

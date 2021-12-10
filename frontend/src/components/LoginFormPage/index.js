@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Link, useHistory } from "react-router-dom";
+import Footer from "../Footer";
 import "./LoginForm.css";
 
 function LoginFormPage() {
@@ -114,6 +115,9 @@ const history = useHistory()
             </Link>
           </p>
         </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

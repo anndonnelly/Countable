@@ -33,6 +33,11 @@ function ProfileButton({ user }) {
     history.push("/");
   };
 
+  const about = (e) => {
+      e.preventDefault();
+      history.push("/about");
+  }
+
   return (
     <div className="logout-actions-wrapper">
       <i className="fas fa-sign-out-alt logOutButton" onClick={openMenu}></i>
@@ -41,9 +46,12 @@ function ProfileButton({ user }) {
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
-            <Link to="/about"className="logout-button" >
+            {/* <Link to="/about"className="logout-button" >
               About the Site Creator
-            </Link>
+            </Link> */}
+            <button className="logout-button" onClick={about}>
+              About the Site Creator
+            </button>
           </li>
           <li>
             <button className="logout-button" onClick={logout}>

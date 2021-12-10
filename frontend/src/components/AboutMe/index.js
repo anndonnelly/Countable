@@ -1,32 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
-import { getAllUserPostsThunk } from "../../store/userPosts";
-import { loadOnePost } from "../../store/individualpost";
-import { setCurrentModal, showModal } from "../../store/modal";
-import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
-import { loadOneUser } from "../../store/individualUser";
+import React from "react";
+
 import "./AboutMe.css";
 
 function AboutMe() {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-
-  //   const posts = useSelector((state) => state.userPosts);
-  //   const user = useSelector((state) => state?.individualUser);
-
-  //   const postLists = Object.values(posts);
-
-  useEffect(() => {
-    dispatch(loadOneUser(id));
-    dispatch(getAllUserPostsThunk(id));
-  }, [dispatch, id]);
-
-  const handleSubmit = async (id) => {
-    await dispatch(loadOnePost(id));
-    await dispatch(setCurrentModal(CreateCommentFormModal));
-    await dispatch(showModal());
-  };
 
   return (
     <div className="profile_page">
@@ -132,6 +108,7 @@ function AboutMe() {
                 target="blank"
               >
                 <div className="post_image_wrapper_inner">
+                  <p className="profile-card-text">LinkedIn</p>
                   <img
                     className="postImageProfilePage"
                     src="https://i.imgur.com/Z9M0KmM.jpg"
@@ -143,6 +120,7 @@ function AboutMe() {
             <div className="post_image_wrapper">
               <a href="https://github.com/anndonnelly" target="blank">
                 <div className="post_image_wrapper_inner">
+                  <p className="profile-card-text">Github</p>
                   <img
                     className="postImageProfilePage"
                     src="https://i.imgur.com/5btn6RE.png"
@@ -154,9 +132,10 @@ function AboutMe() {
             <div className="post_image_wrapper">
               <a href="https://angel.co/u/ann-donnelly-1" target="blank">
                 <div className="post_image_wrapper_inner">
+                  <p className="profile-card-text">AngelList</p>
                   <img
                     className="postImageProfilePage"
-                    src="https://cdn2.iconfinder.com/data/icons/font-awesome/1792/angellist-512.png"
+                    src="https://cdn-images-1.medium.com/max/1200/1*VHYE96X8zKxswXKFcar-Uw.png"
                     alt=""
                   ></img>
                 </div>
@@ -165,9 +144,10 @@ function AboutMe() {
             <div className="post_image_wrapper">
               <a href="https://remember-the-crud.herokuapp.com/" target="blank">
                 <div className="post_image_wrapper_inner">
+                  <p className="profile-card-text">RTC</p>
                   <img
                     className="postImageProfilePage"
-                    src="https://res.cloudinary.com/dis83syog/image/upload/v1638653256/Personal%20Portfolio/Screen_Shot_2021-12-04_at_4.27.21_PM_zygelt.png"
+                    src="https://res.cloudinary.com/dis83syog/image/upload/v1639097471/Personal%20Portfolio/Screen_Shot_2021-12-09_at_7.50.25_PM_upbwjm.png"
                     alt=""
                   ></img>
                 </div>
@@ -176,6 +156,7 @@ function AboutMe() {
             <div className="post_image_wrapper">
               <a href="https://pickupnyc.herokuapp.com/" target="blank">
                 <div className="post_image_wrapper_inner">
+                  <p className="profile-card-text">Pickup</p>
                   <img
                     className="postImageProfilePage"
                     src="https://res.cloudinary.com/dis83syog/image/upload/v1638663008/Personal%20Portfolio/Screen_Shot_2021-12-04_at_7.09.55_PM_xtclmg.png"
@@ -187,20 +168,10 @@ function AboutMe() {
             <div className="post_image_wrapper">
               <a href="https://speak-easy-tx.herokuapp.com/" target="blank">
                 <div className="post_image_wrapper_inner">
+                  <p className="profile-card-text">Speakeasy</p>
                   <img
                     className="postImageProfilePage"
                     src="https://res.cloudinary.com/dis83syog/image/upload/v1638664346/Personal%20Portfolio/Screen_Shot_2021-12-04_at_7.32.10_PM_zxiugu.png"
-                    alt=""
-                  ></img>
-                </div>
-              </a>
-            </div>
-            <div className="post_image_wrapper">
-              <a href="https://countable-dub.herokuapp.com/" target="blank">
-                <div className="post_image_wrapper_inner">
-                  <img
-                    className="postImageProfilePage"
-                    src="https://res.cloudinary.com/dis83syog/image/upload/v1638742997/Personal%20Portfolio/Screen_Shot_2021-12-05_at_5.22.13_PM_f7p0az.png"
                     alt=""
                   ></img>
                 </div>

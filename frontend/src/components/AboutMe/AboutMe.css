@@ -129,9 +129,50 @@
   align-items: center;
 }
 
+.post_image_wrapper_inner{
+    position: relative;
+
+}
+
 .postImageProfilePage {
   object-fit: fill;
   height: 100%;
   width: auto;
   cursor: pointer;
 }
+
+.post_image_wrapper_inner:hover .postImageProfilePage{
+    opacity: 0.7;
+    /* filter: alpha(opacity=70);  */
+    background-color: #000;
+    color: black;
+    font-size: 25px;
+
+}
+
+.post_image_wrapper_inner:hover {
+    background-color: black;
+}
+
+.post_image_wrapper_inner:hover .profile-card-text {
+    color: white;
+    opacity: 2;
+    z-index: 3;
+    font-weight: 700;
+}
+
+.profile-card-text{
+    /* text-align: center; */
+    z-index: 2;
+    transform: translateX(170px);
+    color: transparent;
+    position: absolute;
+    top: 25;
+    bottom: 25;
+    left: 0;
+    right:0;
+    width: fit-content;
+    height: fit-content;
+    
+} 
+
