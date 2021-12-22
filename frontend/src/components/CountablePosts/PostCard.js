@@ -43,7 +43,7 @@ function PostCard({ post }) {
     };
     await dispatch(createLikeThunk(payload, post.id));
     setNumLikes(numLikes + 1);
-     await dispatch(getAllPostsThunk());
+    await dispatch(getAllPostsThunk());
   };
 
   const isLiked = () => {
@@ -59,12 +59,12 @@ function PostCard({ post }) {
     return false;
   };
 
-  const deleteLike = async() => {
+  const deleteLike = async () => {
     const bool = await dispatch(deleteLikeThunk(user?.id, post?.id));
-    if (bool){
-        setNumLikes(numLikes - 1);
+    if (bool) {
+      setNumLikes(numLikes - 1);
     }
-    await dispatch(getAllPostsThunk())
+    await dispatch(getAllPostsThunk());
   };
 
   const handleSubmit = async () => {
