@@ -52,9 +52,12 @@ router.get(
     "/:id",
   asyncHandler(async (req, res) => {
       const userId = req.params.id;
-      const user = await User.findAll({
-          where: {id: userId}
-      })
+      const user = await User.findByPk(userId, {
+          include: ["followers", "following"],
+      } )
+    //   const user = await User.findAll({
+    //       where: {id: userId}
+    //   })
       return res.json(user)
   }
 ))

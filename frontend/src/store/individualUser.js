@@ -20,12 +20,14 @@ export const loadOneUser = (userId) => async (dispatch) => {
   }
 };
 
-const initialState = {};
+const initialState = {user: null};
 const individualUserReducer = (state = initialState, action) => {
 //   const newState = { ...state };
   switch (action.type) {
     case GET_ONE_USER: {
-      return action.user;
+        const newState = {...state}
+        newState.user = action.user
+      return newState;
     }
     default:
       return state;
