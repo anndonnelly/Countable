@@ -2,7 +2,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { User } = require("../../db/models");
+const { User, Follow } = require("../../db/models");
 const router = express.Router();
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
@@ -52,7 +52,7 @@ router.get(
     "/:id",
   asyncHandler(async (req, res) => {
       const userId = req.params.id;
-      const user = await User.findAll( {
+      const user = await User.findAll({
           where: {id: userId}
       })
       return res.json(user)
@@ -85,6 +85,59 @@ router.put(
   })
 );
 
+// Followers
+router.get(
+  "/:id/followers",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const followers = await User.findByPk(id, {
+        include: ["followers"]
+    });
+    return res.json(followers);
+  })
+);
+
+router.post(
+  "/:id/followers",
+  asyncHandler(async (req, res) => {
+
+    const follower = await Follow.create(req.body);
+    return res.json(follower);
+  })
+);
+
+
+// Following 
+router.get(
+  "/:id/following",
+  asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const following = await User.findByPk(id, {
+      include: ["following"],
+    });
+    return res.json(following);
+  })
+);
+
+router.delete(
+  "/:id/following/:followingId",
+  asyncHandler(async function (req, res) {
+    const { followingId } = req.params;
+
+    const follow = await Follow.findOne({
+      where: {
+        followingId: followingId,
+      },
+    });
+    if (follow) {
+      await follow.destroy(req.body);
+      return res.json(follow);
+    }
+    // } else {
+    //   return res.json(false);
+    // }
+  })
+);
 
 
 module.exports = router;

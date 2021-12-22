@@ -49,17 +49,18 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Like, { foreignKey: "userId" });
     User.hasMany(models.Post, { foreignKey: "userId" });
     User.belongsToMany(models.User, {
-      through: "follows",
+      through: "Follows",
+      //follows = table name
       as: "followers",
-      foreignKey: "follower_id",
-      otherKey: "following_id",
+      foreignKey: "followerId",
+      otherKey: "followingId",
     });
-      User.belongsToMany(models.User, {
-        through: "follows",
+    User.belongsToMany(models.User, {
+        through: "Follows",
         as: "following",
-        foreignKey: "following_id",
-        otherKey: "follower_id",
-      });
+        foreignKey: "followingId",
+        otherKey: "followerId",
+    });
   };
 
   User.prototype.toSafeObject = function () {

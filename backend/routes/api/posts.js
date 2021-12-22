@@ -1,7 +1,7 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const router = express.Router();
-const { Post, User, Comment, Like } = require("../../db/models");
+const { Post, User, Comment, Like, Follow } = require("../../db/models");
 const { singleMulterUpload } = require("../../awsS3.js");
 const { singlePublicFileUpload } = require("../../awsS3.js");
 const { Op } = require("sequelize");
@@ -34,6 +34,7 @@ router.get(
       include: [
         {
           model: User,
+          include: ["followers", "following"],
         },
         {
           model: Comment,
@@ -48,7 +49,7 @@ router.get(
         },
       ],
     });
-
+    console.log("\n\n\n", post, "\n\n\n",)
     const onePost = await res.json(post);
     return onePost;
   })
