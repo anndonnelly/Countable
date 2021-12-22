@@ -3,6 +3,10 @@ import { csrfFetch } from "./csrf";
 const GET_ONE_POST = "individualpost/GET_ONE_POST";
 const EDIT_POST = "individualpost/EDIT_POST";
 const EDIT_COMMENT = "comments/EDIT_COMMENT";
+// const GET_FOLLOWERS = "individualpost/GET_FOLLOWERS"
+// const GET_FOLLOWING = "individualpost/GET_FOLLOWING";
+const CREATE_FOLLOW = "individualpost/CREATE_FOLLOW";
+const DELETE_FOLLOW = "individualpost/DELETE_FOLLOW";
 
 const getOnePost = (post) => {
   return {
@@ -25,6 +29,14 @@ const editComment = (comment) => {
   };
 };
 
+const createFollowAction = (follow) => {
+  return {
+    type: CREATE_FOLLOW,
+    follow,
+  };
+};
+
+
 export const loadOnePost = (post) => async (dispatch) => {
   const res = await fetch(`/api/posts/one/${post}`);
 
@@ -36,8 +48,6 @@ export const loadOnePost = (post) => async (dispatch) => {
     return onePost;
   }
 };
-
-
 
 export const editOnePost = (payload, id) => async (dispatch) => {
   const res = await csrfFetch(`/api/posts/${id}`, {
@@ -71,6 +81,40 @@ export const editCommentThunk = (payload) => async (dispatch) => {
     dispatch(editComment(editCommennt));
   }
 };
+
+
+
+export const createFollowThunk = (payload, id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/users/${id}/followers`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    const follow = await response.json();
+    dispatch(createFollowAction(follow));
+  }
+};
+
+export const deleteFollowThunk = (followerId, followingId) => async (dispatch) => {
+  const response = await csrfFetch(
+    `/api/users/${followerId}/following/${followingId}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  if (response.ok) {
+    const bool = response.json();
+    return bool;
+  }
+};
+
+
+
 const initialState = {};
 const individualPostReducer = (state = initialState, action) => {
   const newState = { ...state };

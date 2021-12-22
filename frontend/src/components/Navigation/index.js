@@ -10,6 +10,8 @@ import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+//   const currentUser = useSelector((state) => state.individualUser.user);
+//   console.log("curre", currentUser);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
   const searchResults = useSelector((state) => state.search);
@@ -86,13 +88,35 @@ function Navigation({ isLoaded }) {
           </div>
           <div className="actionButtons">
             <NavLink className="homeNav" to="/posts">
-              <i className="fas fa-home"></i>
+              <svg
+                aria-label="Home"
+                class="_8-yf5 "
+                color="#262626"
+                fill="#262626"
+                height="24"
+                role="img"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  d="M9.005 16.545a2.997 2.997 0 012.997-2.997h0A2.997 2.997 0 0115 16.545V22h7V11.543L12 2 2 11.543V22h7.005z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                ></path>
+              </svg>
             </NavLink>
             <div>
               <CreatePostModal />
-            </div> 
+            </div>
             <NavLink to={`/users/${sessionUser.id}`}>
-              <i className="far fa-user-circle profilePageNav"></i>
+              {/* <i className="far fa-user-circle profilePageNav"></i> */}
+              <img
+                className="navBarProfileIcon"
+                src={sessionUser.avatar}
+                alt=""
+              ></img>
             </NavLink>
             <ProfileButton user={sessionUser} />
           </div>

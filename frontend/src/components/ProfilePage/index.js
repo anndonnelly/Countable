@@ -7,6 +7,7 @@ import { setCurrentModal, showModal } from "../../store/modal";
 import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
 import { loadOneUser } from "../../store/individualUser";
 import { useState } from "react";
+import { createFollowThunk } from "../../store/individualpost";
 import "./ProfilePage.css";
 
 function ProfilePage() {
@@ -14,15 +15,18 @@ function ProfilePage() {
   const { id } = useParams();
 
   const posts = useSelector((state) => Object.values(state.userPosts));
+  const sessionUser = useSelector((state) => state.session.user);
   const user = useSelector((state) => Object.values(state?.individualUser))[0];
   const onePost = useSelector((state) => state?.individualPost);
   const postLists = Object.values(posts);
-  const [isLoaded, setIsLoaded] = useState(false)
-  console.log("\n\n\n", user);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [follow, setFollow] = useState(0);
+
   useEffect(() => {
     (async () => {
       await dispatch(loadOneUser(id));
       await dispatch(getAllUserPostsThunk(id));
+      setFollow(user?.followers.length);
       setIsLoaded(true);
     })();
   }, [dispatch, id]);
@@ -31,6 +35,17 @@ function ProfilePage() {
     await dispatch(loadOnePost(id));
     await dispatch(setCurrentModal(CreateCommentFormModal));
     await dispatch(showModal());
+  };
+
+  const createFollow = async (e) => {
+    e.preventDefault();
+    const payload = {
+      followerId: user.id,
+      followingId: sessionUser.id,
+    };
+    await dispatch(createFollowThunk(payload, sessionUser.id));
+    await dispatch(loadOneUser(id));
+    // setFollow(follow + 1)
   };
 
   return (
@@ -44,6 +59,7 @@ function ProfilePage() {
             <div className="user_data_wrapper">
               <div className="username">
                 <span>{user?.username}</span>
+                <button onClick={createFollow}>Follow</button>
               </div>
               <div className="bio">
                 <span>{user?.bio}</span>
@@ -51,9 +67,7 @@ function ProfilePage() {
               <div>
                 {posts?.length} {posts?.length === 1 ? "post" : "posts"}
                 {`${user?.followers.length}`}
-                {onePost?.User?.followers.length === 1
-                  ? "follower"
-                  : "followers"}
+                {user?.followers.length === 1 ? "follower" : "followers"}
                 {`${user?.following.length} following`}
               </div>
             </div>

@@ -12,6 +12,7 @@
   border-radius: 2px;
   width: 100%;
   cursor: pointer;
+  
 }
 
 .nav {
@@ -114,6 +115,7 @@
   height: 20px;
   width: 20px;
   cursor: pointer;
+  color:black
 }
 
 .profilePageNav {
@@ -135,7 +137,6 @@
   margin-right: 16px;
 }
 
-
 .logout-actions-wrapper {
   position: relative;
 }
@@ -147,7 +148,7 @@
   top: 30px;
   display: flex;
   flex-direction: column;
-
+  /* color: black; */
   position: absolute;
   left: 0px;
   padding: 5px;
@@ -155,4 +156,13 @@
 
 .logout-actions-wrapper .profile-dropdown > * {
   margin-bottom: 10px;
+}
+
+.navBarProfileIcon {
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  object-fit: cover;
+  cursor: pointer;
+  display: block !important;
 }
