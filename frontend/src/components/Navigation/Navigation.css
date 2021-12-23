@@ -12,7 +12,6 @@
   border-radius: 2px;
   width: 100%;
   cursor: pointer;
-  
 }
 
 .nav {
@@ -115,7 +114,7 @@
   height: 20px;
   width: 20px;
   cursor: pointer;
-  color:black
+  color: black;
 }
 
 .profilePageNav {
@@ -165,4 +164,23 @@
   object-fit: cover;
   cursor: pointer;
   display: block !important;
+}
+
+.search-profile-image {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.search-profile-names {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.search-username {
+  color: #262626;
+  font-size: 14px;
+  font-weight: 500;
 }

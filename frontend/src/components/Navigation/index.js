@@ -76,7 +76,20 @@ function Navigation({ isLoaded }) {
                           reset(res.id);
                         }}
                       >
-                        {res.username}
+                        {
+                          <img
+                            className="search-profile-image"
+                            alt=""
+                            src={res.avatar}
+                          ></img>
+                        }
+                        {
+                          <div className="search-profile-names">
+                            <div className="search-username">
+                              {res.username}
+                            </div>
+                          </div>
+                        }
                       </Link>
                     </div>
                   ))
