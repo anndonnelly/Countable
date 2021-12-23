@@ -8,6 +8,7 @@ import CreateCommentFormModal from "../Comments/CreateCommentFormModal";
 import { loadOneUser } from "../../store/individualUser";
 import { useState } from "react";
 import { createFollowThunk } from "../../store/individualpost";
+import { deleteFollowThunk } from "../../store/individualpost";
 import "./ProfilePage.css";
 
 function ProfilePage() {
@@ -43,9 +44,32 @@ function ProfilePage() {
       followerId: user.id,
       followingId: sessionUser.id,
     };
+
     await dispatch(createFollowThunk(payload, sessionUser.id));
     await dispatch(loadOneUser(id));
     // setFollow(follow + 1)
+  };
+
+  const isFollowed = () => {
+    const follows = user?.followers;
+    console.log("!!!!!", follows);
+    if (follows) {
+      for (let i = 0; i < follows.length; i++) {
+        let follow = follows[i];
+        if (follow.id === sessionUser?.id) {
+          return true;
+        }
+      }
+    }
+    return false;
+  };
+
+  const deleteFollow = async () => {
+    const bool = await dispatch(deleteFollowThunk(user?.id, sessionUser.id));
+    if (bool) {
+      setFollow(follow - 1);
+    }
+    await dispatch(loadOneUser(id));
   };
 
   return (
@@ -59,7 +83,15 @@ function ProfilePage() {
             <div className="user_data_wrapper">
               <div className="username">
                 <span>{user?.username}</span>
-                <button onClick={createFollow}>Follow</button>
+                {sessionUser.id !== user.id && (
+                  <>
+                    {!isFollowed() ? (
+                      <button onClick={createFollow}>Follow</button>
+                    ) : (
+                      <button onClick={deleteFollow}>Unfollow</button>
+                    )}
+                  </>
+                )}
               </div>
               <div className="bio">
                 <span>{user?.bio}</span>
