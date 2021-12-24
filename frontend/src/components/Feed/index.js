@@ -10,8 +10,11 @@ function Feed() {
   const posts = useSelector((state) => Object.values(state.posts));
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(getAllPostsThunk());
-    setIsLoaded(true);
+      (async () => {
+          await dispatch(getAllPostsThunk());
+          setIsLoaded(true);
+      })()
+    
   }, [dispatch]);
 
   return (

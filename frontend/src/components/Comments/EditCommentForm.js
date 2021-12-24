@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loadOnePost } from "../../store/individualpost";
 import { editCommentThunk } from "../../store/individualpost";
