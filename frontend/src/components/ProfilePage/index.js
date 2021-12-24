@@ -82,13 +82,22 @@ function ProfilePage() {
             </div>
             <div className="user_data_wrapper">
               <div className="username">
-                <span>{user?.username}</span>
+                <span className="username">{user?.username}</span>
                 {sessionUser.id !== user.id && (
                   <>
                     {!isFollowed() ? (
-                      <button onClick={createFollow}>Follow</button>
+                      <button className="followButton" onClick={createFollow}>
+                        Follow
+                      </button>
                     ) : (
-                      <button onClick={deleteFollow}>Unfollow</button>
+                      <button onClick={deleteFollow} className="unfollowButton">
+                        <img
+                          src={
+                            "https://img.icons8.com/material-sharp/24/000000/checked-user-male.png"
+                          }
+                          alt=""
+                        ></img>
+                      </button>
                     )}
                   </>
                 )}
@@ -97,10 +106,14 @@ function ProfilePage() {
                 <span>{user?.bio}</span>
               </div>
               <div>
-                {posts?.length} {posts?.length === 1 ? "post" : "posts"}
-                {`${user?.followers.length}`}
-                {user?.followers.length === 1 ? "follower" : "followers"}
-                {`${user?.following.length} following`}
+                <span className="bioFormatting">
+                  {posts?.length} {posts?.length === 1 ? "post" : "posts"}
+                </span>
+                <span className="bioFormatting">
+                  {`${user?.followers.length}`}
+                  {user?.followers.length === 1 ? " follower" : " followers"}
+                </span>
+                <span className="bioFormatting">{`${user?.following.length} following`}</span>
               </div>
             </div>
           </div>

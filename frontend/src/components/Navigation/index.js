@@ -10,8 +10,8 @@ import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
-//   const currentUser = useSelector((state) => state.individualUser.user);
-//   console.log("curre", currentUser);
+  //   const currentUser = useSelector((state) => state.individualUser.user);
+  //   console.log("curre", currentUser);
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
   const searchResults = useSelector((state) => state.search);
@@ -83,13 +83,7 @@ function Navigation({ isLoaded }) {
                             src={res.avatar}
                           ></img>
                         }
-                        {
-                          <div className="search-profile-names">
-                            <div className="search-username">
-                              {res.username}
-                            </div>
-                          </div>
-                        }
+                        {<span className="searchUsername">{res.username}</span>}
                       </Link>
                     </div>
                   ))
