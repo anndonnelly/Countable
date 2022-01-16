@@ -52,7 +52,6 @@ function ProfilePage() {
 
   const isFollowed = () => {
     const follows = user?.followers;
-    console.log("!!!!!", follows);
     if (follows) {
       for (let i = 0; i < follows.length; i++) {
         let follow = follows[i];
