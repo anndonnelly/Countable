@@ -34,6 +34,7 @@ function App() {
             <LoginFormPage />
           </Route>
           <Route path="/signup">
+              {/* Restful convention */}
             <SignupFormPage />
           </Route>
           {/* <Route path="/posts/:id">
