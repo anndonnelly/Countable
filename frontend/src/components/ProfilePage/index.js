@@ -32,8 +32,8 @@ function ProfilePage() {
     })();
   }, [dispatch, id]);
 
-  const handleSubmit = async (id) => {
-    await dispatch(loadOnePost(id));
+  const handleSubmit = async (post) => {
+    await dispatch(loadOnePost(post));
     await dispatch(setCurrentModal(CreateCommentFormModal));
     await dispatch(showModal());
   };
@@ -196,7 +196,7 @@ function ProfilePage() {
                     className="postImageProfilePage"
                     src={post.imageUrl}
                     alt=""
-                    onClick={() => handleSubmit(post.id)}
+                    onClick={() => handleSubmit(post)}
                   />
                 </div>
               ))}

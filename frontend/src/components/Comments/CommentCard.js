@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import CreateCommentFormModal from "./CreateCommentFormModal";
 import { setCurrentModal, showModal } from "../../store/modal";
 import "./CommentCard.css";
+import { getAllCommentsThunk } from "../../store/comments";
 
 
 
@@ -14,17 +15,21 @@ function CommentCard({ post }) {
 
     // IFFE
     useEffect(() => {
-        (()=>{
-        const com = dispatch(loadOnePost(post.id))
-        setComments(com.Comments)
-        
-        })()
+        (() => {
+        //   const com = dispatch(loadOnePost(post.id));
+          post?.Comments.sort(
+            (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+          );
+        })();
+        setComments(post.Comments)
+          
     }, [dispatch, post.id]);
 
-  const handleSubmit = async () => {
-      await dispatch(loadOnePost(post.id));
-      await dispatch(setCurrentModal(CreateCommentFormModal));
-      await dispatch(showModal())
+  const viewAllComments = async () => {
+    await dispatch(loadOnePost(post));
+    await dispatch(getAllCommentsThunk(post.id))
+    await dispatch(setCurrentModal(CreateCommentFormModal));
+    await dispatch(showModal());
   };
 
   const anyComments = () => {
@@ -38,9 +43,9 @@ function CommentCard({ post }) {
 
   return (
     <>
-      <div className="anyComments vertical-spacing side-spacing" onClick={handleSubmit}>
+      <button className="anyComments vertical-spacing side-spacing" onClick={viewAllComments}>
          {anyComments()}
-      </div>
+      </button>
     </>
   );
 }

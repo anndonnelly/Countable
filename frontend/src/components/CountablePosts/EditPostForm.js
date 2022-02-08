@@ -31,7 +31,7 @@ const EditPostForm = ({ setIsEditing }) => {
 
     onSubmit: async (values, { setSubmitting }) => {
       dispatch(editOnePost(values, post.id)).then(() =>
-        dispatch(loadOnePost(post.id))
+        dispatch(loadOnePost(post))
           .then(() => dispatch(setCurrentModal(CreateCommentFormModal)))
           .then(() => dispatch(getAllPostsThunk()))
       );

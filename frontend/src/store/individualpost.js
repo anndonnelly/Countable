@@ -38,20 +38,20 @@ const createFollowAction = (follow) => {
 
 
 export const loadOnePost = (post) => async (dispatch) => {
-  const res = await fetch(`/api/posts/one/${post}`);
+//   const res = await fetch(`/api/posts/one/${post}`);
   // returns raw json obj
   // fetch returns promise obj
   // fetch is api, alternative to axios
 
-  if (res.ok) {
+//   if (res.ok) {
       // ok represents if fetch found endpoint
-    const onePost = await res.json();
+    // const onePost = await res.json();
     // method to turn raw obj to pojo
 
-    onePost?.Comments.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
-    dispatch(getOnePost(onePost));
-    return onePost;
-  }
+    // onePost?.Comments.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+    dispatch(getOnePost(post));
+    return post;
+//   }
 };
 
 export const editOnePost = (payload, id) => async (dispatch) => {

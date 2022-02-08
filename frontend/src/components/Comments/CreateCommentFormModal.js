@@ -25,10 +25,12 @@ function CreateCommentFormModal() {
   const post = useSelector((state) => state.individualPost);
   const user = useSelector((state) => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
+  const comments = useSelector((state) => state.comments);
+  const allComments = Object.values(comments);
 
   useEffect(() => {
     (async () => {
-      setNumLikes(post.Likes.length);
+      setNumLikes(post?.Likes?.length);
       setIsLoaded(true);
     })();
   }, [post, dispatch]);
@@ -46,7 +48,7 @@ function CreateCommentFormModal() {
     await dispatch(deleteCommentThunk(commentId));
 
     await dispatch(getAllPostsThunk());
-    dispatch(loadOnePost(post.id));
+    dispatch(loadOnePost(post));
   };
 
   const editPost = async () => {
@@ -62,7 +64,7 @@ function CreateCommentFormModal() {
     };
 
     await dispatch(createCommentThunk(payload));
-    dispatch(loadOnePost(post.id));
+    dispatch(loadOnePost(post));
     await dispatch(getAllPostsThunk());
     setComment("");
   };
@@ -76,7 +78,7 @@ function CreateCommentFormModal() {
     };
     await dispatch(createLikeThunk(payload, post.id));
     setNumLikes(numLikes + 1);
-    await dispatch(loadOnePost(post.id));
+    await dispatch(loadOnePost(post));
   };
 
   const isLiked = () => {
@@ -97,7 +99,7 @@ function CreateCommentFormModal() {
     if (bool) {
       setNumLikes(numLikes - 1);
     }
-    await dispatch(loadOnePost(post.id));
+    await dispatch(loadOnePost(post));
   };
 
   return (
@@ -226,11 +228,10 @@ function CreateCommentFormModal() {
                 </div>
               </div>
               <p className="num-likes">
-                {numLikes} {post.Likes.length === 1 ? "like" : "likes"}
+                {numLikes} {post?.Likes?.length === 1 ? "like" : "likes"}
               </p>
-
-              {post &&
-                post.Comments?.map((comment) => (
+              {allComments &&
+                allComments?.map((comment) => (
                   <li className="postModalCommentWrapper" key={comment.id}>
                     <div className="postModalComment">
                       <img
