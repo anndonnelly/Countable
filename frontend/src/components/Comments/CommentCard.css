@@ -1,6 +1,14 @@
 .anyComments{
     cursor: pointer;
+    background-color: transparent;
+    border-style: none;
+    font-size: 16px;
+    
 } 
+
+.anyComments:hover{
+    color: lightgray
+}
 
 .vertical-spacing {
   margin-top: 10px;

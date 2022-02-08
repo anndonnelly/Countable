@@ -68,7 +68,7 @@ function PostCard({ post }) {
   };
 
   const handleSubmit = async () => {
-    await dispatch(loadOnePost(post.id));
+    await dispatch(loadOnePost(post));
     await dispatch(setCurrentModal(CreateCommentFormModal));
     await dispatch(showModal());
   };

@@ -18,13 +18,13 @@ function EditPostModal({ post }) {
   // IFFE
   useEffect(() => {
     (() => {
-      const com = dispatch(loadOnePost(post.id));
+      const com = dispatch(loadOnePost(post));
       setComments(com.Comments);
     })();
   }, []);
 
   const handleSubmit = async () => {
-    dispatch(loadOnePost(post.id));
+    dispatch(loadOnePost(post));
 
     setPostDetailModal(true);
   };

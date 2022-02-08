@@ -55,7 +55,7 @@ const EditCommentForm = ({ comment }) => {
     onSubmit: async (values, { setSubmitting }) => {
       await dispatch(editCommentThunk(values, post.id));
       await getAllPostsThunk(post.id);
-      await dispatch(loadOnePost(post.id));
+      await dispatch(loadOnePost(post));
       setIsClicked(false);
       //   dispatch(showModal());
     },
