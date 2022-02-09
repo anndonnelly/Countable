@@ -4,7 +4,7 @@ const GET_POSTS = "posts/LOAD";
 const GET_ONE_POST = "posts/GET_ONE_POST";
 const CREATE_POST = "posts/CREATE_POST";
 const DELETE_POST = "posts/DELETE_POST";
-const EDIT_COMMENT = "comments/EDIT_COMMENT";
+
 const GET_LIKES = "posts/GET_LIKES";
 const CREATE_LIKE = "posts/CREATE_LIKE";
 const DELETE_LIKE = "posts/DELETE_LIKE";
@@ -45,12 +45,7 @@ const deletePostAction = (deletedPost) => {
   };
 };
 
-const editComment = (comment) => {
-  return {
-    type: EDIT_COMMENT,
-    comment,
-  };
-};
+
 
 const getLikesAction = (likes) => {
     return {
@@ -110,22 +105,7 @@ export const createPostThunk = (post) => async (dispatch) => {
   }
 };
 
-export const editCommentThunk = (payload) => async (dispatch) => {
-  const { id } = payload;
- 
-  const res = await csrfFetch(`/api/comments/${id}`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
 
-  if (res.ok) {
-    let editCommennt = await res.json();
-    dispatch(editComment(editCommennt));
-  }
-};
 
 export const deletePostThunk = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/posts/${id}`, {
@@ -207,17 +187,6 @@ export default function postsReducer(state = initialState, action) {
       delete newState[action.deletedPost];
       return newState;
     }
-    case EDIT_COMMENT:
-      for (let post in newState) {
-        if (newState[post].id === action.comment.postId) {
-          for (let comment in newState[post].Comments) {
-            if (newState[post].Comments[comment].id === action.comment.id) {
-              newState[post].Comments[comment] = action.comment;
-            }
-          }
-        }
-      }
-      return newState;
     // case GET_LIKES: {
     //     const allLikes = {}
         

@@ -8,7 +8,8 @@ router.get(
   asyncHandler(async (req, res) => {
     const id = req.params.id;
     const comments = await Comment.findAll({
-        where: {postId: id},
+      where: { postId: id },
+      include: User,
     });
   
     return res.json(comments);
@@ -19,7 +20,7 @@ router.get(
   "/:id",
   asyncHandler(async (req, res) => {
     const id = req.params.id;
-    const comment = await Comment.findByPk(id);
+    const comment = await Comment.findByPk(id)
     return res.json(comment);
   })
 );
@@ -27,7 +28,8 @@ router.get(
 router.post(
   "/",
   asyncHandler(async (req, res) => {
-    const comment = await Comment.create(req.body);
+    const newComment = await Comment.create(req.body);
+    const comment = await Comment.findByPk(newComment.id, {include: User});
     return res.json(comment);
   })
 );

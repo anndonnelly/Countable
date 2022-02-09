@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createCommentThunk } from "../../store/comments";
 import { getAllCommentsThunk } from "../../store/comments";
-import { getAllPostsThunk } from "../../store/posts";
 import "./CreateCommentForm.css"
 
 
@@ -22,9 +21,9 @@ function CreateCommentForm({post}) {
     };
 
 
-    dispatch(createCommentThunk(payload)).then(() => 
-    dispatch(getAllCommentsThunk(post.id))).then(()=> 
-    dispatch(getAllPostsThunk()));
+    await dispatch(createCommentThunk(payload)) 
+    // await dispatch(getAllCommentsThunk(post.id))
+    // dispatch(getAllPostsThunk()));
     setComment("")
   
   };

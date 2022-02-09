@@ -14,6 +14,8 @@ import EditCommentForm from "./EditCommentForm";
 import { createLikeThunk } from "../../store/posts";
 import { deleteLikeThunk } from "../../store/posts";
 import "./CreateCommentFormModal.css";
+import CreateCommentForm from "./CreateCommentForm";
+
 
 function CreateCommentFormModal() {
   const dispatch = useDispatch();
@@ -278,7 +280,7 @@ function CreateCommentFormModal() {
                 ))}
             </ul>
             <div className="comment-form-wrapper">
-              <form className="anyComments" onSubmit={handleSubmit}>
+              {/* <form className="anyComments" onSubmit={handleSubmit}>
                 <div className="fieldDiv">
                   <input
                     id="addCommentBox"
@@ -295,7 +297,8 @@ function CreateCommentFormModal() {
                     Post
                   </button>
                 </div>
-              </form>
+              </form> */}
+              <CreateCommentForm post={post} />
             </div>
           </div>
         </>

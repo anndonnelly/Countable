@@ -49,7 +49,7 @@ router.get(
         },
       ],
     });
-    console.log("\n\n\n", post, "\n\n\n",)
+    
     const onePost = await res.json(post);
     return onePost;
   })
